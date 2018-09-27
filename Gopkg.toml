@@ -25,6 +25,39 @@
 #   unused-packages = true
 
 
+required = [
+  "k8s.io/code-generator/cmd/client-gen"
+]
+
+[[constraint]]
+  name = "k8s.io/client-go"
+  version = "v6.0.0"
+
+[[constraint]]
+  name = "k8s.io/api"
+  version = "kubernetes-1.10.4"
+
+[[constraint]]
+  name = "k8s.io/apimachinery"
+  version = "kubernetes-1.10.4"
+
+[[constraint]]
+  name = "k8s.io/code-generator"
+  version = "kubernetes-1.10.4"
+
 [prune]
+  non-go = true
   go-tests = true
   unused-packages = true
+
+  [[prune.project]]
+    name = "k8s.io/code-generator"
+    unused-packages = false
+    non-go = false
+    go-tests = false
+
+  [[prune.project]]
+    name = "k8s.io/gengo"
+    unused-packages = false
+    non-go = false
+    go-tests = false
