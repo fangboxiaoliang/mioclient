@@ -33,31 +33,15 @@ required = [
   name = "k8s.io/client-go"
   version = "v6.0.0"
 
-[[constraint]]
-  name = "k8s.io/api"
-  version = "kubernetes-1.10.4"
 
 [[constraint]]
+  version = "kubernetes-1.9.6"
   name = "k8s.io/apimachinery"
-  version = "kubernetes-1.10.4"
 
 [[constraint]]
-  name = "k8s.io/code-generator"
-  version = "kubernetes-1.10.4"
+  version = "kubernetes-1.9.6"
+  name = "k8s.io/apiextensions-apiserver"
 
-[prune]
-  non-go = true
-  go-tests = true
-  unused-packages = true
-
-  [[prune.project]]
-    name = "k8s.io/code-generator"
-    unused-packages = false
-    non-go = false
-    go-tests = false
-
-  [[prune.project]]
-    name = "k8s.io/gengo"
-    unused-packages = false
-    non-go = false
-    go-tests = false
+[[constraint]]
+  version = "kubernetes-1.9.6"
+  name = "k8s.io/api"
