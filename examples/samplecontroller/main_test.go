@@ -11,6 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	apiextensionsv1beta1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	apiextensionsclient "k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset"
+	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
@@ -163,11 +164,13 @@ func TestCrd(t *testing.T) {
 		assert.Equal(t, nil, err)
 	})
 
+	time.Sleep(time.Second * 2)
 	t.Run("|should create crd", func(t *testing.T) {
 		err := sampleController.TestFooClient()
 		assert.Equal(t, nil, err)
 	})
 
+	time.Sleep(time.Second * 2)
 	t.Run("|should delete crd foo", func(t *testing.T) {
 		err := sampleController.TestDeleteCRD()
 		assert.Equal(t, nil, err)
