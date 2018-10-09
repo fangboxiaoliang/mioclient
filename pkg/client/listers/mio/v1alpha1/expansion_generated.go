@@ -25,3 +25,11 @@ type BuildConfigListerExpansion interface{}
 // BuildConfigNamespaceListerExpansion allows custom methods to be added to
 // BuildConfigNamespaceLister.
 type BuildConfigNamespaceListerExpansion interface{}
+
+// PipelineListerExpansion allows custom methods to be added to
+// PipelineLister.
+type PipelineListerExpansion interface{}
+
+// PipelineNamespaceListerExpansion allows custom methods to be added to
+// PipelineNamespaceLister.
+type PipelineNamespaceListerExpansion interface{}

@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// BuildConfigs returns a BuildConfigInformer.
 	BuildConfigs() BuildConfigInformer
+	// Pipelines returns a PipelineInformer.
+	Pipelines() PipelineInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // BuildConfigs returns a BuildConfigInformer.
 func (v *version) BuildConfigs() BuildConfigInformer {
 	return &buildConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Pipelines returns a PipelineInformer.
+func (v *version) Pipelines() PipelineInformer {
+	return &pipelineInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
