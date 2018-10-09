@@ -5,6 +5,14 @@ import (
 	"github.com/hidevopsio/hiboot/pkg/system"
 )
 
+const (
+	CODEPATH string = "codepath"
+	CLONE      string = "clone"
+	COMPILE    string = "compile"
+	BUILDIMAGE string = "buildImage"
+	PUSHIMAGE  string = "pushImage"
+)
+
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
@@ -41,6 +49,7 @@ type PipelineSpec struct {
 	BuildConfigs      BuildConfigs      `json:"build_configs"`
 	DeploymentConfigs DeploymentConfigs `json:"deployment_configs"`
 	GatewayConfigs    GatewayConfigs    `json:"gateway_configs"`
+	EventTypes        []string          `json:"event_type"`
 }
 
 type Ports struct {
@@ -91,7 +100,6 @@ type GatewayConfigs struct {
 	Uri         string `json:"uri"`
 	UpstreamUrl string `json:"upstream_url"`
 }
-
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 

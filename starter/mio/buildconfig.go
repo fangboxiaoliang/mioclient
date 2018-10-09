@@ -6,8 +6,7 @@ import (
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	miov1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	)
+		)
 
 type BuildConfig struct {
 	clientSet miov1.MioV1alpha1Interface
@@ -19,20 +18,15 @@ func newBuildConfig(clientSet miov1.MioV1alpha1Interface) *BuildConfig {
 	}
 }
 
-func (b *BuildConfig) Create(name, namespace string) (config *v1alpha1.BuildConfig, err error) {
-	log.Debugf("config map create : %v", name)
-	cm, err := b.Get(name, namespace)
-	config = &v1alpha1.BuildConfig{
-		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
-		},
-	}
+func (b *BuildConfig) Create(build *v1alpha1.BuildConfig) (config *v1alpha1.BuildConfig, err error) {
+	log.Debugf("config map create : %v", build.Name)
+	cm, err := b.Get(build.Name, build.Namespace)
 	log.Debug("config map get :", cm)
 	if err == nil {
-		config, err = b.Update(name, namespace, config)
+		config, err = b.Update(build.Name, build.Namespace, config)
 		return
 	}
-	config, err = b.clientSet.BuildConfigs(namespace).Create(config)
+	config, err = b.clientSet.BuildConfigs(build.Namespace).Create(build)
 	if err != nil {
 		return nil, err
 	}

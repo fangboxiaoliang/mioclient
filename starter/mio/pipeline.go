@@ -6,8 +6,7 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	"fmt"
 	miov1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-)
+	)
 
 type Pipeline struct {
 	clientSet miov1.MioV1alpha1Interface
@@ -19,20 +18,15 @@ func newPipeline(clientSet miov1.MioV1alpha1Interface) *Pipeline {
 	}
 }
 
-func (b *Pipeline) Create(name, namespace string) (config *v1alpha1.Pipeline, err error) {
-	log.Debugf("config map create : %v", name)
-	cm, err := b.Get(name, namespace)
-	config = &v1alpha1.Pipeline{
-		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
-		},
-	}
+func (b *Pipeline) Create(pipeline *v1alpha1.Pipeline) (config *v1alpha1.Pipeline, err error) {
+	log.Debugf("config map create : %v", pipeline.Name)
+	cm, err := b.Get(pipeline.Name, pipeline.Namespace)
 	log.Debug("config map get :", cm)
 	if err == nil {
-		config, err = b.Update(name, namespace, config)
+		config, err = b.Update(pipeline.Name, pipeline.Namespace, config)
 		return
 	}
-	config, err = b.clientSet.Pipelines(namespace).Create(config)
+	config, err = b.clientSet.Pipelines(pipeline.Namespace).Create(pipeline)
 	if err != nil {
 		return nil, err
 	}

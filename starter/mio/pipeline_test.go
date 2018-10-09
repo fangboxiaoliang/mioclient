@@ -13,7 +13,13 @@ func TestPipelineCurd(t *testing.T) {
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
 	config := newPipeline(clientSet)
-	result, err := config.Create(name, namespace)
+	config1 := &v1alpha1.Pipeline{
+		ObjectMeta: metav1.ObjectMeta{
+			Name: name,
+			Namespace:namespace,
+		},
+	}
+	result, err := config.Create(config1)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, name, result.Name)
 
