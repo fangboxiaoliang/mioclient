@@ -4,15 +4,16 @@ import (
 	"fmt"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
-	miov1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
+	miov1alpha1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
-		)
+	"k8s.io/apimachinery/pkg/watch"
+)
 
 type BuildConfig struct {
-	clientSet miov1.MioV1alpha1Interface
+	clientSet miov1alpha1.MioV1alpha1Interface
 }
 
-func newBuildConfig(clientSet miov1.MioV1alpha1Interface) *BuildConfig {
+func newBuildConfig(clientSet miov1alpha1.MioV1alpha1Interface) *BuildConfig {
 	return &BuildConfig{
 		clientSet: clientSet,
 	}
@@ -34,7 +35,7 @@ func (b *BuildConfig) Create(build *v1alpha1.BuildConfig) (config *v1alpha1.Buil
 }
 
 func (b *BuildConfig) Get(name, namespace string) (config *v1alpha1.BuildConfig, err error) {
-	log.Info("get config map :", name)
+	log.Info(fmt.Sprintf("get app %s in namespace %s:", name,namespace))
 	result, err := b.clientSet.BuildConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -43,36 +44,26 @@ func (b *BuildConfig) Get(name, namespace string) (config *v1alpha1.BuildConfig,
 }
 
 func (b *BuildConfig) Delete(name, namespace string) error {
-	log.Info("get config map :", name)
+	log.Info(fmt.Sprintf("delete app %s in namespace %s:", name,namespace))
 	err := b.clientSet.BuildConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (b *BuildConfig) Update(name, namespace string, config *v1alpha1.BuildConfig) (*v1alpha1.BuildConfig, error) {
-	log.Info("get build config :", name)
+	log.Info(fmt.Sprintf("update app %s in namespace %s:", name,namespace))
 	result, err := b.clientSet.BuildConfigs(namespace).Update(config)
 	return result, err
 }
 
-func (b *BuildConfig) Watch(name, namespace string) (*v1alpha1.BuildConfig, error) {
-	log.Info("get build config :", name)
-	config := v1.ListOptions{
-		LabelSelector: "app=" + name,
-		Watch:         true,
-	}
-	w, err := b.clientSet.BuildConfigs(namespace).Watch(config)
+func (b *BuildConfig) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch app %s in namespace %s:", name,namespace))
+
+	listOptions.LabelSelector = fmt.Sprintf("app=%s",name)
+	listOptions.Watch = true
+
+	w, err := b.clientSet.BuildConfigs(namespace).Watch(listOptions)
 	if err != nil {
-		return nil, err
+		return nil,err
 	}
-	for {
-		select {
-		case event, ok := <-w.ResultChan():
-			if !ok {
-				log.Errorf("failed on RC watching %v", ok)
-				return nil, fmt.Errorf("failed on RC watching %v", ok)
-			}
-			rc := event.Object.(*v1alpha1.BuildConfig)
-			return rc, nil
-		}
-	}
+	return w,nil
 }
