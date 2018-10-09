@@ -32,6 +32,10 @@ func (c *FakeMioV1alpha1) BuildConfigs(namespace string) v1alpha1.BuildConfigInt
 	return &FakeBuildConfigs{c, namespace}
 }
 
+func (c *FakeMioV1alpha1) Pipelines(namespace string) v1alpha1.PipelineInterface {
+	return &FakePipelines{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeMioV1alpha1) RESTClient() rest.Interface {

@@ -1,19 +1,19 @@
 package mio
 
 import (
+	"testing"
+	"github.com/stretchr/testify/assert"
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
-	"github.com/stretchr/testify/assert"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"testing"
 )
 
-func TestBuildconfigCurd(t *testing.T) {
+func TestPipelineCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newBuildConfig(clientSet)
-	config1 := &v1alpha1.BuildConfig{
+	config := newPipeline(clientSet)
+	config1 := &v1alpha1.Pipeline{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 			Namespace:namespace,
@@ -27,7 +27,7 @@ func TestBuildconfigCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 	//assert.Equal(t, name, result.Name)
 
-	con := &v1alpha1.BuildConfig{
+	con := &v1alpha1.Pipeline{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 		},

@@ -6,9 +6,7 @@ import (
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	miov1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/watch"
-)
+		)
 
 type BuildConfig struct {
 	clientSet miov1.MioV1alpha1Interface
@@ -20,20 +18,15 @@ func newBuildConfig(clientSet miov1.MioV1alpha1Interface) *BuildConfig {
 	}
 }
 
-func (b *BuildConfig) Create(name, namespace string) (config *v1alpha1.BuildConfig, err error) {
-	log.Debugf("config map create : %v", name)
-	cm, err := b.Get(name, namespace)
-	config = &v1alpha1.BuildConfig{
-		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
-		},
-	}
+func (b *BuildConfig) Create(build *v1alpha1.BuildConfig) (config *v1alpha1.BuildConfig, err error) {
+	log.Debugf("config map create : %v", build.Name)
+	cm, err := b.Get(build.Name, build.Namespace)
 	log.Debug("config map get :", cm)
 	if err == nil {
-		config, err = b.Update(name, namespace, config)
+		config, err = b.Update(build.Name, build.Namespace, config)
 		return
 	}
-	config, err = b.clientSet.BuildConfigs(namespace).Create(config)
+	config, err = b.clientSet.BuildConfigs(build.Namespace).Create(build)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +54,7 @@ func (b *BuildConfig) Update(name, namespace string, config *v1alpha1.BuildConfi
 	return result, err
 }
 
-func (b *BuildConfig) Watch(name, namespace string) error {
+func (b *BuildConfig) Watch(name, namespace string) (*v1alpha1.BuildConfig, error) {
 	log.Info("get build config :", name)
 	config := v1.ListOptions{
 		LabelSelector: "app=" + name,
@@ -69,28 +62,17 @@ func (b *BuildConfig) Watch(name, namespace string) error {
 	}
 	w, err := b.clientSet.BuildConfigs(namespace).Watch(config)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	for {
 		select {
 		case event, ok := <-w.ResultChan():
 			if !ok {
 				log.Errorf("failed on RC watching %v", ok)
-				return fmt.Errorf("failed on RC watching %v", ok)
+				return nil, fmt.Errorf("failed on RC watching %v", ok)
 			}
-			switch event.Type {
-			case watch.Added:
-				rc := event.Object.(*v1alpha1.BuildConfig)
-				log.Debug(rc.Name)
-			case watch.Modified:
-				rc := event.Object.(*v1alpha1.BuildConfig)
-				log.Debugf("RC: %s", rc.Name)
-			case watch.Deleted:
-				log.Info("Deleted: ", event.Object)
-			default:
-				log.Error("Failed")
-			}
+			rc := event.Object.(*v1alpha1.BuildConfig)
+			return rc, nil
 		}
 	}
-	return nil
 }

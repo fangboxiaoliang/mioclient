@@ -55,6 +55,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=mio.k8s.io, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("buildconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Mio().V1alpha1().BuildConfigs().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("pipelines"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Mio().V1alpha1().Pipelines().Informer()}, nil
 
 	}
 
