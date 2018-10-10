@@ -33,3 +33,11 @@ type PipelineListerExpansion interface{}
 // PipelineNamespaceListerExpansion allows custom methods to be added to
 // PipelineNamespaceLister.
 type PipelineNamespaceListerExpansion interface{}
+
+// SourceConfigListerExpansion allows custom methods to be added to
+// SourceConfigLister.
+type SourceConfigListerExpansion interface{}
+
+// SourceConfigNamespaceListerExpansion allows custom methods to be added to
+// SourceConfigNamespaceLister.
+type SourceConfigNamespaceListerExpansion interface{}
