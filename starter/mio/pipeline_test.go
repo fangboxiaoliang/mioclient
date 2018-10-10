@@ -23,6 +23,10 @@ func TestPipelineCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 	assert.Equal(t, name, result.Name)
 
+	list, err := config.List(namespace)
+	assert.Equal(t, nil, err)
+	assert.Equal(t, 1, len(list.Items))
+
 	result, err = config.Get(name, namespace)
 	assert.Equal(t, nil, err)
 	//assert.Equal(t, name, result.Name)
