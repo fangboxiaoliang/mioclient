@@ -55,6 +55,14 @@ func (b *BuildConfig) Update(name, namespace string, config *v1alpha1.BuildConfi
 	return result, err
 }
 
+func (b *BuildConfig) List(namespace string) (*v1alpha1.BuildConfigList, error) {
+	log.Info(fmt.Sprintf("list in namespace %s:", namespace))
+	option := v1.ListOptions{
+	}
+	result, err := b.clientSet.BuildConfigs(namespace).List(option)
+	return result, err
+}
+
 func (b *BuildConfig) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
 	log.Info(fmt.Sprintf("watch app %s in namespace %s:", name,namespace))
 

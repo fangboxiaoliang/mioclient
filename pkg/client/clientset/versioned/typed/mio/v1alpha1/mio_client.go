@@ -29,6 +29,7 @@ type MioV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	BuildConfigsGetter
 	PipelinesGetter
+	SourceConfigsGetter
 }
 
 // MioV1alpha1Client is used to interact with features provided by the mio.k8s.io group.
@@ -42,6 +43,10 @@ func (c *MioV1alpha1Client) BuildConfigs(namespace string) BuildConfigInterface 
 
 func (c *MioV1alpha1Client) Pipelines(namespace string) PipelineInterface {
 	return newPipelines(c, namespace)
+}
+
+func (c *MioV1alpha1Client) SourceConfigs(namespace string) SourceConfigInterface {
+	return newSourceConfigs(c, namespace)
 }
 
 // NewForConfig creates a new MioV1alpha1Client for the given config.

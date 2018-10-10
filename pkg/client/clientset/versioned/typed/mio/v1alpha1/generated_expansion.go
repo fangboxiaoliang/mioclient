@@ -21,3 +21,5 @@ package v1alpha1
 type BuildConfigExpansion interface{}
 
 type PipelineExpansion interface{}
+
+type SourceConfigExpansion interface{}

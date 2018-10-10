@@ -28,6 +28,8 @@ type Interface interface {
 	BuildConfigs() BuildConfigInformer
 	// Pipelines returns a PipelineInformer.
 	Pipelines() PipelineInformer
+	// SourceConfigs returns a SourceConfigInformer.
+	SourceConfigs() SourceConfigInformer
 }
 
 type version struct {
@@ -49,4 +51,9 @@ func (v *version) BuildConfigs() BuildConfigInformer {
 // Pipelines returns a PipelineInformer.
 func (v *version) Pipelines() PipelineInformer {
 	return &pipelineInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// SourceConfigs returns a SourceConfigInformer.
+func (v *version) SourceConfigs() SourceConfigInformer {
+	return &sourceConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

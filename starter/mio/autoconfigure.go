@@ -38,3 +38,13 @@ func (c *configuration) MioPipeline(restConfig *kube.RestConfig) *Pipeline {
 	}
 	return newPipeline(clientSet)
 }
+
+
+func (c *configuration) MioSourceConfig(restConfig *kube.RestConfig) *SourceConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newSourceConfig(clientSet)
+}
