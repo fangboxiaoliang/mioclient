@@ -33,7 +33,7 @@ const (
 )
 
 type BuildConfigStatus struct {
-	SouceCodePull BuildStatus
+	SourceCodePull BuildStatus
 	Compile       BuildStatus
 	ImageBuild    BuildStatus
 	ImagePull     BuildStatus
