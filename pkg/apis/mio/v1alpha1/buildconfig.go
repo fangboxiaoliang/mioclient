@@ -24,19 +24,20 @@ type BuildConfig struct {
 }
 
 type BuildStatus string
+
 const (
-	Pulled BuildStatus = "pulled"
-	Created BuildStatus = "created"
+	Pulled    BuildStatus = "pulled"
+	Created   BuildStatus = "created"
 	Completed BuildStatus = "completed"
-	Failed BuildStatus = "failed"
+	Failed    BuildStatus = "failed"
 )
 
 type BuildConfigStatus struct {
 	SouceCodePull BuildStatus
-	Compile	BuildStatus
-	ImageBuild BuildStatus
-	ImagePull BuildStatus
-	BuildStatus
+	Compile       BuildStatus
+	ImageBuild    BuildStatus
+	ImagePull     BuildStatus
+	StartNode     BuildStatus
 }
 
 type BuildConfigSpec struct {
