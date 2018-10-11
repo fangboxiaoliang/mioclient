@@ -6,7 +6,8 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	"fmt"
 	miov1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
-	)
+	"k8s.io/apimachinery/pkg/watch"
+)
 
 type Pipeline struct {
 	clientSet miov1.MioV1alpha1Interface
@@ -62,26 +63,15 @@ func (b *Pipeline) List(namespace string) (*v1alpha1.PipelineList, error) {
 	return result, err
 }
 
-func (b *Pipeline) Watch(name, namespace string) (*v1alpha1.Pipeline, error) {
-	log.Info("get build config :", name)
-	config := v1.ListOptions{
-		LabelSelector: "app=" + name,
-		Watch:         true,
-	}
-	w, err := b.clientSet.Pipelines(namespace).Watch(config)
-	if err != nil {
-		return nil, err
-	}
-	for {
-		select {
-		case event, ok := <-w.ResultChan():
-			if !ok {
-				log.Errorf("failed on RC watching %v", ok)
-				return nil, fmt.Errorf("failed on RC watching %v", ok)
-			}
-			rc := event.Object.(*v1alpha1.Pipeline)
-			return rc, nil
-		}
-	}
-}
+func (b *Pipeline) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch app %s in namespace %s:", name,namespace))
 
+	listOptions.LabelSelector = fmt.Sprintf("app=%s",name)
+	listOptions.Watch = true
+
+	w, err := b.clientSet.Pipelines(namespace).Watch(listOptions)
+	if err != nil {
+		return nil,err
+	}
+	return w,nil
+}

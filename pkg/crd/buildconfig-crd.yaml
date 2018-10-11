@@ -6,6 +6,6 @@ spec:
   group: samplecontroller.k8s.io
   version: v1alpha1
   names:
-    kind: Buildconfig
+    kind: BuildConfig
     plural: buildconfigs
   scope: Namespaced
