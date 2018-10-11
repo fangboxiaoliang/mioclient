@@ -21,7 +21,7 @@ func newConfiguration() *configuration {
 	}
 }
 
-func (c *configuration) MioBuildConfig(restConfig *kube.RestConfig) *BuildConfig {
+func (c *configuration) BuildConfig(restConfig *kube.RestConfig) *BuildConfig {
 	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
 	if err != nil {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
@@ -30,7 +30,7 @@ func (c *configuration) MioBuildConfig(restConfig *kube.RestConfig) *BuildConfig
 	return newBuildConfig(clientSet)
 }
 
-func (c *configuration) MioPipeline(restConfig *kube.RestConfig) *Pipeline {
+func (c *configuration) Pipeline(restConfig *kube.RestConfig) *Pipeline {
 	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
 	if err != nil {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
@@ -40,7 +40,7 @@ func (c *configuration) MioPipeline(restConfig *kube.RestConfig) *Pipeline {
 }
 
 
-func (c *configuration) MioSourceConfig(restConfig *kube.RestConfig) *SourceConfig {
+func (c *configuration) SourceConfig(restConfig *kube.RestConfig) *SourceConfig {
 	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
 	if err != nil {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
