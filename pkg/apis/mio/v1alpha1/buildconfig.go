@@ -20,7 +20,24 @@ type BuildConfig struct {
 
 	// Most recently observed status of the Deployment.
 	// +optional
-	Status metav1.Status `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status BuildConfigStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+}
+
+type BuildStatus string
+
+const (
+	Pulled    BuildStatus = "pulled"
+	Created   BuildStatus = "created"
+	Completed BuildStatus = "completed"
+	Failed    BuildStatus = "failed"
+)
+
+type BuildConfigStatus struct {
+	SourceCodePull BuildStatus
+	Compile       BuildStatus
+	ImageBuild    BuildStatus
+	ImagePull     BuildStatus
+	StartNode     BuildStatus
 }
 
 type BuildConfigSpec struct {

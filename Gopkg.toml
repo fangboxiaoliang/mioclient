@@ -76,8 +76,12 @@ required = [
   version = "kubernetes-1.10.4"
 
 [[constraint]]
+  version = "v0.9.3"
+  name = "github.com/hidevopsio/hiboot"
+
+[[constraint]]
   name = "github.com/hidevopsio/hioak"
-  version = "v0.3.1"
+  branch = "master"
 
 [prune]
   non-go = true
