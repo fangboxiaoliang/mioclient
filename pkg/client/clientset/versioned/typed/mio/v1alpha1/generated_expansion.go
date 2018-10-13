@@ -18,8 +18,12 @@ limitations under the License.
 
 package v1alpha1
 
+type BuildExpansion interface{}
+
 type BuildConfigExpansion interface{}
 
 type PipelineExpansion interface{}
+
+type PipelineConfigExpansion interface{}
 
 type SourceConfigExpansion interface{}

@@ -32,6 +32,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&BuildConfigList{},
 		&Pipeline{},
 		&PipelineList{},
+		&Build{},
+		&BuildList{},
+		&PipelineConfig{},
+		&PipelineConfigList{},
 		&SourceConfig{},
 		&SourceConfigList{},
 	)

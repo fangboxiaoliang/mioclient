@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// BuildListerExpansion allows custom methods to be added to
+// BuildLister.
+type BuildListerExpansion interface{}
+
+// BuildNamespaceListerExpansion allows custom methods to be added to
+// BuildNamespaceLister.
+type BuildNamespaceListerExpansion interface{}
+
 // BuildConfigListerExpansion allows custom methods to be added to
 // BuildConfigLister.
 type BuildConfigListerExpansion interface{}
@@ -33,6 +41,14 @@ type PipelineListerExpansion interface{}
 // PipelineNamespaceListerExpansion allows custom methods to be added to
 // PipelineNamespaceLister.
 type PipelineNamespaceListerExpansion interface{}
+
+// PipelineConfigListerExpansion allows custom methods to be added to
+// PipelineConfigLister.
+type PipelineConfigListerExpansion interface{}
+
+// PipelineConfigNamespaceListerExpansion allows custom methods to be added to
+// PipelineConfigNamespaceLister.
+type PipelineConfigNamespaceListerExpansion interface{}
 
 // SourceConfigListerExpansion allows custom methods to be added to
 // SourceConfigLister.

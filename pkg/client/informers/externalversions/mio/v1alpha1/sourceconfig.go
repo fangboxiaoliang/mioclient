@@ -21,7 +21,7 @@ package v1alpha1
 import (
 	time "time"
 
-	miov1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
+	mio_v1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	versioned "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/internalinterfaces"
 	v1alpha1 "github.com/hidevopsio/mioclient/pkg/client/listers/mio/v1alpha1"
@@ -70,7 +70,7 @@ func NewFilteredSourceConfigInformer(client versioned.Interface, namespace strin
 				return client.MioV1alpha1().SourceConfigs(namespace).Watch(options)
 			},
 		},
-		&miov1alpha1.SourceConfig{},
+		&mio_v1alpha1.SourceConfig{},
 		resyncPeriod,
 		indexers,
 	)
@@ -81,7 +81,7 @@ func (f *sourceConfigInformer) defaultInformer(client versioned.Interface, resyn
 }
 
 func (f *sourceConfigInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&miov1alpha1.SourceConfig{}, f.defaultInformer)
+	return f.factory.InformerFor(&mio_v1alpha1.SourceConfig{}, f.defaultInformer)
 }
 
 func (f *sourceConfigInformer) Lister() v1alpha1.SourceConfigLister {

@@ -24,10 +24,14 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// Builds returns a BuildInformer.
+	Builds() BuildInformer
 	// BuildConfigs returns a BuildConfigInformer.
 	BuildConfigs() BuildConfigInformer
 	// Pipelines returns a PipelineInformer.
 	Pipelines() PipelineInformer
+	// PipelineConfigs returns a PipelineConfigInformer.
+	PipelineConfigs() PipelineConfigInformer
 	// SourceConfigs returns a SourceConfigInformer.
 	SourceConfigs() SourceConfigInformer
 }
@@ -43,6 +47,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// Builds returns a BuildInformer.
+func (v *version) Builds() BuildInformer {
+	return &buildInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // BuildConfigs returns a BuildConfigInformer.
 func (v *version) BuildConfigs() BuildConfigInformer {
 	return &buildConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -51,6 +60,11 @@ func (v *version) BuildConfigs() BuildConfigInformer {
 // Pipelines returns a PipelineInformer.
 func (v *version) Pipelines() PipelineInformer {
 	return &pipelineInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PipelineConfigs returns a PipelineConfigInformer.
+func (v *version) PipelineConfigs() PipelineConfigInformer {
+	return &pipelineConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SourceConfigs returns a SourceConfigInformer.

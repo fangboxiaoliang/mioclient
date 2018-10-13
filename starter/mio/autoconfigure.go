@@ -30,6 +30,15 @@ func (c *configuration) BuildConfig(restConfig *kube.RestConfig) *BuildConfig {
 	return newBuildConfig(clientSet)
 }
 
+func (c *configuration) Build(restConfig *kube.RestConfig) *Build {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newBuild(clientSet)
+}
+
 func (c *configuration) Pipeline(restConfig *kube.RestConfig) *Pipeline {
 	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
 	if err != nil {
@@ -39,6 +48,14 @@ func (c *configuration) Pipeline(restConfig *kube.RestConfig) *Pipeline {
 	return newPipeline(clientSet)
 }
 
+func (c *configuration) PipelineConfig(restConfig *kube.RestConfig) *PipelineConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newPipelineConfig(clientSet)
+}
 
 func (c *configuration) SourceConfig(restConfig *kube.RestConfig) *SourceConfig {
 	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
