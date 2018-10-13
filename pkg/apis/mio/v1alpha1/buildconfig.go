@@ -16,57 +16,15 @@ type BuildConfig struct {
 
 	// Specification of the desired behavior of the Deployment.
 	// +optional
-	Spec BuildConfigSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec BuildSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 
 	// Most recently observed status of the Deployment.
 	// +optional
 	Status BuildConfigStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
-type BuildStatus string
-
-const (
-	Pulled    BuildStatus = "pulled"
-	Created   BuildStatus = "created"
-	Completed BuildStatus = "completed"
-	Failed    BuildStatus = "failed"
-)
-
 type BuildConfigStatus struct {
-	SourceCodePull BuildStatus
-	Compile       BuildStatus
-	ImageBuild    BuildStatus
-	ImagePull     BuildStatus
-	StartNode     BuildStatus
-}
-
-type BuildConfigSpec struct {
-	CloneConfig CloneConfig `json:"cloneConfig"  protobuf:"bytes,1,opt,name=cloneConfig"`
-	App         string      `json:"app"  protobuf:"bytes,1,opt,name=app"`
-	//代码类型
-	CodeType   string `json:"codeType"  protobuf:"bytes,1,opt,name=codeType"`
-	CompileCmd []CMD  `json:"compileCmd"  protobuf:"bytes,1,opt,name=compileCmd"`
-	//获取类型
-	CloneType string `json:"cloneType"  protobuf:"bytes,1,opt,name=cloneType"`
-	//基础镜像包
-	S2iImage string `json:"s2iImage"  protobuf:"bytes,1,opt,name=s2iImage"`
-	//版本
-	Tags       []string `json:"tags"  protobuf:"bytes,1,opt,name=tags"`
-	DockerFile []string `json:"dockerFile"  protobuf:"bytes,1,opt,name=dockerFile"`
-}
-
-type CloneConfig struct {
-	Url    string `json:"url"  protobuf:"bytes,1,opt,name=url"`
-	Branch string `json:"branch"  protobuf:"bytes,1,opt,name=branch"`
-	//clone 路径
-	DstDir   string `json:"dstDir"  protobuf:"bytes,1,opt,name=dstDir"`
-	Username string `json:"username"  protobuf:"bytes,1,opt,name=username"`
-	Password string `json:"password"  protobuf:"bytes,1,opt,name=password"`
-}
-
-type CMD struct {
-	CommandName string   `json:"commandName"  protobuf:"bytes,1,opt,name=commandName"`
-	Params      []string `json:"params"  protobuf:"bytes,1,opt,name=params"`
+	LastVersion int `json:"status,omitempty" protobuf:"bytes,1,opt,name=lastVersion"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -75,8 +33,7 @@ type CMD struct {
 type BuildConfigList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
-
-	Items []BuildConfig `json:"items"`
+	Items           []BuildConfig `json:"items"`
 }
 
 type TypeStatus struct {
@@ -107,9 +64,7 @@ type TypeStatus struct {
 }
 
 type StatusDetails struct {
-	Name string `json:"name,omitempty" protobuf:"bytes,1,opt,name=name"`
-
-	DurationMilliseconds int64 `json:"durationMilliseconds,omitempty" protobuf:"bytes,2,opt,name=durationMilliseconds"`
-
-	StartTime int64 `json:"startTime,omitempty" protobuf:"bytes,3,opt,name=startTime"`
+	Name                 string `json:"name,omitempty" protobuf:"bytes,1,opt,name=name"`
+	DurationMilliseconds int64  `json:"durationMilliseconds,omitempty" protobuf:"bytes,2,opt,name=durationMilliseconds"`
+	StartTime            int64  `json:"startTime,omitempty" protobuf:"bytes,3,opt,name=startTime"`
 }

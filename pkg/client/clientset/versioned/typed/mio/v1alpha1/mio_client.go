@@ -27,8 +27,10 @@ import (
 
 type MioV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	BuildsGetter
 	BuildConfigsGetter
 	PipelinesGetter
+	PipelineConfigsGetter
 	SourceConfigsGetter
 }
 
@@ -37,12 +39,20 @@ type MioV1alpha1Client struct {
 	restClient rest.Interface
 }
 
+func (c *MioV1alpha1Client) Builds(namespace string) BuildInterface {
+	return newBuilds(c, namespace)
+}
+
 func (c *MioV1alpha1Client) BuildConfigs(namespace string) BuildConfigInterface {
 	return newBuildConfigs(c, namespace)
 }
 
 func (c *MioV1alpha1Client) Pipelines(namespace string) PipelineInterface {
 	return newPipelines(c, namespace)
+}
+
+func (c *MioV1alpha1Client) PipelineConfigs(namespace string) PipelineConfigInterface {
+	return newPipelineConfigs(c, namespace)
 }
 
 func (c *MioV1alpha1Client) SourceConfigs(namespace string) SourceConfigInterface {

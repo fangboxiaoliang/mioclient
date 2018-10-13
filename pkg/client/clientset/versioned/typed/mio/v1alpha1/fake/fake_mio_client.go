@@ -28,12 +28,20 @@ type FakeMioV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeMioV1alpha1) Builds(namespace string) v1alpha1.BuildInterface {
+	return &FakeBuilds{c, namespace}
+}
+
 func (c *FakeMioV1alpha1) BuildConfigs(namespace string) v1alpha1.BuildConfigInterface {
 	return &FakeBuildConfigs{c, namespace}
 }
 
 func (c *FakeMioV1alpha1) Pipelines(namespace string) v1alpha1.PipelineInterface {
 	return &FakePipelines{c, namespace}
+}
+
+func (c *FakeMioV1alpha1) PipelineConfigs(namespace string) v1alpha1.PipelineConfigInterface {
+	return &FakePipelineConfigs{c, namespace}
 }
 
 func (c *FakeMioV1alpha1) SourceConfigs(namespace string) v1alpha1.SourceConfigInterface {

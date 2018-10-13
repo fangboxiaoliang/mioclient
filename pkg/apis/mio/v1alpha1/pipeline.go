@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	CODEPATH string = "codepath"
+	CODEPATH   string = "codepath"
 	CLONE      string = "clone"
 	COMPILE    string = "compile"
 	BUILDIMAGE string = "buildImage"
@@ -29,7 +29,7 @@ type Pipeline struct {
 
 	// Most recently observed status of the Deployment.
 	// +optional
-	Status metav1.Status `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status PipelineStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
 type PipelineSpec struct {
@@ -68,13 +68,11 @@ type Scm struct {
 
 type DeploymentConfigs struct {
 	HealthEndPoint string       `json:"health_end_point"`
-	Enable         bool         `json:"enable"`
 	ForceUpdate    bool         `json:"force_update"`
 	Replicas       int32        `json:"replicas"`
 	Env            []system.Env `json:"env"`
 	Labels         Labels       `json:"labels"`
 	Project        string       `json:"project"`
-	RemoteEnable   bool         `json:"remote_enable"`
 }
 
 type Labels struct {
@@ -84,8 +82,6 @@ type Labels struct {
 }
 
 type BuildConfigs struct {
-	TagEnable   bool         `json:"tag_enable"`
-	Enable      bool         `json:"enable"`
 	TagFrom     string       `json:"tag_from"`
 	ImageStream string       `json:"image_stream"`
 	Env         []system.Env `json:"env"`
@@ -96,7 +92,6 @@ type BuildConfigs struct {
 }
 
 type GatewayConfigs struct {
-	Enable      bool   `json:"enable"`
 	Uri         string `json:"uri"`
 	UpstreamUrl string `json:"upstream_url"`
 }
@@ -107,6 +102,20 @@ type GatewayConfigs struct {
 type PipelineList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
-
 	Items []Pipeline `json:"items"`
+}
+
+type PipelineStatus struct {
+	King           string           `json:"king" protobuf:"bytes,1,opt,name=kind"`
+	Name           string           `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Namespace      string           `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
+	Phase          string           `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
+	Stages         []PipelineStages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
+	StartTimestamp metav1.Time      `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
+}
+
+type PipelineStages struct {
+	Name                 string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	StartTime            int64  `json:"startTime" protobuf:"bytes,2,opt,name=startTime"`
+	DurationMilliseconds int64  `json:"durationMilliseconds" protobuf:"bytes,3,opt,name=durationMilliseconds"`
 }

@@ -6,18 +6,23 @@ import (
 	"github.com/stretchr/testify/assert"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func TestSourceConfigCurd(t *testing.T) {
 	name := "test"
 	name1 := "test1"
 	namespace := "demo-dev"
+	version := "v1"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
 	config := newSourceConfig(clientSet)
 	config1 := &v1alpha1.SourceConfig{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
-			Namespace:namespace,
+			Name:      name,
+			Namespace: namespace,
+			Labels: map[string]string{
+				"app":name,
+			},
 		},
 	}
 	result, err := config.Create(config1)
@@ -26,15 +31,25 @@ func TestSourceConfigCurd(t *testing.T) {
 
 	config2 := &v1alpha1.SourceConfig{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: name1,
-			Namespace:namespace,
+			Name:      name1,
+			Namespace: namespace,
+			Annotations: map[string]string{
+				"mio.io/build.number":"3",
+			},
+			Labels: map[string]string{
+				"app":name,
+				"version": version,
+			},
 		},
 	}
 	result, err = config.Create(config2)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, name1, result.Name)
+	option := v1.ListOptions{
 
-	list, err := config.List(namespace)
+		LabelSelector: "app=" + name,
+	}
+	list, err := config.List(namespace, option)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, 2, len(list.Items))
 

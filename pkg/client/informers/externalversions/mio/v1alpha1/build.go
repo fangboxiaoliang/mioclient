@@ -31,59 +31,59 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// PipelineInformer provides access to a shared informer and lister for
-// Pipelines.
-type PipelineInformer interface {
+// BuildInformer provides access to a shared informer and lister for
+// Builds.
+type BuildInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.PipelineLister
+	Lister() v1alpha1.BuildLister
 }
 
-type pipelineInformer struct {
+type buildInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewPipelineInformer constructs a new informer for Pipeline type.
+// NewBuildInformer constructs a new informer for Build type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewPipelineInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredPipelineInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewBuildInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredBuildInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredPipelineInformer constructs a new informer for Pipeline type.
+// NewFilteredBuildInformer constructs a new informer for Build type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredPipelineInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredBuildInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.MioV1alpha1().Pipelines(namespace).List(options)
+				return client.MioV1alpha1().Builds(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.MioV1alpha1().Pipelines(namespace).Watch(options)
+				return client.MioV1alpha1().Builds(namespace).Watch(options)
 			},
 		},
-		&mio_v1alpha1.Pipeline{},
+		&mio_v1alpha1.Build{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *pipelineInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredPipelineInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *buildInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredBuildInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *pipelineInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&mio_v1alpha1.Pipeline{}, f.defaultInformer)
+func (f *buildInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&mio_v1alpha1.Build{}, f.defaultInformer)
 }
 
-func (f *pipelineInformer) Lister() v1alpha1.PipelineLister {
-	return v1alpha1.NewPipelineLister(f.Informer().GetIndexer())
+func (f *buildInformer) Lister() v1alpha1.BuildLister {
+	return v1alpha1.NewBuildLister(f.Informer().GetIndexer())
 }
