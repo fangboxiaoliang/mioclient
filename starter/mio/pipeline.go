@@ -24,7 +24,9 @@ func (b *Pipeline) Create(pipeline *v1alpha1.Pipeline) (config *v1alpha1.Pipelin
 	cm, err := b.Get(pipeline.Name, pipeline.Namespace)
 	log.Debug("config map get :", cm)
 	if err == nil {
-		config, err = b.Update(pipeline.Name, pipeline.Namespace, pipeline)
+		cm.Spec = pipeline.Spec
+		cm.Status = pipeline.Status
+		config, err = b.Update(pipeline.Name, pipeline.Namespace, cm)
 		return
 	}
 	config, err = b.clientSet.Pipelines(pipeline.Namespace).Create(pipeline)
@@ -51,7 +53,6 @@ func (b *Pipeline) Delete(name, namespace string) error {
 
 func (b *Pipeline) Update(name, namespace string, config *v1alpha1.Pipeline) (*v1alpha1.Pipeline, error) {
 	log.Info("get build config :", name)
-	config.ObjectMeta.ResourceVersion = ""
 	result, err := b.clientSet.Pipelines(namespace).Update(config)
 	return result, err
 }

@@ -24,7 +24,9 @@ func (b *SourceConfig) Create(build *v1alpha1.SourceConfig) (config *v1alpha1.So
 	cm, err := b.Get(build.Name, build.Namespace)
 	log.Debug("config map get :", cm)
 	if err == nil {
-		config, err = b.Update(build.Name, build.Namespace, build)
+		cm.Spec = build.Spec
+		cm.Status = build.Status
+		config, err = b.Update(build.Name, build.Namespace, cm)
 		return
 	}
 	config, err = b.clientSet.SourceConfigs(build.Namespace).Create(build)
@@ -51,7 +53,6 @@ func (b *SourceConfig) Delete(name, namespace string) error {
 
 func (b *SourceConfig) Update(name, namespace string, config *v1alpha1.SourceConfig) (*v1alpha1.SourceConfig, error) {
 	log.Info(fmt.Sprintf("update app %s in namespace %s:", name, namespace))
-	config.ObjectMeta.ResourceVersion = ""
 	result, err := b.clientSet.SourceConfigs(namespace).Update(config)
 	return result, err
 }
@@ -64,7 +65,6 @@ func (b *SourceConfig) List(namespace string,option v1.ListOptions) (*v1alpha1.S
 
 func (b *SourceConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
 	log.Info(fmt.Sprintf("watch app %s in namespace %s:", name, namespace))
-
 	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
 	listOptions.Watch = true
 

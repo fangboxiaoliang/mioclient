@@ -24,7 +24,9 @@ func (b *PipelineConfig) Create(pipeline *v1alpha1.PipelineConfig) (config *v1al
 	cm, err := b.Get(pipeline.Name, pipeline.Namespace)
 	log.Debug("config map get :", cm)
 	if err == nil {
-		config, err = b.Update(pipeline.Name, pipeline.Namespace, pipeline)
+		cm.Spec = pipeline.Spec
+		cm.Status = pipeline.Status
+		config, err = b.Update(pipeline.Name, pipeline.Namespace, cm)
 		return
 	}
 	config, err = b.clientSet.PipelineConfigs(pipeline.Namespace).Create(pipeline)
