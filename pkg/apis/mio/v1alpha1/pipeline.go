@@ -41,21 +41,26 @@ type PipelineSpec struct {
 	Namespace         string            `json:"namespace"`
 	Scm               Scm               `json:"scm"`
 	Version           string            `json:"version"`
-	DockerRegistry    string            `json:"docker_registry"`
-	NodeSelector      string            `json:"node_selector"`
+	DockerRegistry    string            `json:"dockerRegistry"`
+	NodeSelector      string            `json:"nodeSelector"`
 	Identifiers       []string          `json:"identifiers"`
-	ConfigFiles       []string          `json:"config_files"`
+	ConfigFiles       []string          `json:"configFiles"`
 	Ports             []Ports           `json:"ports"`
-	BuildConfigs      BuildConfigs      `json:"build_configs"`
-	DeploymentConfigs DeploymentConfigs `json:"deployment_configs"`
-	GatewayConfigs    GatewayConfigs    `json:"gateway_configs"`
-	EventTypes        []string          `json:"event_type"`
+	BuildConfigs      BuildConfigs      `json:"buildConfigs"`
+	DeploymentConfigs DeploymentConfigs `json:"deploymentConfigs"`
+	GatewayConfigs    GatewayConfigs    `json:"gatewayConfigs"`
+	Events            []Events          `json:"events"`
+}
+
+type Events struct {
+	Name       string   `json:"name"`
+	EventTypes []string `json:"eventTypes"`
 }
 
 type Ports struct {
 	Name          string `json:"name"`
 	Port          int32  `json:"port" `
-	ContainerPort int32  `json:"container_port"`
+	ContainerPort int32  `json:"containerPort"`
 	Protocol      string `json:"protocol,omitempty"`
 }
 
@@ -63,12 +68,11 @@ type Scm struct {
 	Type     string `json:"type"`
 	Url      string `json:"url"`
 	Ref      string `json:"ref"`
-	UserName string `json:"user_name"`
+	UserName string `json:"userName"`
 }
 
 type DeploymentConfigs struct {
-	HealthEndPoint string       `json:"health_end_point"`
-	ForceUpdate    bool         `json:"force_update"`
+	HealthEndPoint string       `json:"healthEndPoint"`
 	Replicas       int32        `json:"replicas"`
 	Env            []system.Env `json:"env"`
 	Labels         Labels       `json:"labels"`
@@ -82,10 +86,9 @@ type Labels struct {
 }
 
 type BuildConfigs struct {
-	TagFrom     string       `json:"tag_from"`
-	ImageStream string       `json:"image_stream"`
+	TagFrom     string       `json:"tagFrom"`
+	ImageStream string       `json:"imageStream"`
 	Env         []system.Env `json:"env"`
-	Rebuild     bool         `json:"rebuild"`
 	Project     string       `json:"project"`
 	Namespace   string       `json:"namespace"`
 	Branch      string       `json:"branch"`
@@ -102,7 +105,7 @@ type GatewayConfigs struct {
 type PipelineList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
-	Items []Pipeline `json:"items"`
+	Items           []Pipeline `json:"items"`
 }
 
 type PipelineStatus struct {

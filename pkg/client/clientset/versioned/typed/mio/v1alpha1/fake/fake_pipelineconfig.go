@@ -34,9 +34,9 @@ type FakePipelineConfigs struct {
 	ns   string
 }
 
-var pipelineconfigsResource = schema.GroupVersionResource{Group: "mio.k8s.io", Version: "v1alpha1", Resource: "pipelineconfigs"}
+var pipelineconfigsResource = schema.GroupVersionResource{Group: "mio.io", Version: "v1alpha1", Resource: "pipelineconfigs"}
 
-var pipelineconfigsKind = schema.GroupVersionKind{Group: "mio.k8s.io", Version: "v1alpha1", Kind: "PipelineConfig"}
+var pipelineconfigsKind = schema.GroupVersionKind{Group: "mio.io", Version: "v1alpha1", Kind: "PipelineConfig"}
 
 // Get takes name of the pipelineConfig, and returns the corresponding pipelineConfig object, and an error if there is any.
 func (c *FakePipelineConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.PipelineConfig, err error) {
