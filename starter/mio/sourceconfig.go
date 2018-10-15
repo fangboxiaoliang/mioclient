@@ -21,14 +21,6 @@ func newSourceConfig(clientSet miov1alpha1.MioV1alpha1Interface) *SourceConfig {
 
 func (b *SourceConfig) Create(build *v1alpha1.SourceConfig) (config *v1alpha1.SourceConfig, err error) {
 	log.Debugf("config map create : %v", build.Name)
-	cm, err := b.Get(build.Name, build.Namespace)
-	log.Debug("config map get :", cm)
-	if err == nil {
-		cm.Spec = build.Spec
-		cm.Status = build.Status
-		config, err = b.Update(build.Name, build.Namespace, cm)
-		return
-	}
 	config, err = b.clientSet.SourceConfigs(build.Namespace).Create(build)
 	if err != nil {
 		return nil, err
