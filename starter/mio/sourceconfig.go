@@ -24,7 +24,7 @@ func (b *SourceConfig) Create(build *v1alpha1.SourceConfig) (config *v1alpha1.So
 	cm, err := b.Get(build.Name, build.Namespace)
 	log.Debug("config map get :", cm)
 	if err == nil {
-		config, err = b.Update(build.Name, build.Namespace, config)
+		config, err = b.Update(build.Name, build.Namespace, build)
 		return
 	}
 	config, err = b.clientSet.SourceConfigs(build.Namespace).Create(build)
