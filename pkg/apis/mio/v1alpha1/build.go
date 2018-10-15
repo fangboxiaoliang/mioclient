@@ -36,8 +36,8 @@ type BuildSpec struct {
 	CloneConfig BuildCloneConfig `json:"cloneConfig"  protobuf:"bytes,1,opt,name=cloneConfig"`
 	App         string           `json:"app"  protobuf:"bytes,1,opt,name=app"`
 	//代码类型
-	CodeType   string         `json:"codeType"  protobuf:"bytes,1,opt,name=codeType"`
-	CompileCmd []BuildCommand `json:"compileCmd"  protobuf:"bytes,1,opt,name=compileCmd"`
+	CodeType   string       `json:"codeType"  protobuf:"bytes,1,opt,name=codeType"`
+	CompileCmd []CompileCmd `json:"compileCmd"  protobuf:"bytes,1,opt,name=compileCmd"`
 	//获取类型
 	CloneType string `json:"cloneType"  protobuf:"bytes,1,opt,name=cloneType"`
 	//基础镜像包
@@ -54,10 +54,18 @@ type BuildCloneConfig struct {
 	Username string `json:"username"  protobuf:"bytes,1,opt,name=username"`
 	Password string `json:"password"  protobuf:"bytes,1,opt,name=password"`
 }
+type CompileType string
 
-type BuildCommand struct {
-	CommandName string   `json:"commandName"  protobuf:"bytes,1,opt,name=commandName"`
-	Params      []string `json:"params"  protobuf:"bytes,1,opt,name=params"`
+const (
+	Command CompileType = "command"
+	Script  CompileType = "script"
+)
+
+type CompileCmd struct {
+	Type          CompileType `json:"CompileType"  protobuf:"bytes,1,opt,name=compileType"`
+	Script        string      `json:"Script"  protobuf:"bytes,1,opt,name=script"`
+	CommandName   string      `json:"commandName"  protobuf:"bytes,1,opt,name=commandName"`
+	CommandParams []string    `json:"params"  protobuf:"bytes,1,opt,name=params"`
 }
 
 type BuildStages struct {
