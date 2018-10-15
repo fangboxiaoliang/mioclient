@@ -51,6 +51,7 @@ func (b *SourceConfig) Delete(name, namespace string) error {
 
 func (b *SourceConfig) Update(name, namespace string, config *v1alpha1.SourceConfig) (*v1alpha1.SourceConfig, error) {
 	log.Info(fmt.Sprintf("update app %s in namespace %s:", name, namespace))
+	config.ObjectMeta.ResourceVersion = ""
 	result, err := b.clientSet.SourceConfigs(namespace).Update(config)
 	return result, err
 }

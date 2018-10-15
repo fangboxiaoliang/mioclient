@@ -51,6 +51,7 @@ func (b *Pipeline) Delete(name, namespace string) error {
 
 func (b *Pipeline) Update(name, namespace string, config *v1alpha1.Pipeline) (*v1alpha1.Pipeline, error) {
 	log.Info("get build config :", name)
+	config.ObjectMeta.ResourceVersion = ""
 	result, err := b.clientSet.Pipelines(namespace).Update(config)
 	return result, err
 }
