@@ -96,7 +96,7 @@ type BuildConfigs struct {
 
 type GatewayConfigs struct {
 	Uri         string `json:"uri"`
-	UpstreamUrl string `json:"upstream_url"`
+	UpstreamUrl string `json:"upstreamUrl"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
