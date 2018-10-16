@@ -21,12 +21,6 @@ func newPipeline(clientSet miov1.MioV1alpha1Interface) *Pipeline {
 
 func (b *Pipeline) Create(pipeline *v1alpha1.Pipeline) (config *v1alpha1.Pipeline, err error) {
 	log.Debugf("config map create : %v", pipeline.Name)
-	cm, err := b.Get(pipeline.Name, pipeline.Namespace)
-	log.Debug("config map get :", cm)
-	if err == nil {
-		config, err = b.Update(pipeline.Name, pipeline.Namespace, config)
-		return
-	}
 	config, err = b.clientSet.Pipelines(pipeline.Namespace).Create(pipeline)
 	if err != nil {
 		return nil, err

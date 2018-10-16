@@ -34,7 +34,7 @@ type MioV1alpha1Interface interface {
 	SourceConfigsGetter
 }
 
-// MioV1alpha1Client is used to interact with features provided by the mio.k8s.io group.
+// MioV1alpha1Client is used to interact with features provided by the mio.io group.
 type MioV1alpha1Client struct {
 	restClient rest.Interface
 }

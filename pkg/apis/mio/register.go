@@ -1,5 +1,5 @@
 package mio
 
 const (
-	GroupName = "mio.k8s.io"
+	GroupName = "mio.io"
 )

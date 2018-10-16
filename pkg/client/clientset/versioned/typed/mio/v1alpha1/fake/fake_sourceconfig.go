@@ -34,9 +34,9 @@ type FakeSourceConfigs struct {
 	ns   string
 }
 
-var sourceconfigsResource = schema.GroupVersionResource{Group: "mio.k8s.io", Version: "v1alpha1", Resource: "sourceconfigs"}
+var sourceconfigsResource = schema.GroupVersionResource{Group: "mio.io", Version: "v1alpha1", Resource: "sourceconfigs"}
 
-var sourceconfigsKind = schema.GroupVersionKind{Group: "mio.k8s.io", Version: "v1alpha1", Kind: "SourceConfig"}
+var sourceconfigsKind = schema.GroupVersionKind{Group: "mio.io", Version: "v1alpha1", Kind: "SourceConfig"}
 
 // Get takes name of the sourceConfig, and returns the corresponding sourceConfig object, and an error if there is any.
 func (c *FakeSourceConfigs) Get(name string, options v1.GetOptions) (result *v1alpha1.SourceConfig, err error) {

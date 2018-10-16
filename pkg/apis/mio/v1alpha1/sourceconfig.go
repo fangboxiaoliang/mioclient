@@ -25,16 +25,16 @@ type SourceConfig struct {
 
 type SourceConfigSpec struct {
 	Scm        SourceConfigScm `json:"scm"`
-	SourceCode []SourceCode    `json:"source_code"`
+	SourceCode []SourceCode    `json:"sourceCode"`
 }
 
 type SourceConfigScm struct {
 	Url        string `json:"url"`
 	Ref        string `json:"ref"`
 	Token      string `json:"token"`
-	UserName   string `json:"user_name"`
-	ApiVersion string `json:"api_version"`
-	ProjectId  string `json:"project_id"`
+	UserName   string `json:"userName"`
+	ApiVersion string `json:"apiVersion"`
+	ProjectId  string `json:"projectId"`
 }
 
 type SourceCode struct {

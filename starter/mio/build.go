@@ -21,12 +21,6 @@ func newBuild(clientSet miov1alpha1.MioV1alpha1Interface) *Build {
 
 func (b *Build) Create(build *v1alpha1.Build) (config *v1alpha1.Build, err error) {
 	log.Debugf("config map create : %v", build.Name)
-	cm, err := b.Get(build.Name, build.Namespace)
-	log.Debug("config map get :", cm)
-	if err == nil {
-		config, err = b.Update(build.Name, build.Namespace, config)
-		return
-	}
 	config, err = b.clientSet.Builds(build.Namespace).Create(build)
 	if err != nil {
 		return nil, err
@@ -51,6 +45,7 @@ func (b *Build) Delete(name, namespace string) error {
 
 func (b *Build) Update(name, namespace string, config *v1alpha1.Build) (*v1alpha1.Build, error) {
 	log.Info(fmt.Sprintf("update app %s in namespace %s:", name,namespace))
+	config.ObjectMeta.ResourceVersion = ""
 	result, err := b.clientSet.Builds(namespace).Update(config)
 	return result, err
 }
