@@ -45,7 +45,6 @@ func (b *Build) Delete(name, namespace string) error {
 
 func (b *Build) Update(name, namespace string, config *v1alpha1.Build) (*v1alpha1.Build, error) {
 	log.Info(fmt.Sprintf("update app %s in namespace %s:", name,namespace))
-	config.ObjectMeta.ResourceVersion = ""
 	result, err := b.clientSet.Builds(namespace).Update(config)
 	return result, err
 }
