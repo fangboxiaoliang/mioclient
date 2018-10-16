@@ -34,5 +34,5 @@ type PipelineConfigList struct {
 }
 
 type PipelineConfigStatus struct {
-	LastVersion int `json:"status,omitempty" protobuf:"bytes,1,opt,name=lastVersion"`
+	LastVersion int `json:"lastVersion,omitempty" protobuf:"bytes,1,opt,name=lastVersion"`
 }
