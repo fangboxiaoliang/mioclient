@@ -49,7 +49,7 @@ func (b *SourceConfig) Update(name, namespace string, config *v1alpha1.SourceCon
 	return result, err
 }
 
-func (b *SourceConfig) List(namespace string,option v1.ListOptions) (*v1alpha1.SourceConfigList, error) {
+func (b *SourceConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.SourceConfigList, error) {
 	log.Info(fmt.Sprintf("list source config in namespace %s:", namespace))
 	result, err := b.clientSet.SourceConfigs(namespace).List(option)
 	return result, err

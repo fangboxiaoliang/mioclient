@@ -6,6 +6,7 @@ import (
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func TestPipelineConfigCurd(t *testing.T) {
@@ -17,13 +18,19 @@ func TestPipelineConfigCurd(t *testing.T) {
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 			Namespace:namespace,
+			Labels: map[string]string{
+				"app":name,
+			},
 		},
 	}
 	result, err := config.Create(config1)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, name, result.Name)
+	option := v1.ListOptions{
 
-	list, err := config.List(namespace)
+		LabelSelector: "app=" + name,
+	}
+	list, err := config.List(namespace, option)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, 1, len(list.Items))
 

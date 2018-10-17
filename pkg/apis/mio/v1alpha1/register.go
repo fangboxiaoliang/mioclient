@@ -37,6 +37,7 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&PipelineConfig{},
 		&PipelineConfigList{},
 		&SourceConfig{},
+		&SourceConfigList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

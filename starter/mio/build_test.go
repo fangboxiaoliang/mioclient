@@ -18,6 +18,9 @@ func TestBuildCurd(t *testing.T) {
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 			Namespace:namespace,
+			Labels: map[string]string{
+				"app":name,
+			},
 		},
 	}
 	result, err := config.Create(config1)
@@ -29,7 +32,7 @@ func TestBuildCurd(t *testing.T) {
 	}
 	list, err := config.List(namespace, option)
 	assert.Equal(t, nil, err)
-	assert.Equal(t, 0, len(list.Items))
+	assert.Equal(t, 1, len(list.Items))
 
 	result, err = config.Get(name, namespace)
 	assert.Equal(t, nil, err)

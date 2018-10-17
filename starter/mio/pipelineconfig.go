@@ -49,10 +49,8 @@ func (b *PipelineConfig) Update(name, namespace string, config *v1alpha1.Pipelin
 	return result, err
 }
 
-func (b *PipelineConfig) List(namespace string) (*v1alpha1.PipelineConfigList, error) {
+func (b *PipelineConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.PipelineConfigList, error) {
 	log.Info(fmt.Sprintf("list pipelineConfig in namespace %s:", namespace))
-	option := v1.ListOptions{
-	}
 	result, err := b.clientSet.PipelineConfigs(namespace).List(option)
 	return result, err
 }
