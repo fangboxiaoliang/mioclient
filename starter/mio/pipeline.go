@@ -20,7 +20,7 @@ func newPipeline(clientSet miov1.MioV1alpha1Interface) *Pipeline {
 }
 
 func (b *Pipeline) Create(pipeline *v1alpha1.Pipeline) (config *v1alpha1.Pipeline, err error) {
-	log.Debugf("config map create : %v", pipeline.Name)
+	log.Debugf("pipeline create : %v", pipeline.Name)
 	config, err = b.clientSet.Pipelines(pipeline.Namespace).Create(pipeline)
 	if err != nil {
 		return nil, err
@@ -29,7 +29,7 @@ func (b *Pipeline) Create(pipeline *v1alpha1.Pipeline) (config *v1alpha1.Pipelin
 }
 
 func (b *Pipeline) Get(name, namespace string) (config *v1alpha1.Pipeline, err error) {
-	log.Info("get config map :", name)
+	log.Info("get pipeline :", name)
 	result, err := b.clientSet.Pipelines(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -38,19 +38,19 @@ func (b *Pipeline) Get(name, namespace string) (config *v1alpha1.Pipeline, err e
 }
 
 func (b *Pipeline) Delete(name, namespace string) error {
-	log.Info("get config map :", name)
+	log.Info("delete pipeline :", name)
 	err := b.clientSet.Pipelines(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (b *Pipeline) Update(name, namespace string, config *v1alpha1.Pipeline) (*v1alpha1.Pipeline, error) {
-	log.Info("get build config :", name)
+	log.Info("update pipeline :", name)
 	result, err := b.clientSet.Pipelines(namespace).Update(config)
 	return result, err
 }
 
 func (b *Pipeline) List(namespace string) (*v1alpha1.PipelineList, error) {
-	log.Info(fmt.Sprintf("list in namespace %s:", namespace))
+	log.Info(fmt.Sprintf("list pipeline in namespace %s:", namespace))
 	option := v1.ListOptions{
 	}
 	result, err := b.clientSet.Pipelines(namespace).List(option)
@@ -58,7 +58,7 @@ func (b *Pipeline) List(namespace string) (*v1alpha1.PipelineList, error) {
 }
 
 func (b *Pipeline) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("watch pipeline app %s in namespace %s:", name,namespace))
 
 	listOptions.LabelSelector = fmt.Sprintf("app=%s",name)
 	listOptions.Watch = true

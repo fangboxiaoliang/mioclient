@@ -50,6 +50,14 @@ type PipelineConfigListerExpansion interface{}
 // PipelineConfigNamespaceLister.
 type PipelineConfigNamespaceListerExpansion interface{}
 
+// SecretListerExpansion allows custom methods to be added to
+// SecretLister.
+type SecretListerExpansion interface{}
+
+// SecretNamespaceListerExpansion allows custom methods to be added to
+// SecretNamespaceLister.
+type SecretNamespaceListerExpansion interface{}
+
 // SourceConfigListerExpansion allows custom methods to be added to
 // SourceConfigLister.
 type SourceConfigListerExpansion interface{}
