@@ -71,6 +71,7 @@ type Scm struct {
 	Url      string `json:"url" protobuf:"bytes,2,opt,name=url"`
 	Ref      string `json:"ref" protobuf:"bytes,3,opt,name=ref"`
 	UserName string `json:"userName" protobuf:"bytes,4,opt,name=userName"`
+	Password string `json:"password" protobuf:"bytes,4,opt,name=password"`
 }
 
 type DeploymentConfigs struct {
