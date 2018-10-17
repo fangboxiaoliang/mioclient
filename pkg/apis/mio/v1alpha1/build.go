@@ -30,29 +30,28 @@ type BuildStatus struct {
 	Phase          string        `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
 	Stages         []BuildStages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
 	StartTimestamp int64         `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
+	EventType      []string      `json:"eventType" protobuf:"bytes,7,opt,name=eventType"`
 }
 
 type BuildSpec struct {
-	CloneConfig BuildCloneConfig `json:"cloneConfig"  protobuf:"bytes,1,opt,name=cloneConfig"`
-	App         string           `json:"app"  protobuf:"bytes,1,opt,name=app"`
-	//代码类型
-	CodeType   string       `json:"codeType"  protobuf:"bytes,1,opt,name=codeType"`
-	CompileCmd []CompileCmd `json:"compileCmd"  protobuf:"bytes,1,opt,name=compileCmd"`
-	//获取类型
-	CloneType string `json:"cloneType"  protobuf:"bytes,1,opt,name=cloneType"`
-	//基础镜像包
-	S2iImage string `json:"s2iImage"  protobuf:"bytes,1,opt,name=s2iImage"`
-	//版本
-	Tags       []string `json:"tags"  protobuf:"bytes,1,opt,name=tags"`
-	DockerFile []string `json:"dockerFile"  protobuf:"bytes,1,opt,name=dockerFile"`
+	CloneConfig    BuildCloneConfig `json:"cloneConfig" protobuf:"bytes,1,opt,name=cloneConfig"`
+	App            string           `json:"app" protobuf:"bytes,2,opt,name=app"`
+	CodeType       string           `json:"codeType" protobuf:"bytes,3,opt,name=codeType"` //
+	CompileCmd     []CompileCmd     `json:"compileCmd" protobuf:"bytes,4,opt,name=compileCmd"`
+	CloneType      string           `json:"cloneType" protobuf:"bytes,5,opt,name=cloneType"` //基础镜像包
+	BaseImage      string           `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
+	Tags           []string         `json:"tags" protobuf:"bytes,7,opt,name=tags"`
+	DockerFile     []string         `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
+	DockerRegistry string           `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
 }
 
 type BuildCloneConfig struct {
+	// http://gitlab.vpclb.cn   http://
 	Url      string `json:"url"  protobuf:"bytes,1,opt,name=url"`
-	Branch   string `json:"branch"  protobuf:"bytes,1,opt,name=branch"`
-	DstDir   string `json:"dstDir"  protobuf:"bytes,1,opt,name=dstDir"`
-	Username string `json:"username"  protobuf:"bytes,1,opt,name=username"`
-	Password string `json:"password"  protobuf:"bytes,1,opt,name=password"`
+	Branch   string `json:"branch"  protobuf:"bytes,2,opt,name=branch"`
+	DstDir   string `json:"dstDir"  protobuf:"bytes,3,opt,name=dstDir"`
+	Username string `json:"username"  protobuf:"bytes,4,opt,name=username"`
+	Password string `json:"password"  protobuf:"bytes,5,opt,name=password"`
 }
 type CompileType string
 
@@ -62,10 +61,10 @@ const (
 )
 
 type CompileCmd struct {
-	Type          CompileType `json:"CompileType"  protobuf:"bytes,1,opt,name=compileType"`
-	Script        string      `json:"Script"  protobuf:"bytes,1,opt,name=script"`
-	CommandName   string      `json:"commandName"  protobuf:"bytes,1,opt,name=commandName"`
-	CommandParams []string    `json:"params"  protobuf:"bytes,1,opt,name=params"`
+	Type          CompileType `json:"type" protobuf:"bytes,1,opt,name=type"`
+	Script        string      `json:"Script" protobuf:"bytes,2,opt,name=script"`
+	CommandName   string      `json:"commandName" protobuf:"bytes,3,opt,name=commandName"`
+	CommandParams []string    `json:"params" protobuf:"bytes,4,opt,name=params"`
 }
 
 type BuildStages struct {

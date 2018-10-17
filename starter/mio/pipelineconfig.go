@@ -20,7 +20,7 @@ func newPipelineConfig(clientSet miov1.MioV1alpha1Interface) *PipelineConfig {
 }
 
 func (b *PipelineConfig) Create(pipeline *v1alpha1.PipelineConfig) (config *v1alpha1.PipelineConfig, err error) {
-	log.Debugf("config map create : %v", pipeline.Name)
+	log.Debugf("pipelineConfig create : %v", pipeline.Name)
 	config, err = b.clientSet.PipelineConfigs(pipeline.Namespace).Create(pipeline)
 	if err != nil {
 		return nil, err
@@ -29,7 +29,7 @@ func (b *PipelineConfig) Create(pipeline *v1alpha1.PipelineConfig) (config *v1al
 }
 
 func (b *PipelineConfig) Get(name, namespace string) (config *v1alpha1.PipelineConfig, err error) {
-	log.Info("get config map :", name)
+	log.Info("get pipelineConfig :", name)
 	result, err := b.clientSet.PipelineConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -38,28 +38,25 @@ func (b *PipelineConfig) Get(name, namespace string) (config *v1alpha1.PipelineC
 }
 
 func (b *PipelineConfig) Delete(name, namespace string) error {
-	log.Info("get config map :", name)
+	log.Info("delete pipelineConfig :", name)
 	err := b.clientSet.PipelineConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (b *PipelineConfig) Update(name, namespace string, config *v1alpha1.PipelineConfig) (*v1alpha1.PipelineConfig, error) {
-	log.Info("get build config :", name)
-	config.ObjectMeta.ResourceVersion = ""
+	log.Info("update pipelineConfig :", name)
 	result, err := b.clientSet.PipelineConfigs(namespace).Update(config)
 	return result, err
 }
 
-func (b *PipelineConfig) List(namespace string) (*v1alpha1.PipelineConfigList, error) {
-	log.Info(fmt.Sprintf("list in namespace %s:", namespace))
-	option := v1.ListOptions{
-	}
+func (b *PipelineConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.PipelineConfigList, error) {
+	log.Info(fmt.Sprintf("list pipelineConfig in namespace %s:", namespace))
 	result, err := b.clientSet.PipelineConfigs(namespace).List(option)
 	return result, err
 }
 
 func (b *PipelineConfig) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("watch pipelineConfig app %s in namespace %s:", name,namespace))
 
 	listOptions.LabelSelector = fmt.Sprintf("app=%s",name)
 	listOptions.Watch = true

@@ -154,6 +154,21 @@ func (in *BuildConfigs) DeepCopyInto(out *BuildConfigs) {
 		*out = make([]system.Env, len(*in))
 		copy(*out, *in)
 	}
+	if in.Tags != nil {
+		in, out := &in.Tags, &out.Tags
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
+	if in.DockerFile != nil {
+		in, out := &in.DockerFile, &out.DockerFile
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
+	if in.CommandParams != nil {
+		in, out := &in.CommandParams, &out.CommandParams
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
 	return
 }
 
@@ -256,6 +271,11 @@ func (in *BuildStatus) DeepCopyInto(out *BuildStatus) {
 	if in.Stages != nil {
 		in, out := &in.Stages, &out.Stages
 		*out = make([]BuildStages, len(*in))
+		copy(*out, *in)
+	}
+	if in.EventType != nil {
+		in, out := &in.EventType, &out.EventType
+		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
 	return
