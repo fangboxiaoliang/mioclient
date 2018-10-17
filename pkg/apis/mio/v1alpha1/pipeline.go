@@ -49,6 +49,9 @@ type PipelineSpec struct {
 	DeploymentConfigs DeploymentConfigs `json:"deploymentConfigs" protobuf:"bytes,14,opt,name=deploymentConfigs"`
 	GatewayConfigs    GatewayConfigs    `json:"gatewayConfigs" protobuf:"bytes,15,opt,name=gatewayConfigs"`
 	Events            []Events          `json:"events" protobuf:"bytes,16,opt,name=events"`
+	Replicas          int32             `json:"replicas" protobuf:"bytes,17,opt,name=replicas"`
+	HostPathVolume    []string          `json:"hostPathVolume" protobuf:"bytes,18,opt,name=hostPathVolume"`
+	BuildEvents       map[string]string `json:"buildEvents" protobuf:"bytes,16,opt,name=buildEvents"`
 }
 
 type Events struct {
