@@ -34,18 +34,19 @@ type BuildStatus struct {
 }
 
 type BuildSpec struct {
-	CloneConfig    BuildCloneConfig  `json:"cloneConfig" protobuf:"bytes,1,opt,name=cloneConfig"`
-	App            string            `json:"app" protobuf:"bytes,2,opt,name=app"`
-	CodeType       string            `json:"codeType" protobuf:"bytes,3,opt,name=codeType"` //
-	CompileCmd     []CompileCmd      `json:"compileCmd" protobuf:"bytes,4,opt,name=compileCmd"`
-	CloneType      string            `json:"cloneType" protobuf:"bytes,5,opt,name=cloneType"` //基础镜像包
-	BaseImage      string            `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
-	Tags           []string          `json:"tags" protobuf:"bytes,7,opt,name=tags"`
-	DockerFile     []string          `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
-	DockerRegistry string            `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
-	Replicas       int32             `json:"replicas" protobuf:"bytes,10,opt,name=replicas"`
-	HostPathVolume []string          `json:"hostPathVolume" protobuf:"bytes,11,opt,name=hostPathVolume"`
-	Events         map[string]string `json:"events" protobuf:"bytes,12,opt,name=events"`
+	CloneConfig    BuildCloneConfig `json:"cloneConfig" protobuf:"bytes,1,opt,name=cloneConfig"`
+	App            string           `json:"app" protobuf:"bytes,2,opt,name=app"`
+	CodeType       string           `json:"codeType" protobuf:"bytes,3,opt,name=codeType"` //
+	CompileCmd     []CompileCmd     `json:"compileCmd" protobuf:"bytes,4,opt,name=compileCmd"`
+	CloneType      string           `json:"cloneType" protobuf:"bytes,5,opt,name=cloneType"` //基础镜像包
+	BaseImage      string           `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
+	Tags           []string         `json:"tags" protobuf:"bytes,7,opt,name=tags"`
+	DockerFile     []string         `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
+	DockerRegistry string           `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
+	Replicas       int32            `json:"replicas" protobuf:"bytes,10,opt,name=replicas"`
+	HostPathVolume []string         `json:"hostPathVolume" protobuf:"bytes,11,opt,name=hostPathVolume"`
+	Events         []string         `json:"events" protobuf:"bytes,12,opt,name=events"`
+	NodeService    string           `json:"nodeService" protobuf:"bytes,13,opt,name=nodeService"`
 }
 
 type BuildCloneConfig struct {

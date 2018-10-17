@@ -80,7 +80,6 @@ type DeploymentConfigs struct {
 	Env            []system.Env `json:"env" protobuf:"bytes,3,opt,name=env"`
 	Labels         Labels       `json:"labels" protobuf:"bytes,4,opt,name=labels"`
 	Project        string       `json:"project" protobuf:"bytes,5,opt,name=project"`
-	DstDir         string       `json:"dstDir" protobuf:"bytes,6,opt,name=dstDir"`
 }
 
 type Labels struct {
@@ -101,6 +100,7 @@ type BuildConfigs struct {
 	Script        string       `json:"Script" protobuf:"bytes,9,opt,name=script"`
 	CommandName   string       `json:"commandName" protobuf:"bytes,10,opt,name=commandName"`
 	CommandParams []string     `json:"params" protobuf:"bytes,11,opt,name=params"`
+	DstDir        string       `json:"dstDir" protobuf:"bytes,6,opt,name=dstDir"`
 }
 
 type GatewayConfigs struct {
