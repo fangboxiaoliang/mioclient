@@ -26,6 +26,4 @@ type PipelineExpansion interface{}
 
 type PipelineConfigExpansion interface{}
 
-type SecretExpansion interface{}
-
 type SourceConfigExpansion interface{}

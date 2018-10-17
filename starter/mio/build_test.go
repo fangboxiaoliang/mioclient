@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func TestBuildCurd(t *testing.T) {
@@ -22,10 +23,13 @@ func TestBuildCurd(t *testing.T) {
 	result, err := config.Create(config1)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, name, result.Name)
+	option := v1.ListOptions{
 
-	list, err := config.List(namespace)
+		LabelSelector: "app=" + name,
+	}
+	list, err := config.List(namespace, option)
 	assert.Equal(t, nil, err)
-	assert.Equal(t, 1, len(list.Items))
+	assert.Equal(t, 0, len(list.Items))
 
 	result, err = config.Get(name, namespace)
 	assert.Equal(t, nil, err)

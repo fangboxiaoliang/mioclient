@@ -49,10 +49,8 @@ func (b *Build) Update(name, namespace string, config *v1alpha1.Build) (*v1alpha
 	return result, err
 }
 
-func (b *Build) List(namespace string) (*v1alpha1.BuildList, error) {
+func (b *Build) List(namespace string, option v1.ListOptions) (*v1alpha1.BuildList, error) {
 	log.Info(fmt.Sprintf("list build in namespace %s:", namespace))
-	option := v1.ListOptions{
-	}
 	result, err := b.clientSet.Builds(namespace).List(option)
 	return result, err
 }

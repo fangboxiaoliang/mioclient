@@ -44,10 +44,6 @@ func (c *FakeMioV1alpha1) PipelineConfigs(namespace string) v1alpha1.PipelineCon
 	return &FakePipelineConfigs{c, namespace}
 }
 
-func (c *FakeMioV1alpha1) Secrets(namespace string) v1alpha1.SecretInterface {
-	return &FakeSecrets{c, namespace}
-}
-
 func (c *FakeMioV1alpha1) SourceConfigs(namespace string) v1alpha1.SourceConfigInterface {
 	return &FakeSourceConfigs{c, namespace}
 }

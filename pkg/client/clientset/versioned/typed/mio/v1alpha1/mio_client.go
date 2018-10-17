@@ -31,7 +31,6 @@ type MioV1alpha1Interface interface {
 	BuildConfigsGetter
 	PipelinesGetter
 	PipelineConfigsGetter
-	SecretsGetter
 	SourceConfigsGetter
 }
 
@@ -54,10 +53,6 @@ func (c *MioV1alpha1Client) Pipelines(namespace string) PipelineInterface {
 
 func (c *MioV1alpha1Client) PipelineConfigs(namespace string) PipelineConfigInterface {
 	return newPipelineConfigs(c, namespace)
-}
-
-func (c *MioV1alpha1Client) Secrets(namespace string) SecretInterface {
-	return newSecrets(c, namespace)
 }
 
 func (c *MioV1alpha1Client) SourceConfigs(namespace string) SourceConfigInterface {

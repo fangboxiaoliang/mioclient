@@ -65,12 +65,3 @@ func (c *configuration) SourceConfig(restConfig *kube.RestConfig) *SourceConfig 
 	}
 	return newSourceConfig(clientSet)
 }
-
-func (c *configuration) Secret(restConfig *kube.RestConfig) *Secret {
-	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
-	if err != nil {
-		log.Errorf("v1alpha1.NewForConfig %v", err)
-		return nil
-	}
-	return newSecret(clientSet)
-}

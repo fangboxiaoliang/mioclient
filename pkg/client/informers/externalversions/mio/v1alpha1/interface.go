@@ -32,8 +32,6 @@ type Interface interface {
 	Pipelines() PipelineInformer
 	// PipelineConfigs returns a PipelineConfigInformer.
 	PipelineConfigs() PipelineConfigInformer
-	// Secrets returns a SecretInformer.
-	Secrets() SecretInformer
 	// SourceConfigs returns a SourceConfigInformer.
 	SourceConfigs() SourceConfigInformer
 }
@@ -67,11 +65,6 @@ func (v *version) Pipelines() PipelineInformer {
 // PipelineConfigs returns a PipelineConfigInformer.
 func (v *version) PipelineConfigs() PipelineConfigInformer {
 	return &pipelineConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
-// Secrets returns a SecretInformer.
-func (v *version) Secrets() SecretInformer {
-	return &secretInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SourceConfigs returns a SourceConfigInformer.
