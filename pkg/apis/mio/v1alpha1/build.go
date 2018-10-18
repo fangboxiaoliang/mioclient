@@ -45,7 +45,7 @@ type BuildSpec struct {
 	DockerRegistry string           `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
 	Events         []string         `json:"events" protobuf:"bytes,12,opt,name=events"`
 	NodeService    string           `json:"nodeService" protobuf:"bytes,13,opt,name=nodeService"`
-	DeployData	   DeployData 		`json:"deployData" protobuf:"bytes,14,opt,name=deployData"`
+	DeployData     DeployData       `json:"deployData" protobuf:"bytes,14,opt,name=deployData"`
 }
 
 type DeployData struct {
@@ -61,7 +61,7 @@ type BuildCloneConfig struct {
 	Url      string `json:"url"  protobuf:"bytes,1,opt,name=url"`
 	Branch   string `json:"branch"  protobuf:"bytes,2,opt,name=branch"`
 	DstDir   string `json:"dstDir"  protobuf:"bytes,3,opt,name=dstDir"`
-	Depth     int32  `json:"depth,omitempty" protobuf:"varint,4,opt,name=depth,proto3"`
+	Depth    int32  `json:"depth,omitempty" protobuf:"varint,4,opt,name=depth,proto3"`
 	Username string `json:"username"  protobuf:"bytes,5,opt,name=username"`
 	Password string `json:"password"  protobuf:"bytes,6,opt,name=password"`
 }
@@ -74,10 +74,10 @@ const (
 )
 
 type CompileCmd struct {
-	ExecType    string   `protobuf:"bytes,1,opt,name=execType,proto3" json:"execType,omitempty"`
-	Script      string   `protobuf:"bytes,2,opt,name=Script,proto3" json:"Script,omitempty"`
-	CommandName string   `protobuf:"bytes,3,opt,name=commandName,proto3" json:"commandName,omitempty"`
-	CommandParams      []string `protobuf:"bytes,4,rep,name=commandParams,proto3" json:"commandParams,omitempty"`
+	ExecType      string   `protobuf:"bytes,1,opt,name=execType,proto3" json:"execType,omitempty"`
+	Script        string   `protobuf:"bytes,2,opt,name=Script,proto3" json:"Script,omitempty"`
+	CommandName   string   `protobuf:"bytes,3,opt,name=commandName,proto3" json:"commandName,omitempty"`
+	CommandParams []string `protobuf:"bytes,4,rep,name=commandParams,proto3" json:"commandParams,omitempty"`
 }
 
 type BuildStages struct {
