@@ -1,8 +1,8 @@
 package v1alpha1
 
 import (
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"github.com/hidevopsio/hiboot/pkg/system"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 const (
@@ -86,17 +86,17 @@ type Labels struct {
 }
 
 type BuildConfigs struct {
-	TagFrom       string       `json:"tagFrom" protobuf:"bytes,1,opt,name=tagFrom"`
-	ImageStream   string       `json:"imageStream" protobuf:"bytes,2,opt,name=imageStream"`
-	Env           []system.Env `json:"env" protobuf:"bytes,3,opt,name=env"`
-	Project       string       `json:"project" protobuf:"bytes,4,opt,name=project"`
-	BaseImage     string       `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
-	Tags          []string     `json:"tags" protobuf:"bytes,7,opt,name=tags"`
-	DockerFile    []string     `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
-	DstDir        string       `json:"dstDir" protobuf:"bytes,9,opt,name=dstDir"`
-	CloneType	  string       `json:"cloneType" protobuf:"bytes,9,opt,name=cloneType"`
-	CompileCmd    []CompileCmd	`json:"compileCmd" protobuf:"bytes,10,opt,name=compileCmd"`
-	DeployData    DeployData	`json:"deployData" protobuf:"bytes,11,opt,name=deployData"`
+	TagFrom     string       `json:"tagFrom" protobuf:"bytes,1,opt,name=tagFrom"`
+	ImageStream string       `json:"imageStream" protobuf:"bytes,2,opt,name=imageStream"`
+	Env         []system.Env `json:"env" protobuf:"bytes,3,opt,name=env"`
+	Project     string       `json:"project" protobuf:"bytes,4,opt,name=project"`
+	BaseImage   string       `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
+	Tags        []string     `json:"tags" protobuf:"bytes,7,opt,name=tags"`
+	DockerFile  []string     `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
+	DstDir      string       `json:"dstDir" protobuf:"bytes,9,opt,name=dstDir"`
+	CloneType   string       `json:"cloneType" protobuf:"bytes,9,opt,name=cloneType"`
+	CompileCmd  []CompileCmd `json:"compileCmd" protobuf:"bytes,10,opt,name=compileCmd"`
+	DeployData  DeployData   `json:"deployData" protobuf:"bytes,11,opt,name=deployData"`
 }
 
 type GatewayConfigs struct {
