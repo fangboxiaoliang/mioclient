@@ -51,7 +51,7 @@ type PipelineSpec struct {
 	Events            []Events          `json:"events" protobuf:"bytes,16,opt,name=events"`
 	Replicas          int32             `json:"replicas" protobuf:"bytes,17,opt,name=replicas"`
 	HostPathVolume    []string          `json:"hostPathVolume" protobuf:"bytes,18,opt,name=hostPathVolume"`
-	BuildEvents       map[string]string `json:"buildEvents" protobuf:"bytes,16,opt,name=buildEvents"`
+	BuildEnv          map[string]string `json:"buildEnv" protobuf:"bytes,16,opt,name=buildEnv"`
 }
 
 type Events struct {
@@ -118,7 +118,7 @@ type PipelineList struct {
 }
 
 type PipelineStatus struct {
-	King           string           `json:"king" protobuf:"bytes,1,opt,name=kind"`
+	Kind           string           `json:"kind" protobuf:"bytes,1,opt,name=kind"`
 	Name           string           `json:"name" protobuf:"bytes,2,opt,name=name"`
 	Namespace      string           `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
 	Phase          string           `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
