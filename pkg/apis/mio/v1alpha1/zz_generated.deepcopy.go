@@ -164,11 +164,14 @@ func (in *BuildConfigs) DeepCopyInto(out *BuildConfigs) {
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
-	if in.CommandParams != nil {
-		in, out := &in.CommandParams, &out.CommandParams
-		*out = make([]string, len(*in))
-		copy(*out, *in)
+	if in.CompileCmd != nil {
+		in, out := &in.CompileCmd, &out.CompileCmd
+		*out = make([]CompileCmd, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
 	}
+	in.DeployData.DeepCopyInto(&out.DeployData)
 	return
 }
 
@@ -600,18 +603,6 @@ func (in *PipelineSpec) DeepCopyInto(out *PipelineSpec) {
 		*out = make([]Events, len(*in))
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
-		}
-	}
-	if in.HostPathVolume != nil {
-		in, out := &in.HostPathVolume, &out.HostPathVolume
-		*out = make([]string, len(*in))
-		copy(*out, *in)
-	}
-	if in.BuildEnv != nil {
-		in, out := &in.BuildEnv, &out.BuildEnv
-		*out = make(map[string]string, len(*in))
-		for key, val := range *in {
-			(*out)[key] = val
 		}
 	}
 	return
