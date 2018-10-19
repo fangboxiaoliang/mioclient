@@ -43,10 +43,17 @@ type BuildSpec struct {
 	Tags           []string         `json:"tags" protobuf:"bytes,7,opt,name=tags"`
 	DockerFile     []string         `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
 	DockerRegistry string           `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
-	Replicas       int32            `json:"replicas" protobuf:"bytes,10,opt,name=replicas"`
-	HostPathVolume []string         `json:"hostPathVolume" protobuf:"bytes,11,opt,name=hostPathVolume"`
 	Events         []string         `json:"events" protobuf:"bytes,12,opt,name=events"`
 	NodeService    string           `json:"nodeService" protobuf:"bytes,13,opt,name=nodeService"`
+	DeployData     DeployData       `json:"deployData" protobuf:"bytes,14,opt,name=deployData"`
+}
+
+type DeployData struct {
+	Replicas       int32
+	Labels         map[string]string
+	Ports          []int
+	Envs           map[string]string
+	HostPathVolume map[string]string
 }
 
 type BuildCloneConfig struct {
@@ -54,9 +61,11 @@ type BuildCloneConfig struct {
 	Url      string `json:"url"  protobuf:"bytes,1,opt,name=url"`
 	Branch   string `json:"branch"  protobuf:"bytes,2,opt,name=branch"`
 	DstDir   string `json:"dstDir"  protobuf:"bytes,3,opt,name=dstDir"`
-	Username string `json:"userName"  protobuf:"bytes,4,opt,name=userName"`
-	Password string `json:"password"  protobuf:"bytes,5,opt,name=password"`
+	Depth    int32  `json:"depth,omitempty" protobuf:"varint,4,opt,name=depth,proto3"`
+	Username string `json:"username"  protobuf:"bytes,5,opt,name=username"`
+	Password string `json:"password"  protobuf:"bytes,6,opt,name=password"`
 }
+
 type CompileType string
 
 const (
@@ -65,10 +74,10 @@ const (
 )
 
 type CompileCmd struct {
-	Type          CompileType `json:"type" protobuf:"bytes,1,opt,name=type"`
-	Script        string      `json:"Script" protobuf:"bytes,2,opt,name=script"`
-	CommandName   string      `json:"commandName" protobuf:"bytes,3,opt,name=commandName"`
-	CommandParams []string    `json:"params" protobuf:"bytes,4,opt,name=params"`
+	ExecType      string   `protobuf:"bytes,1,opt,name=execType,proto3" json:"execType,omitempty"`
+	Script        string   `protobuf:"bytes,2,opt,name=Script,proto3" json:"Script,omitempty"`
+	CommandName   string   `protobuf:"bytes,3,opt,name=commandName,proto3" json:"commandName,omitempty"`
+	CommandParams []string `protobuf:"bytes,4,rep,name=commandParams,proto3" json:"commandParams,omitempty"`
 }
 
 type BuildStages struct {
