@@ -7,6 +7,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
+	"github.com/hidevopsio/hiboot/pkg/log"
 )
 
 func TestSourceConfigCurd(t *testing.T) {
@@ -69,4 +70,8 @@ func TestSourceConfigCurd(t *testing.T) {
 	err = config.Delete(name, namespace)
 	assert.Equal(t, nil, err)
 
+	listOptions := metav1.ListOptions{}
+	i, err := config.Watch(listOptions, name, namespace)
+	log.Infof("i", i)
+	assert.Equal(t, nil, err)
 }

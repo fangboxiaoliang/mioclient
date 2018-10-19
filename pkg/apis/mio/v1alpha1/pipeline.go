@@ -1,8 +1,8 @@
 package v1alpha1
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/system"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"github.com/hidevopsio/hiboot/pkg/system"
 )
 
 const (
@@ -49,6 +49,9 @@ type PipelineSpec struct {
 	DeploymentConfigs DeploymentConfigs `json:"deploymentConfigs" protobuf:"bytes,14,opt,name=deploymentConfigs"`
 	GatewayConfigs    GatewayConfigs    `json:"gatewayConfigs" protobuf:"bytes,15,opt,name=gatewayConfigs"`
 	Events            []Events          `json:"events" protobuf:"bytes,16,opt,name=events"`
+	Replicas          int32             `json:"replicas" protobuf:"bytes,17,opt,name=replicas"`
+	HostPathVolume    []string          `json:"hostPathVolume" protobuf:"bytes,18,opt,name=hostPathVolume"`
+	BuildEnv          map[string]string `json:"buildEnv" protobuf:"bytes,16,opt,name=buildEnv"`
 }
 
 type Events struct {
@@ -86,17 +89,18 @@ type Labels struct {
 }
 
 type BuildConfigs struct {
-	TagFrom     string       `json:"tagFrom" protobuf:"bytes,1,opt,name=tagFrom"`
-	ImageStream string       `json:"imageStream" protobuf:"bytes,2,opt,name=imageStream"`
-	Env         []system.Env `json:"env" protobuf:"bytes,3,opt,name=env"`
-	Project     string       `json:"project" protobuf:"bytes,4,opt,name=project"`
-	BaseImage   string       `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
-	Tags        []string     `json:"tags" protobuf:"bytes,7,opt,name=tags"`
-	DockerFile  []string     `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
-	DstDir      string       `json:"dstDir" protobuf:"bytes,9,opt,name=dstDir"`
-	CloneType   string       `json:"cloneType" protobuf:"bytes,9,opt,name=cloneType"`
-	CompileCmd  []CompileCmd `json:"compileCmd" protobuf:"bytes,10,opt,name=compileCmd"`
-	DeployData  DeployData   `json:"deployData" protobuf:"bytes,11,opt,name=deployData"`
+	TagFrom       string       `json:"tagFrom" protobuf:"bytes,1,opt,name=tagFrom"`
+	ImageStream   string       `json:"imageStream" protobuf:"bytes,2,opt,name=imageStream"`
+	Env           []system.Env `json:"env" protobuf:"bytes,3,opt,name=env"`
+	Project       string       `json:"project" protobuf:"bytes,4,opt,name=project"`
+	Type          CompileType  `json:"type" protobuf:"bytes,5,opt,name=type"`
+	BaseImage     string       `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
+	Tags          []string     `json:"tags" protobuf:"bytes,7,opt,name=tags"`
+	DockerFile    []string     `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
+	Script        string       `json:"Script" protobuf:"bytes,9,opt,name=script"`
+	CommandName   string       `json:"commandName" protobuf:"bytes,10,opt,name=commandName"`
+	CommandParams []string     `json:"params" protobuf:"bytes,11,opt,name=params"`
+	DstDir        string       `json:"dstDir" protobuf:"bytes,6,opt,name=dstDir"`
 }
 
 type GatewayConfigs struct {

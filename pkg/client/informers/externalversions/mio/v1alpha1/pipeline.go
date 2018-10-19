@@ -21,7 +21,7 @@ package v1alpha1
 import (
 	time "time"
 
-	miov1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
+	mio_v1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	versioned "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/internalinterfaces"
 	v1alpha1 "github.com/hidevopsio/mioclient/pkg/client/listers/mio/v1alpha1"
@@ -70,7 +70,7 @@ func NewFilteredPipelineInformer(client versioned.Interface, namespace string, r
 				return client.MioV1alpha1().Pipelines(namespace).Watch(options)
 			},
 		},
-		&miov1alpha1.Pipeline{},
+		&mio_v1alpha1.Pipeline{},
 		resyncPeriod,
 		indexers,
 	)
@@ -81,7 +81,7 @@ func (f *pipelineInformer) defaultInformer(client versioned.Interface, resyncPer
 }
 
 func (f *pipelineInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&miov1alpha1.Pipeline{}, f.defaultInformer)
+	return f.factory.InformerFor(&mio_v1alpha1.Pipeline{}, f.defaultInformer)
 }
 
 func (f *pipelineInformer) Lister() v1alpha1.PipelineLister {
