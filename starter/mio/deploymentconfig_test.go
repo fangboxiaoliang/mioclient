@@ -1,7 +1,6 @@
 package mio
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
@@ -10,7 +9,7 @@ import (
 	"testing"
 )
 
-func TestDeployconfigCurd(t *testing.T) {
+func TestDeploymentConfigCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
