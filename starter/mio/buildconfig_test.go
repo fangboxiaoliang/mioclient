@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-func TestBuildconfigCurd(t *testing.T) {
+func TestBuildConfigCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
