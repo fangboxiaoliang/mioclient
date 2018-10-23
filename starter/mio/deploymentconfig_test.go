@@ -52,8 +52,7 @@ func TestDeployconfigCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 
 	listOptions := metav1.ListOptions{}
-	i, err := config.Watch(listOptions, name, namespace)
-	log.Infof("i", i)
+	_, err = config.Watch(listOptions, name, namespace)
 	assert.Equal(t, nil, err)
 
 }

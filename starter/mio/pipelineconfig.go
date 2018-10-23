@@ -1,11 +1,11 @@
 package mio
 
 import (
-	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
-	"github.com/hidevopsio/hiboot/pkg/log"
-	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	"fmt"
+	"github.com/hidevopsio/hiboot/pkg/log"
+	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	miov1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/watch"
 )
 
@@ -55,15 +55,15 @@ func (b *PipelineConfig) List(namespace string, option v1.ListOptions) (*v1alpha
 	return result, err
 }
 
-func (b *PipelineConfig) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch pipelineConfig app %s in namespace %s:", name,namespace))
+func (b *PipelineConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch pipelineConfig app %s in namespace %s:", name, namespace))
 
-	listOptions.LabelSelector = fmt.Sprintf("app=%s",name)
+	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
 	listOptions.Watch = true
 
 	w, err := b.clientSet.PipelineConfigs(namespace).Watch(listOptions)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return w,nil
+	return w, nil
 }

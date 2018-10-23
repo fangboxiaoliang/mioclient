@@ -3,13 +3,11 @@
 package mio
 
 import (
-	"testing"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
-
-
 
 func TestMioConfig(t *testing.T) {
 	testApp := web.NewTestApplication(t).(app.ApplicationContext)

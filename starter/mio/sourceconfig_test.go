@@ -1,13 +1,13 @@
 package mio
 
 import (
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
-	"k8s.io/apimachinery/pkg/apis/meta/v1"
-	"github.com/hidevopsio/hiboot/pkg/log"
 )
 
 func TestSourceConfigCurd(t *testing.T) {
@@ -22,7 +22,7 @@ func TestSourceConfigCurd(t *testing.T) {
 			Name:      name,
 			Namespace: namespace,
 			Labels: map[string]string{
-				"app":name,
+				"app": name,
 			},
 		},
 	}
@@ -35,10 +35,10 @@ func TestSourceConfigCurd(t *testing.T) {
 			Name:      name1,
 			Namespace: namespace,
 			Annotations: map[string]string{
-				"mio.io/build.number":"3",
+				"mio.io/build.number": "3",
 			},
 			Labels: map[string]string{
-				"app":name,
+				"app":     name,
 				"version": version,
 			},
 		},
@@ -72,6 +72,6 @@ func TestSourceConfigCurd(t *testing.T) {
 
 	listOptions := metav1.ListOptions{}
 	i, err := config.Watch(listOptions, name, namespace)
-	log.Infof("i", i)
+	log.Infof("i: %v", i)
 	assert.Equal(t, nil, err)
 }

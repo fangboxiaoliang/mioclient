@@ -19,8 +19,6 @@ func newDeploymentConfig(clientSet miov1alpha1.MioV1alpha1Interface) *Deployment
 	}
 }
 
-
-
 func (d *DeploymentConfig) Create(deploymentConfig *v1alpha1.DeploymentConfig) (result *v1alpha1.DeploymentConfig, err error) {
 	log.Debugf("deployConfig create : %v", deploymentConfig.Name)
 	result, err = d.clientSet.DeploymentConfigs(deploymentConfig.Namespace).Create(deploymentConfig)
@@ -31,7 +29,7 @@ func (d *DeploymentConfig) Create(deploymentConfig *v1alpha1.DeploymentConfig) (
 }
 
 func (d *DeploymentConfig) Get(name, namespace string) (config *v1alpha1.DeploymentConfig, err error) {
-	log.Info(fmt.Sprintf("get deployConfig app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("get deployConfig app %s in namespace %s:", name, namespace))
 	result, err := d.clientSet.DeploymentConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -40,13 +38,13 @@ func (d *DeploymentConfig) Get(name, namespace string) (config *v1alpha1.Deploym
 }
 
 func (d *DeploymentConfig) Delete(name, namespace string) error {
-	log.Info(fmt.Sprintf("delete deployConfig app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("delete deployConfig app %s in namespace %s:", name, namespace))
 	err := d.clientSet.DeploymentConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (d *DeploymentConfig) Update(name, namespace string, deploymentConfig *v1alpha1.DeploymentConfig) (*v1alpha1.DeploymentConfig, error) {
-	log.Info(fmt.Sprintf("update deployConfig app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("update deployConfig app %s in namespace %s:", name, namespace))
 	result, err := d.clientSet.DeploymentConfigs(namespace).Update(deploymentConfig)
 	return result, err
 }
@@ -57,15 +55,15 @@ func (d *DeploymentConfig) List(namespace string, option v1.ListOptions) (*v1alp
 	return result, err
 }
 
-func (d *DeploymentConfig) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch deployConfig app %s in namespace %s:", name,namespace))
+func (d *DeploymentConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch deployConfig app %s in namespace %s:", name, namespace))
 
-	listOptions.LabelSelector = fmt.Sprintf("app=%s",name)
+	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
 	listOptions.Watch = true
 
 	w, err := d.clientSet.DeploymentConfigs(namespace).Watch(listOptions)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return w,nil
+	return w, nil
 }

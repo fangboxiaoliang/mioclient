@@ -1,7 +1,6 @@
 package mio
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
@@ -52,8 +51,7 @@ func TestBuildconfigCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 
 	listOptions := metav1.ListOptions{}
-	i, err := config.Watch(listOptions, name, namespace)
-	log.Infof("i", i)
+	_, err = config.Watch(listOptions, name, namespace)
 	assert.Equal(t, nil, err)
 
 }
