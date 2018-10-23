@@ -63,3 +63,12 @@ func (c *configuration) SourceConfig(restConfig *kube.RestConfig) *SourceConfig 
 	}
 	return newSourceConfig(clientSet)
 }
+
+func (c *configuration) DeploymentConfig(restConfig *kube.RestConfig) *DeploymentConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newDeploymentConfig(clientSet)
+}
