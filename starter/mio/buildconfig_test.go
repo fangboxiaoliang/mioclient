@@ -1,13 +1,13 @@
 package mio
 
 import (
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
-	"k8s.io/apimachinery/pkg/apis/meta/v1"
-	"github.com/hidevopsio/hiboot/pkg/log"
 )
 
 func TestBuildconfigCurd(t *testing.T) {
@@ -17,10 +17,10 @@ func TestBuildconfigCurd(t *testing.T) {
 	config := newBuildConfig(clientSet)
 	config1 := &v1alpha1.BuildConfig{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
-			Namespace:namespace,
+			Name:      name,
+			Namespace: namespace,
 			Labels: map[string]string{
-				"app":name,
+				"app": name,
 			},
 		},
 	}
@@ -55,6 +55,5 @@ func TestBuildconfigCurd(t *testing.T) {
 	i, err := config.Watch(listOptions, name, namespace)
 	log.Infof("i", i)
 	assert.Equal(t, nil, err)
-
 
 }
