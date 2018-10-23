@@ -34,6 +34,14 @@ type BuildConfigListerExpansion interface{}
 // BuildConfigNamespaceLister.
 type BuildConfigNamespaceListerExpansion interface{}
 
+// DeploymentConfigListerExpansion allows custom methods to be added to
+// DeploymentConfigLister.
+type DeploymentConfigListerExpansion interface{}
+
+// DeploymentConfigNamespaceListerExpansion allows custom methods to be added to
+// DeploymentConfigNamespaceLister.
+type DeploymentConfigNamespaceListerExpansion interface{}
+
 // PipelineListerExpansion allows custom methods to be added to
 // PipelineLister.
 type PipelineListerExpansion interface{}

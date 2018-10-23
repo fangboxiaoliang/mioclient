@@ -36,6 +36,10 @@ func (c *FakeMioV1alpha1) BuildConfigs(namespace string) v1alpha1.BuildConfigInt
 	return &FakeBuildConfigs{c, namespace}
 }
 
+func (c *FakeMioV1alpha1) DeploymentConfigs(namespace string) v1alpha1.DeploymentConfigInterface {
+	return &FakeDeploymentConfigs{c, namespace}
+}
+
 func (c *FakeMioV1alpha1) Pipelines(namespace string) v1alpha1.PipelineInterface {
 	return &FakePipelines{c, namespace}
 }

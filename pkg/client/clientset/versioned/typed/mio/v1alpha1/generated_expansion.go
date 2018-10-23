@@ -22,6 +22,8 @@ type BuildExpansion interface{}
 
 type BuildConfigExpansion interface{}
 
+type DeploymentConfigExpansion interface{}
+
 type PipelineExpansion interface{}
 
 type PipelineConfigExpansion interface{}

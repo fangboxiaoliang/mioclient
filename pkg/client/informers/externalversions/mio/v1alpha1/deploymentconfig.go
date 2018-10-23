@@ -31,59 +31,59 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// PipelineInformer provides access to a shared informer and lister for
-// Pipelines.
-type PipelineInformer interface {
+// DeploymentConfigInformer provides access to a shared informer and lister for
+// DeploymentConfigs.
+type DeploymentConfigInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.PipelineLister
+	Lister() v1alpha1.DeploymentConfigLister
 }
 
-type pipelineInformer struct {
+type deploymentConfigInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewPipelineInformer constructs a new informer for Pipeline type.
+// NewDeploymentConfigInformer constructs a new informer for DeploymentConfig type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewPipelineInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredPipelineInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewDeploymentConfigInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredDeploymentConfigInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredPipelineInformer constructs a new informer for Pipeline type.
+// NewFilteredDeploymentConfigInformer constructs a new informer for DeploymentConfig type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredPipelineInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredDeploymentConfigInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.MioV1alpha1().Pipelines(namespace).List(options)
+				return client.MioV1alpha1().DeploymentConfigs(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.MioV1alpha1().Pipelines(namespace).Watch(options)
+				return client.MioV1alpha1().DeploymentConfigs(namespace).Watch(options)
 			},
 		},
-		&mio_v1alpha1.Pipeline{},
+		&mio_v1alpha1.DeploymentConfig{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *pipelineInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredPipelineInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *deploymentConfigInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredDeploymentConfigInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *pipelineInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&mio_v1alpha1.Pipeline{}, f.defaultInformer)
+func (f *deploymentConfigInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&mio_v1alpha1.DeploymentConfig{}, f.defaultInformer)
 }
 
-func (f *pipelineInformer) Lister() v1alpha1.PipelineLister {
-	return v1alpha1.NewPipelineLister(f.Informer().GetIndexer())
+func (f *deploymentConfigInformer) Lister() v1alpha1.DeploymentConfigLister {
+	return v1alpha1.NewDeploymentConfigLister(f.Informer().GetIndexer())
 }
