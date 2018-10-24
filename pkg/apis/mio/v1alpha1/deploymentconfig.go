@@ -33,6 +33,7 @@ type DeploymentConfigSpec struct {
 	ReadinessProbe *corev1.Probe          `json:"readinessProbe" protobuf:"bytes,7,opt,name=readinessProbe"`
 	EnvType        []string               `json:"envType" protobuf:"bytes,8,opt,name=envType"`
 	Labels         map[string]string      `json:"labels"  protobuf:"bytes,9,opt,name=labels"`
+	DockerRegistry string                 `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
 }
 
 type DeploymentConfigStatus struct {
