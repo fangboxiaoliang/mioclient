@@ -34,6 +34,7 @@ type DeploymentConfigSpec struct {
 	EnvType        []string               `json:"envType" protobuf:"bytes,8,opt,name=envType"`
 	Labels         map[string]string      `json:"labels"  protobuf:"bytes,9,opt,name=labels"`
 	DockerRegistry string                 `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
+	Replicas       *int32                 `json:"replicas" protobuf:"bytes,10,opt,name=replicas"`
 }
 
 type DeploymentConfigStatus struct {
