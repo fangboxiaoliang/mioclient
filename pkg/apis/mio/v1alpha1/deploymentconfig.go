@@ -32,6 +32,7 @@ type DeploymentConfigSpec struct {
 	LivenessProbe  *corev1.Probe          `json:"livenessProbe" protobuf:"bytes,6,opt,name=livenessProbe"`
 	ReadinessProbe *corev1.Probe          `json:"readinessProbe" protobuf:"bytes,7,opt,name=readinessProbe"`
 	EnvType        []string               `json:"envType" protobuf:"bytes,8,opt,name=envType"`
+	Labels         map[string]string      `json:"labels"  protobuf:"bytes,9,opt,name=labels"`
 }
 
 type DeploymentConfigStatus struct {
