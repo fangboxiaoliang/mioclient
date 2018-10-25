@@ -40,6 +40,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&SourceConfigList{},
 		&DeploymentConfig{},
 		&DeploymentConfigList{},
+		&GatewayConfig{},
+		&GatewayConfigList{},
+		&ServiceConfigList{},
+		&ServiceConfig{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

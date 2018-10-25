@@ -30,8 +30,10 @@ type MioV1alpha1Interface interface {
 	BuildsGetter
 	BuildConfigsGetter
 	DeploymentConfigsGetter
+	GatewayConfigsGetter
 	PipelinesGetter
 	PipelineConfigsGetter
+	ServiceConfigsGetter
 	SourceConfigsGetter
 }
 
@@ -52,12 +54,20 @@ func (c *MioV1alpha1Client) DeploymentConfigs(namespace string) DeploymentConfig
 	return newDeploymentConfigs(c, namespace)
 }
 
+func (c *MioV1alpha1Client) GatewayConfigs(namespace string) GatewayConfigInterface {
+	return newGatewayConfigs(c, namespace)
+}
+
 func (c *MioV1alpha1Client) Pipelines(namespace string) PipelineInterface {
 	return newPipelines(c, namespace)
 }
 
 func (c *MioV1alpha1Client) PipelineConfigs(namespace string) PipelineConfigInterface {
 	return newPipelineConfigs(c, namespace)
+}
+
+func (c *MioV1alpha1Client) ServiceConfigs(namespace string) ServiceConfigInterface {
+	return newServiceConfigs(c, namespace)
 }
 
 func (c *MioV1alpha1Client) SourceConfigs(namespace string) SourceConfigInterface {

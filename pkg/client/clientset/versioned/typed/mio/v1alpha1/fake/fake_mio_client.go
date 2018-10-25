@@ -40,12 +40,20 @@ func (c *FakeMioV1alpha1) DeploymentConfigs(namespace string) v1alpha1.Deploymen
 	return &FakeDeploymentConfigs{c, namespace}
 }
 
+func (c *FakeMioV1alpha1) GatewayConfigs(namespace string) v1alpha1.GatewayConfigInterface {
+	return &FakeGatewayConfigs{c, namespace}
+}
+
 func (c *FakeMioV1alpha1) Pipelines(namespace string) v1alpha1.PipelineInterface {
 	return &FakePipelines{c, namespace}
 }
 
 func (c *FakeMioV1alpha1) PipelineConfigs(namespace string) v1alpha1.PipelineConfigInterface {
 	return &FakePipelineConfigs{c, namespace}
+}
+
+func (c *FakeMioV1alpha1) ServiceConfigs(namespace string) v1alpha1.ServiceConfigInterface {
+	return &FakeServiceConfigs{c, namespace}
 }
 
 func (c *FakeMioV1alpha1) SourceConfigs(namespace string) v1alpha1.SourceConfigInterface {

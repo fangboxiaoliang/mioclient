@@ -21,7 +21,7 @@ package v1alpha1
 import (
 	time "time"
 
-	mio_v1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
+	miov1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	versioned "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/internalinterfaces"
 	v1alpha1 "github.com/hidevopsio/mioclient/pkg/client/listers/mio/v1alpha1"
@@ -70,7 +70,7 @@ func NewFilteredDeploymentConfigInformer(client versioned.Interface, namespace s
 				return client.MioV1alpha1().DeploymentConfigs(namespace).Watch(options)
 			},
 		},
-		&mio_v1alpha1.DeploymentConfig{},
+		&miov1alpha1.DeploymentConfig{},
 		resyncPeriod,
 		indexers,
 	)
@@ -81,7 +81,7 @@ func (f *deploymentConfigInformer) defaultInformer(client versioned.Interface, r
 }
 
 func (f *deploymentConfigInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&mio_v1alpha1.DeploymentConfig{}, f.defaultInformer)
+	return f.factory.InformerFor(&miov1alpha1.DeploymentConfig{}, f.defaultInformer)
 }
 
 func (f *deploymentConfigInformer) Lister() v1alpha1.DeploymentConfigLister {

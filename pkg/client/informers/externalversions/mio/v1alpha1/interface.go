@@ -30,10 +30,14 @@ type Interface interface {
 	BuildConfigs() BuildConfigInformer
 	// DeploymentConfigs returns a DeploymentConfigInformer.
 	DeploymentConfigs() DeploymentConfigInformer
+	// GatewayConfigs returns a GatewayConfigInformer.
+	GatewayConfigs() GatewayConfigInformer
 	// Pipelines returns a PipelineInformer.
 	Pipelines() PipelineInformer
 	// PipelineConfigs returns a PipelineConfigInformer.
 	PipelineConfigs() PipelineConfigInformer
+	// ServiceConfigs returns a ServiceConfigInformer.
+	ServiceConfigs() ServiceConfigInformer
 	// SourceConfigs returns a SourceConfigInformer.
 	SourceConfigs() SourceConfigInformer
 }
@@ -64,6 +68,11 @@ func (v *version) DeploymentConfigs() DeploymentConfigInformer {
 	return &deploymentConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// GatewayConfigs returns a GatewayConfigInformer.
+func (v *version) GatewayConfigs() GatewayConfigInformer {
+	return &gatewayConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Pipelines returns a PipelineInformer.
 func (v *version) Pipelines() PipelineInformer {
 	return &pipelineInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -72,6 +81,11 @@ func (v *version) Pipelines() PipelineInformer {
 // PipelineConfigs returns a PipelineConfigInformer.
 func (v *version) PipelineConfigs() PipelineConfigInformer {
 	return &pipelineConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ServiceConfigs returns a ServiceConfigInformer.
+func (v *version) ServiceConfigs() ServiceConfigInformer {
+	return &serviceConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SourceConfigs returns a SourceConfigInformer.
