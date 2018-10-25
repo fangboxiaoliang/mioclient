@@ -35,6 +35,25 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:f3793f8a708522400cef1dba23385e901aede5519f68971fd69938ef330b07a1"
+  name = "github.com/alecthomas/template"
+  packages = [
+    ".",
+    "parse",
+  ]
+  pruneopts = "NUT"
+  revision = "a0175ee3bccc567396460bf5acd36800cb10c49c"
+
+[[projects]]
+  branch = "master"
+  digest = "1:fdd419e104ec26bb5bd63cc62637c640453ed2929a7453f3afadbd9a0223da66"
+  name = "github.com/alecthomas/units"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "2efee857e7cfd4f3d0138cc3cbb1b4966962b93a"
+
+[[projects]]
+  branch = "master"
   digest = "1:9669e3a3a4cf7041b76a386b0a531d0b189313e0bf96875e04484c631624dc0e"
   name = "github.com/aymerick/raymond"
   packages = [
@@ -82,12 +101,12 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:52ec55889de2c93a772ceba253313c12f65444aac61a11182d4d119ef97479e8"
+  digest = "1:aa3ed0a71c4e66e4ae6486bf97a3f4cab28edc78df2e50c5ad01dc7d91604b88"
   name = "github.com/fatih/structs"
   packages = ["."]
   pruneopts = "NUT"
-  revision = "a720dfa8df582c51dee1b36feabb906bde1588bd"
-  version = "v1.0"
+  revision = "4966fc68f5b7593aafa6cbbba2d65ec6e1416047"
+  version = "v1.1.0"
 
 [[projects]]
   branch = "master"
@@ -221,12 +240,12 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:26684f046b62ec369fbe13b1eba615743c4fa0b6ec97d06fb217d611655c0bd3"
+  digest = "1:1a005fe008b0851c8bc1d50c1c853900243824a1de380ebdbb25f6152f50cba3"
   name = "github.com/hidevopsio/hiboot"
   packages = [
     "pkg/app",
     "pkg/app/web",
-    "pkg/app/web/at",
+    "pkg/at",
     "pkg/factory",
     "pkg/factory/autoconfigure",
     "pkg/factory/depends",
@@ -247,16 +266,16 @@
     "pkg/utils/validator",
   ]
   pruneopts = "NUT"
-  revision = "fd93c790682053455919a8b92670263c3b9db66b"
-  version = "v0.9.4"
+  revision = "ab58921ab6a920f53976ebd8df9db0fad0eb867e"
+  version = "v0.9.7"
 
 [[projects]]
   branch = "master"
-  digest = "1:21648582ab074830742422d0faf3f1cdda3188dea907072b6fce78c523694381"
+  digest = "1:8203cbae196c24a69f35f21481e5a7003b5c14882bcd2684028de325bcad9a03"
   name = "github.com/hidevopsio/hioak"
   packages = ["starter/kube"]
   pruneopts = "NUT"
-  revision = "935ead1a44ffbf1aac84d190f7cf1c35db4f5435"
+  revision = "2c74ca8c6c1f8f4ded8fbdb58fda7e254756cb32"
 
 [[projects]]
   branch = "master"
@@ -324,19 +343,19 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:b8d3579baec6379ae322d12b08af6883415d52ac9905c7aabd8553242b2fc99e"
+  digest = "1:dedd74b9379364ad95adeebf99f208d53627986c85e1b8a7368d826371ad3d53"
   name = "github.com/json-iterator/go"
   packages = ["."]
   pruneopts = "NUT"
-  revision = "2433035e513208b0f7bd5b50d0aecd889b2c1ff8"
+  revision = "05d041de1043ba04b678fb046bd35455a9b1b33b"
 
 [[projects]]
   branch = "master"
-  digest = "1:bf0932b52b437415f41054bb880e44bc604b3f02b7a3bff360530f6def7f5c7d"
+  digest = "1:df73a1d4552abf519df3b4560142a1f532682304048b561e60e7804e1256a805"
   name = "github.com/juju/errors"
   packages = ["."]
   pruneopts = "NUT"
-  revision = "22422dad46e14561a0854ad42497a75af9b61909"
+  revision = "a4583d0a56eac4bdd939e38050d0c69abe0a9b41"
 
 [[projects]]
   branch = "master"
@@ -424,6 +443,14 @@
   pruneopts = "NUT"
   revision = "ae7887de9fa5d2db4eaa8174a7eff2c1ac00f2da"
   version = "v1.1"
+
+[[projects]]
+  digest = "1:4059c14e87a2de3a434430340521b5feece186c1469eff0834c29a63870de3ed"
+  name = "github.com/konsorten/go-windows-terminal-sequences"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "5c8c8bd35d3832f5d134ae1e1e375b69a4d25242"
+  version = "v1.0.1"
 
 [[projects]]
   digest = "1:d244f8666a838fe6ad70ec8fe77f50ebc29fdc3331a2729ba5886bef8435d10d"
@@ -515,6 +542,14 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:c47550d71ea17823202a58abc3f635da0a341284342e64fb0d1a95a4cf790301"
+  name = "github.com/prometheus/common"
+  packages = ["log"]
+  pruneopts = "NUT"
+  revision = "7e9e6cabbd393fc208072eedef99188d0ce788b6"
+
+[[projects]]
+  branch = "master"
   digest = "1:aa9c92d4deaf000697e54bbaefb2c830fb319f9e6518cb19df3f4ef9533dc726"
   name = "github.com/ryanuber/columnize"
   packages = ["."]
@@ -536,6 +571,14 @@
   packages = ["."]
   pruneopts = "NUT"
   revision = "86672fcb3f950f35f2e675df2240550f2a50762f"
+
+[[projects]]
+  digest = "1:ecf78eacf406c42f07f66d6b79fda24d2b92dc711bfd0760d0c931678f9621fe"
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "ad15b42461921f1fb3529b058c6786c6a45d5162"
+  version = "v1.1.1"
 
 [[projects]]
   digest = "1:330e9062b308ac597e28485699c02223bd052437a6eed32a173c9227dcb9d95a"
@@ -609,11 +652,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:668c21d68808380dda67b8d4025c71d3663490cf424568cdbffa94765dcfc284"
+  digest = "1:ab5933fe123839204f24b287323f5007e80bc4dc6d6563837aa0a3644b943f23"
   name = "github.com/xeipuuv/gojsonschema"
   packages = ["."]
   pruneopts = "NUT"
-  revision = "f58b4a9e3d67bfbe3744e3cb0fc0bba167ad253f"
+  revision = "f3a9dae5b19473510a3062802a98815f609ed747"
 
 [[projects]]
   branch = "master"
@@ -644,7 +687,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:42c7e30272119bd61cee83d6448f31bcb408799a5e1802edc53cec1378e19941"
+  digest = "1:3ad7336763062fd505c5a2f44834a08559600b0ff2f8bb70dea5f002ccf7f43b"
   name = "golang.org/x/crypto"
   packages = [
     "acme",
@@ -652,11 +695,11 @@
     "ssh/terminal",
   ]
   pruneopts = "NUT"
-  revision = "e3636079e1a4c1f337f212cc5cd2aca108f6c900"
+  revision = "74cb1d3d52f4c01cbfb44c1b50d204462f3124c7"
 
 [[projects]]
   branch = "master"
-  digest = "1:9342ccd425f387e914666854bf474d4f3ef12bf28cabd2a9e354cde92c1b412c"
+  digest = "1:2a3505a3162705e88c277c63368cf5e7579855e0b2182ace292e196918a4b143"
   name = "golang.org/x/net"
   packages = [
     "context",
@@ -669,18 +712,20 @@
     "publicsuffix",
   ]
   pruneopts = "NUT"
-  revision = "146acd28ed5894421fb5aac80ca93bc1b1f46f87"
+  revision = "9b4f9f5ad5197c79fd623a3638e70d8b26cef344"
 
 [[projects]]
   branch = "master"
-  digest = "1:68ca1f18d986adc1d25a28aa732806ee8f1c874cc5b606e4ba67ddd3eeb89e20"
+  digest = "1:6d9780d8e17785d6eb3685e252883e5b7db34a86870dc64b4999e46dbda9f91f"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
+    "windows/registry",
+    "windows/svc/eventlog",
   ]
   pruneopts = "NUT"
-  revision = "4497e2df6f9e69048a54498c7affbbec3294ad47"
+  revision = "d989b31c87461dc8ab2f1cac6792814e27fadea9"
 
 [[projects]]
   digest = "1:e7071ed636b5422cc51c0e3a6cebc229d6c9fffc528814b519a980641422d619"
@@ -715,15 +760,24 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:45751dc3302c90ea55913674261b2d74286b05cdd8e3ae9606e02e4e77f4353f"
+  digest = "1:3a04778e417b28bba5d30f0af919206b4869f57a1d5e152c4c2f29bf18889dce"
   name = "golang.org/x/tools"
   packages = [
     "go/ast/astutil",
     "imports",
     "internal/fastwalk",
+    "internal/gopathwalk",
   ]
   pruneopts = "NUT"
-  revision = "f60d9635b16a5a57b06eaa119614ba4df421966a"
+  revision = "a2dc47679d30b6c496245bafc6a166b46c5fe318"
+
+[[projects]]
+  digest = "1:22b2dee6f30bc8601f087449a2a819df8388e54e9547349c658f14d8f8c590f2"
+  name = "gopkg.in/alecthomas/kingpin.v2"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "947dcec5ba9c011838740e680966fd7087a71d0d"
+  version = "v2.2.6"
 
 [[projects]]
   digest = "1:0215407129c5f116ae8f6d3af64df59c39d3f606a72ef77a1e6ed874f92a8d9c"
@@ -742,12 +796,12 @@
   version = "v0.9.1"
 
 [[projects]]
-  digest = "1:d32823ccbd16481c42356a1ae7f2284761da19cae3131b554a0b7c086a650292"
+  digest = "1:c204ec81f754234f2c3c4093cc8cc42151aadedd1129b32539a472fd7881e689"
   name = "gopkg.in/ini.v1"
   packages = ["."]
   pruneopts = "NUT"
-  revision = "7b294651033cd7d9e7f0d9ffa1b75ed1e198e737"
-  version = "v1.38.3"
+  revision = "9c8236e659b76e87bf02044d06fde8683008ff3e"
+  version = "v1.39.0"
 
 [[projects]]
   branch = "v2"
@@ -947,7 +1001,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4a75352fad3a8e993928462643415e8263f94ae845aa5e7dce1de2f34f961e36"
+  digest = "1:4a3eefae81ea88b5a95e66e4942a783312b52a2712f1d5a9a74b6038be68a90a"
   name = "k8s.io/gengo"
   packages = [
     "args",
@@ -957,7 +1011,7 @@
     "types",
   ]
   pruneopts = ""
-  revision = "4242d8e6c5dba56827bb7bcf14ad11cda38f3991"
+  revision = "7338e4bfd6915369a1375890db1bbda0158c9863"
 
 [solve-meta]
   analyzer-name = "dep"

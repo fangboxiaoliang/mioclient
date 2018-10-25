@@ -72,3 +72,21 @@ func (c *configuration) DeploymentConfig(restConfig *kube.RestConfig) *Deploymen
 	}
 	return newDeploymentConfig(clientSet)
 }
+
+func (c *configuration) GatewayConfig(restConfig *kube.RestConfig) *GatewayConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newGatewayConfig(clientSet)
+}
+
+func (c *configuration) ServiceConfig(restConfig *kube.RestConfig) *ServiceConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newServiceConfig(clientSet)
+}
