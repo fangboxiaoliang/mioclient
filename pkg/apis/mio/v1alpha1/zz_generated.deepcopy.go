@@ -628,13 +628,25 @@ func (in *GatewaySpec) DeepCopyInto(out *GatewaySpec) {
 	*out = *in
 	if in.Hosts != nil {
 		in, out := &in.Hosts, &out.Hosts
-		*out = make([]string, len(*in))
-		copy(*out, *in)
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
 	}
 	if in.Uris != nil {
 		in, out := &in.Uris, &out.Uris
-		*out = make([]string, len(*in))
-		copy(*out, *in)
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
 	}
 	if in.EventType != nil {
 		in, out := &in.EventType, &out.EventType
