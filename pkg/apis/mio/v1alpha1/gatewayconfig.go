@@ -24,19 +24,20 @@ type GatewayConfig struct {
 }
 
 type GatewaySpec struct {
-	Hosts                  []string         `json:"hosts" protobuf:"bytes,1,opt,name=hosts"`
-	Uris                   []string         `json:"uris" protobuf:"bytes,3,opt,name=uris"`
-	UpstreamUrl            string           `json:"upstreamUrl" protobuf:"bytes,4,opt,name=upstreamUrl"`
-	StripUri               bool             `json:"stripUri" protobuf:"bytes,5,opt,name=stripUri"`
-	PreserveHost           bool             `json:"preserveHost" protobuf:"bytes,6,opt,name=preserveHost"`
-	Retries                string           `json:"retries"  protobuf:"bytes,7,opt,name=retries"`
-	UpstreamConnectTimeout int              `json:"upstreamConnectTimeout" protobuf:"bytes,8,opt,name=upstreamConnectTimeout"`
-	UpstreamSendTimeout    int              `json:"upstreamSendTimeout" protobuf:"bytes,9,opt,name=upstreamSendTimeout"`
-	UpstreamReadTimeout    int              `json:"upstreamReadTimeout" protobuf:"bytes,10,opt,name=upstreamReadTimeout"`
-	HttpsOnly              bool             `json:"httpsOnly" protobuf:"bytes,11,opt,name=upstreamReadTimeout"`
-	HttpIfTerminated       bool             `json:"httpIfTerminated" protobuf:"bytes,12,opt,name=httpIfTerminated"`
-	KongAdminUrl           string           `json:"kongAdminUrl" protobuf:"bytes,13,opt,name=kongAdminUrl"`
-	EventType              []string         `json:"eventType"  protobuf:"bytes,14,opt,name=eventType"`
+	Hosts                  []*string `json:"hosts" protobuf:"bytes,1,opt,name=hosts"`
+	Profile                string    `json:"profile" protobuf:"bytes,1,opt,name=profile"`
+	Uris                   []*string `json:"uris" protobuf:"bytes,3,opt,name=uris"`
+	UpstreamUrl            string    `json:"upstreamUrl" protobuf:"bytes,4,opt,name=upstreamUrl"`
+	StripUri               bool      `json:"stripUri" protobuf:"bytes,5,opt,name=stripUri"`
+	PreserveHost           bool      `json:"preserveHost" protobuf:"bytes,6,opt,name=preserveHost"`
+	Retries                int       `json:"retries"  protobuf:"bytes,7,opt,name=retries"`
+	UpstreamConnectTimeout int       `json:"upstreamConnectTimeout" protobuf:"bytes,8,opt,name=upstreamConnectTimeout"`
+	UpstreamSendTimeout    int       `json:"upstreamSendTimeout" protobuf:"bytes,9,opt,name=upstreamSendTimeout"`
+	UpstreamReadTimeout    int       `json:"upstreamReadTimeout" protobuf:"bytes,10,opt,name=upstreamReadTimeout"`
+	HttpsOnly              bool      `json:"httpsOnly" protobuf:"bytes,11,opt,name=upstreamReadTimeout"`
+	HttpIfTerminated       bool      `json:"httpIfTerminated" protobuf:"bytes,12,opt,name=httpIfTerminated"`
+	KongAdminUrl           string    `json:"kongAdminUrl" protobuf:"bytes,13,opt,name=kongAdminUrl"`
+	EventType              []string  `json:"eventType"  protobuf:"bytes,14,opt,name=eventType"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
