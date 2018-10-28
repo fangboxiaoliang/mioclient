@@ -1,11 +1,11 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: buildConfigs.mio.io
+  name: serviceconfigs.mio.io
 spec:
   group: mio.io
   version: v1alpha1
   names:
-    kind: BuildConfig
-    plural: buildConfigs
+    kind: ServiceConfig
+    plural: serviceconfigs
   scope: Namespaced

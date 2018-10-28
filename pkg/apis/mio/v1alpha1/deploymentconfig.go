@@ -38,7 +38,7 @@ type DeploymentConfigSpec struct {
 }
 
 type DeploymentConfigStatus struct {
-	LastVersion string `json:"lastVersion,omitempty" protobuf:"bytes,1,opt,name=lastVersion"`
+	LastVersion int `json:"lastVersion,omitempty" protobuf:"bytes,1,opt,name=lastVersion"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
