@@ -28,6 +28,8 @@ type Interface interface {
 	Builds() BuildInformer
 	// BuildConfigs returns a BuildConfigInformer.
 	BuildConfigs() BuildConfigInformer
+	// Deployments returns a DeploymentInformer.
+	Deployments() DeploymentInformer
 	// DeploymentConfigs returns a DeploymentConfigInformer.
 	DeploymentConfigs() DeploymentConfigInformer
 	// GatewayConfigs returns a GatewayConfigInformer.
@@ -61,6 +63,11 @@ func (v *version) Builds() BuildInformer {
 // BuildConfigs returns a BuildConfigInformer.
 func (v *version) BuildConfigs() BuildConfigInformer {
 	return &buildConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Deployments returns a DeploymentInformer.
+func (v *version) Deployments() DeploymentInformer {
+	return &deploymentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // DeploymentConfigs returns a DeploymentConfigInformer.

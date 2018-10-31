@@ -29,6 +29,7 @@ type MioV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	BuildsGetter
 	BuildConfigsGetter
+	DeploymentsGetter
 	DeploymentConfigsGetter
 	GatewayConfigsGetter
 	PipelinesGetter
@@ -48,6 +49,10 @@ func (c *MioV1alpha1Client) Builds(namespace string) BuildInterface {
 
 func (c *MioV1alpha1Client) BuildConfigs(namespace string) BuildConfigInterface {
 	return newBuildConfigs(c, namespace)
+}
+
+func (c *MioV1alpha1Client) Deployments(namespace string) DeploymentInterface {
+	return newDeployments(c, namespace)
 }
 
 func (c *MioV1alpha1Client) DeploymentConfigs(namespace string) DeploymentConfigInterface {
