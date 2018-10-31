@@ -44,6 +44,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&GatewayConfigList{},
 		&ServiceConfigList{},
 		&ServiceConfig{},
+		&DeploymentList{},
+		&Deployment{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

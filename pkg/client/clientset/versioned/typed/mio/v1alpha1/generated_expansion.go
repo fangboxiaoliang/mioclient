@@ -22,6 +22,8 @@ type BuildExpansion interface{}
 
 type BuildConfigExpansion interface{}
 
+type DeploymentExpansion interface{}
+
 type DeploymentConfigExpansion interface{}
 
 type GatewayConfigExpansion interface{}

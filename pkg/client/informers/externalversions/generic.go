@@ -57,6 +57,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Mio().V1alpha1().Builds().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("buildconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Mio().V1alpha1().BuildConfigs().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("deployments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Mio().V1alpha1().Deployments().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("deploymentconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Mio().V1alpha1().DeploymentConfigs().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("gatewayconfigs"):
