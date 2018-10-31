@@ -240,7 +240,7 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:1a005fe008b0851c8bc1d50c1c853900243824a1de380ebdbb25f6152f50cba3"
+  digest = "1:c242b58aa9ade2ae2e2aa79c4ab291e47afc9c005c13ddd80f54b82b157ae29b"
   name = "github.com/hidevopsio/hiboot"
   packages = [
     "pkg/app",
@@ -266,16 +266,16 @@
     "pkg/utils/validator",
   ]
   pruneopts = "NUT"
-  revision = "ab58921ab6a920f53976ebd8df9db0fad0eb867e"
-  version = "v0.9.7"
+  revision = "67bc16b5a12d5d1db1503461c1c3512394714bc7"
+  version = "v0.9.9"
 
 [[projects]]
   branch = "master"
-  digest = "1:8203cbae196c24a69f35f21481e5a7003b5c14882bcd2684028de325bcad9a03"
+  digest = "1:a0ec512a7b5857631e75c9b65f908352a10daa9aa5aedb1b017cc0884999d0eb"
   name = "github.com/hidevopsio/hioak"
   packages = ["starter/kube"]
   pruneopts = "NUT"
-  revision = "2c74ca8c6c1f8f4ded8fbdb58fda7e254756cb32"
+  revision = "b59cdda069caa04c6f8dcf6d3230c8b0a0af3664"
 
 [[projects]]
   branch = "master"
@@ -366,7 +366,7 @@
   revision = "03be101463868edc5a81f094fc68a5f6c1b5503a"
 
 [[projects]]
-  digest = "1:2ce0f59209f1ae813b0d0cc466227dc85153c8276912bb32ebe6c6962828a147"
+  digest = "1:635641deb249b2582beac6270b3c56eacf5c9efa601ee726801267843f649463"
   name = "github.com/kataras/iris"
   packages = [
     ".",
@@ -399,8 +399,8 @@
     "view",
   ]
   pruneopts = "NUT"
-  revision = "217d9feadc0fc5b317826a901065e0c4c27d3cad"
-  version = "10.7.0"
+  revision = "44674201c83b18548b26bcf06e63e491b26dea39"
+  version = "10.7"
 
 [[projects]]
   branch = "master"
@@ -592,12 +592,12 @@
   version = "v1.1.2"
 
 [[projects]]
-  digest = "1:3fa7947ca83b98ae553590d993886e845a4bff19b7b007e869c6e0dd3b9da9cd"
+  digest = "1:c5e6b121ef3d2043505edaf4c80e5a008cec2513dc8804795eb0479d1555bcf7"
   name = "github.com/spf13/cast"
   packages = ["."]
   pruneopts = "NUT"
-  revision = "8965335b8c7107321228e3e3702cab9832751bac"
-  version = "v1.2.0"
+  revision = "8c9545af88b134710ab1cd196795e7f2388358d7"
+  version = "v1.3.0"
 
 [[projects]]
   digest = "1:f29f83301ed096daed24a90f4af591b7560cb14b9cc3e1827abbf04db7269ab5"
@@ -695,11 +695,11 @@
     "ssh/terminal",
   ]
   pruneopts = "NUT"
-  revision = "74cb1d3d52f4c01cbfb44c1b50d204462f3124c7"
+  revision = "4d3f4d9ffa16a13f451c3b2999e9c49e9750bf06"
 
 [[projects]]
   branch = "master"
-  digest = "1:2a3505a3162705e88c277c63368cf5e7579855e0b2182ace292e196918a4b143"
+  digest = "1:f5e9d323bec4b768ebcec0bd0077c8d34ef1efe0e186f6a74cd212db34f8c3f9"
   name = "golang.org/x/net"
   packages = [
     "context",
@@ -712,11 +712,11 @@
     "publicsuffix",
   ]
   pruneopts = "NUT"
-  revision = "9b4f9f5ad5197c79fd623a3638e70d8b26cef344"
+  revision = "c44066c5c816ec500d459a2a324a753f78531ae0"
 
 [[projects]]
   branch = "master"
-  digest = "1:6d9780d8e17785d6eb3685e252883e5b7db34a86870dc64b4999e46dbda9f91f"
+  digest = "1:15959f4c96b5248be1f8a191e7206528b512e3dfbe17c3741a252c7fd09d77b9"
   name = "golang.org/x/sys"
   packages = [
     "unix",
@@ -725,7 +725,7 @@
     "windows/svc/eventlog",
   ]
   pruneopts = "NUT"
-  revision = "d989b31c87461dc8ab2f1cac6792814e27fadea9"
+  revision = "7e31e0c00fa05cb5fbf4347b585621d6709e19a4"
 
 [[projects]]
   digest = "1:e7071ed636b5422cc51c0e3a6cebc229d6c9fffc528814b519a980641422d619"
@@ -760,7 +760,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3a04778e417b28bba5d30f0af919206b4869f57a1d5e152c4c2f29bf18889dce"
+  digest = "1:33153c3338a57d72bc48b527e91cf82d8aeecd92bb27daba82cf24f52305b73c"
   name = "golang.org/x/tools"
   packages = [
     "go/ast/astutil",
@@ -769,7 +769,7 @@
     "internal/gopathwalk",
   ]
   pruneopts = "NUT"
-  revision = "a2dc47679d30b6c496245bafc6a166b46c5fe318"
+  revision = "6c7e314b6563ee0a4dc169c7ee9960e0b709c035"
 
 [[projects]]
   digest = "1:22b2dee6f30bc8601f087449a2a819df8388e54e9547349c658f14d8f8c590f2"
@@ -1021,7 +1021,6 @@
     "github.com/hidevopsio/hiboot/pkg/app",
     "github.com/hidevopsio/hiboot/pkg/app/web",
     "github.com/hidevopsio/hiboot/pkg/log",
-    "github.com/hidevopsio/hiboot/pkg/system",
     "github.com/hidevopsio/hioak/starter/kube",
     "github.com/stretchr/testify/assert",
     "k8s.io/api/core/v1",

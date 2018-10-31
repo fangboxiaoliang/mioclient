@@ -60,11 +60,11 @@ type PipelineStatus struct {
 	Name           string           `json:"name" protobuf:"bytes,2,opt,name=name"`
 	Namespace      string           `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
 	Phase          string           `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
-	Stages         []PipelineStages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
+	Stages         []Stages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
 	StartTimestamp metav1.Time      `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
 }
 
-type PipelineStages struct {
+type Stages struct {
 	Name                 string `json:"name" protobuf:"bytes,1,opt,name=name"`
 	StartTime            int64  `json:"startTime" protobuf:"bytes,2,opt,name=startTime"`
 	DurationMilliseconds int64  `json:"durationMilliseconds" protobuf:"bytes,3,opt,name=durationMilliseconds"`

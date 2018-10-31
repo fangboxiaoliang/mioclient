@@ -24,12 +24,12 @@ type Deployment struct {
 }
 
 type DeploymentStatus struct {
-	Kind           string           `json:"kind" protobuf:"bytes,1,opt,name=kind"`
-	Name           string           `json:"name" protobuf:"bytes,2,opt,name=name"`
-	Namespace      string           `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
-	Phase          string           `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
-	Stages         []PipelineStages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
-	StartTimestamp metav1.Time      `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
+	Kind           string      `json:"kind" protobuf:"bytes,1,opt,name=kind"`
+	Name           string      `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Namespace      string      `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
+	Phase          string      `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
+	Stages         []Stages    `json:"stages" protobuf:"bytes,5,opt,name=stages"`
+	StartTimestamp metav1.Time `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

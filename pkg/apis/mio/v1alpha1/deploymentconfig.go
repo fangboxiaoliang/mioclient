@@ -38,6 +38,7 @@ type DeploymentConfigSpec struct {
 	Profile        string                 `json:"profile"  protobuf:"bytes,11,opt,name=profile"`
 	FromRegistry   string                 `json:"fromRegistry" protobuf:"bytes,12,opt,name=fromRegistry"`
 	Tag            string                 `json:"tag" protobuf:"bytes,13,opt,name=tag"`
+	Version        string                 `json:"version" protobuf:"bytes,14,opt,name=version"`
 }
 
 type DeploymentConfigStatus struct {

@@ -90,3 +90,12 @@ func (c *configuration) ServiceConfig(restConfig *kube.RestConfig) *ServiceConfi
 	}
 	return newServiceConfig(clientSet)
 }
+
+func (c *configuration) Deployment(restConfig *kube.RestConfig) *Deployment {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newDeployment(clientSet)
+}
