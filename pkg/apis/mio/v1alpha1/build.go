@@ -24,13 +24,13 @@ type Build struct {
 }
 
 type BuildStatus struct {
-	Kind           string        `json:"kind" protobuf:"bytes,1,opt,name=kind"`
-	Name           string        `json:"name" protobuf:"bytes,2,opt,name=name"`
-	Namespace      string        `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
-	Phase          string        `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
-	Stages         []BuildStages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
-	StartTimestamp int64         `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
-	EventType      []string      `json:"eventType" protobuf:"bytes,7,opt,name=eventType"`
+	Kind           string   `json:"kind" protobuf:"bytes,1,opt,name=kind"`
+	Name           string   `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Namespace      string   `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
+	Phase          string   `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
+	Stages         []Stages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
+	StartTimestamp int64    `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
+	EventType      []string `json:"eventType" protobuf:"bytes,7,opt,name=eventType"`
 }
 
 type BuildSpec struct {
@@ -78,12 +78,6 @@ type CompileCmd struct {
 	Script        string   `protobuf:"bytes,2,opt,name=Script,proto3" json:"Script,omitempty"`
 	CommandName   string   `protobuf:"bytes,3,opt,name=commandName,proto3" json:"commandName,omitempty"`
 	CommandParams []string `protobuf:"bytes,4,rep,name=commandParams,proto3" json:"commandParams,omitempty"`
-}
-
-type BuildStages struct {
-	Name                 string `json:"name" protobuf:"bytes,1,opt,name=name"`
-	StartTime            int64  `json:"startTime" protobuf:"bytes,2,opt,name=startTime"`
-	DurationMilliseconds int64  `json:"durationMilliseconds" protobuf:"bytes,3,opt,name=durationMilliseconds"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
