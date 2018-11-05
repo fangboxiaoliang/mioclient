@@ -82,6 +82,41 @@
   version = "v1.7.1"
 
 [[projects]]
+  digest = "1:740dc3cccfcdb302c323d17da5f4f2dfa65f7b8c666e0a9ac8bc64f560fb2974"
+  name = "github.com/docker/docker"
+  packages = [
+    "api/types",
+    "api/types/blkiodev",
+    "api/types/container",
+    "api/types/filters",
+    "api/types/mount",
+    "api/types/network",
+    "api/types/registry",
+    "api/types/strslice",
+    "api/types/swarm",
+    "api/types/versions",
+  ]
+  pruneopts = "NUT"
+  revision = "092cba3727bb9b4a2f0e922cd6c0f93ea270e363"
+  version = "v1.13.1"
+
+[[projects]]
+  digest = "1:ade935c55cd6d0367c843b109b09c9d748b1982952031414740750fdf94747eb"
+  name = "github.com/docker/go-connections"
+  packages = ["nat"]
+  pruneopts = "NUT"
+  revision = "7395e3f8aa162843a74ed6d48e79627d9792ac55"
+  version = "v0.4.0"
+
+[[projects]]
+  digest = "1:4340101f42556a9cb2f7a360a0e95a019bfef6247d92e6c4c46f2433cf86a482"
+  name = "github.com/docker/go-units"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "47565b4f722fb6ceae66b95f853feed578a4a51c"
+  version = "v0.3.3"
+
+[[projects]]
   branch = "master"
   digest = "1:cd9a379ee8a6ab8cda0c3a0be46d073119f919e0d3384eb7604677b9a6ba1983"
   name = "github.com/eknkc/amber"
@@ -1017,6 +1052,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/docker/docker/api/types",
     "github.com/golang/glog",
     "github.com/hidevopsio/hiboot/pkg/app",
     "github.com/hidevopsio/hiboot/pkg/app/web",

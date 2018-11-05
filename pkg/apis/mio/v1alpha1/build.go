@@ -2,6 +2,7 @@ package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"github.com/docker/docker/api/types"
 )
 
 // +genclient
@@ -46,6 +47,7 @@ type BuildSpec struct {
 	Events         []string         `json:"events" protobuf:"bytes,12,opt,name=events"`
 	NodeService    string           `json:"nodeService" protobuf:"bytes,13,opt,name=nodeService"`
 	DeployData     DeployData       `json:"deployData" protobuf:"bytes,14,opt,name=deployData"`
+	DockerAuthConfig types.AuthConfig  `json:"dockerAuthConfig" protobuf:"bytes,15,opt,name=dockerAuthConfig"`
 }
 
 type DeployData struct {
