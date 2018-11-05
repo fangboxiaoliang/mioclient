@@ -206,6 +206,7 @@ func (in *BuildSpec) DeepCopyInto(out *BuildSpec) {
 		copy(*out, *in)
 	}
 	in.DeployData.DeepCopyInto(&out.DeployData)
+	out.DockerAuthConfig = in.DockerAuthConfig
 	return
 }
 
