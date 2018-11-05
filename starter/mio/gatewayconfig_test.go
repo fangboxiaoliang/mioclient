@@ -1,7 +1,7 @@
 package mio
 
+
 import (
-	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
@@ -10,12 +10,12 @@ import (
 	"testing"
 )
 
-func TestPipelineConfigCurd(t *testing.T) {
+func TestGatewayConfigCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newPipelineConfig(clientSet)
-	config1 := &v1alpha1.PipelineConfig{
+	config := newGatewayConfig(clientSet)
+	config1 := &v1alpha1.GatewayConfig{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,
 			Namespace: namespace,
@@ -39,7 +39,7 @@ func TestPipelineConfigCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 	//assert.Equal(t, name, result.Name)
 
-	con := &v1alpha1.PipelineConfig{
+	con := &v1alpha1.GatewayConfig{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 		},
@@ -52,7 +52,8 @@ func TestPipelineConfigCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 
 	listOptions := metav1.ListOptions{}
-	i, err := config.Watch(listOptions, name, namespace)
-	log.Infof("i: %v", i)
+	_, err = config.Watch(listOptions, name, namespace)
 	assert.Equal(t, nil, err)
+
 }
+

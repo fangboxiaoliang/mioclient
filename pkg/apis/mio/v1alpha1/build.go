@@ -24,25 +24,57 @@ type Build struct {
 }
 
 type BuildStatus struct {
-	King           string        `json:"king" protobuf:"bytes,1,opt,name=kind"`
-	Name           string        `json:"name" protobuf:"bytes,2,opt,name=name"`
-	Namespace      string        `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
-	Phase          string        `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
-	Stages         []BuildStages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
-	StartTimestamp int64         `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
-	EventType      []string      `json:"eventType" protobuf:"bytes,7,opt,name=eventType"`
+	Kind           string   `json:"kind" protobuf:"bytes,1,opt,name=kind"`
+	Name           string   `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Namespace      string   `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
+	Phase          string   `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
+	Stages         []Stages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
+	StartTimestamp int64    `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
+	EventType      []string `json:"eventType" protobuf:"bytes,7,opt,name=eventType"`
+}
+
+type AuthConfig struct {
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Auth     string `json:"auth,omitempty"`
+
+	// Email is an optional value associated with the username.
+	// This field is deprecated and will be removed in a later
+	// version of docker.
+	Email string `json:"email,omitempty"`
+
+	ServerAddress string `json:"serveraddress,omitempty"`
+
+	// IdentityToken is used to authenticate the user and get
+	// an access token for the registry.
+	IdentityToken string `json:"identitytoken,omitempty"`
+
+	// RegistryToken is a bearer token to be sent to a registry
+	RegistryToken string `json:"registrytoken,omitempty"`
 }
 
 type BuildSpec struct {
-	CloneConfig    BuildCloneConfig `json:"cloneConfig" protobuf:"bytes,1,opt,name=cloneConfig"`
-	App            string           `json:"app" protobuf:"bytes,2,opt,name=app"`
-	CodeType       string           `json:"codeType" protobuf:"bytes,3,opt,name=codeType"` //
-	CompileCmd     []CompileCmd     `json:"compileCmd" protobuf:"bytes,4,opt,name=compileCmd"`
-	CloneType      string           `json:"cloneType" protobuf:"bytes,5,opt,name=cloneType"` //基础镜像包
-	BaseImage      string           `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
-	Tags           []string         `json:"tags" protobuf:"bytes,7,opt,name=tags"`
-	DockerFile     []string         `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
-	DockerRegistry string           `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
+	CloneConfig      BuildCloneConfig `json:"cloneConfig" protobuf:"bytes,1,opt,name=cloneConfig"`
+	App              string           `json:"app" protobuf:"bytes,2,opt,name=app"`
+	CodeType         string           `json:"codeType" protobuf:"bytes,3,opt,name=codeType"` //
+	CompileCmd       []CompileCmd     `json:"compileCmd" protobuf:"bytes,4,opt,name=compileCmd"`
+	CloneType        string           `json:"cloneType" protobuf:"bytes,5,opt,name=cloneType"` //基础镜像包
+	BaseImage        string           `json:"baseImage" protobuf:"bytes,6,opt,name=baseImage"`
+	Tags             []string         `json:"tags" protobuf:"bytes,7,opt,name=tags"`
+	DockerFile       []string         `json:"dockerFile" protobuf:"bytes,8,opt,name=dockerFile"`
+	DockerRegistry   string           `json:"dockerRegistry" protobuf:"bytes,9,opt,name=dockerRegistry"`
+	Events           []string         `json:"events" protobuf:"bytes,12,opt,name=events"`
+	NodeService      string           `json:"nodeService" protobuf:"bytes,13,opt,name=nodeService"`
+	DeployData       DeployData       `json:"deployData" protobuf:"bytes,14,opt,name=deployData"`
+	DockerAuthConfig AuthConfig       `json:"dockerAuthConfig" protobuf:"bytes,15,opt,name=dockerAuthConfig"`
+}
+
+type DeployData struct {
+	Replicas       int32
+	Labels         map[string]string
+	Ports          []int
+	Envs           map[string]string
+	HostPathVolume map[string]string
 }
 
 type BuildCloneConfig struct {
@@ -50,9 +82,11 @@ type BuildCloneConfig struct {
 	Url      string `json:"url"  protobuf:"bytes,1,opt,name=url"`
 	Branch   string `json:"branch"  protobuf:"bytes,2,opt,name=branch"`
 	DstDir   string `json:"dstDir"  protobuf:"bytes,3,opt,name=dstDir"`
-	Username string `json:"username"  protobuf:"bytes,4,opt,name=username"`
-	Password string `json:"password"  protobuf:"bytes,5,opt,name=password"`
+	Depth    int32  `json:"depth,omitempty" protobuf:"varint,4,opt,name=depth,proto3"`
+	Username string `json:"username"  protobuf:"bytes,5,opt,name=username"`
+	Password string `json:"password"  protobuf:"bytes,6,opt,name=password"`
 }
+
 type CompileType string
 
 const (
@@ -61,16 +95,10 @@ const (
 )
 
 type CompileCmd struct {
-	Type          CompileType `json:"type" protobuf:"bytes,1,opt,name=type"`
-	Script        string      `json:"Script" protobuf:"bytes,2,opt,name=script"`
-	CommandName   string      `json:"commandName" protobuf:"bytes,3,opt,name=commandName"`
-	CommandParams []string    `json:"params" protobuf:"bytes,4,opt,name=params"`
-}
-
-type BuildStages struct {
-	Name                 string `json:"name" protobuf:"bytes,1,opt,name=name"`
-	StartTime            int64  `json:"startTime" protobuf:"bytes,2,opt,name=startTime"`
-	DurationMilliseconds int64  `json:"durationMilliseconds" protobuf:"bytes,3,opt,name=durationMilliseconds"`
+	ExecType      string   `protobuf:"bytes,1,opt,name=execType,proto3" json:"execType,omitempty"`
+	Script        string   `protobuf:"bytes,2,opt,name=Script,proto3" json:"Script,omitempty"`
+	CommandName   string   `protobuf:"bytes,3,opt,name=commandName,proto3" json:"commandName,omitempty"`
+	CommandParams []string `protobuf:"bytes,4,rep,name=commandParams,proto3" json:"commandParams,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -4,22 +4,22 @@ import (
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
-	"k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-func TestBuildconfigCurd(t *testing.T) {
+func TestBuildConfigCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
 	config := newBuildConfig(clientSet)
 	config1 := &v1alpha1.BuildConfig{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
-			Namespace:namespace,
+			Name:      name,
+			Namespace: namespace,
 			Labels: map[string]string{
-				"app":name,
+				"app": name,
 			},
 		},
 	}
@@ -48,6 +48,10 @@ func TestBuildconfigCurd(t *testing.T) {
 	assert.Equal(t, name, result.Name)
 
 	err = config.Delete(name, namespace)
+	assert.Equal(t, nil, err)
+
+	listOptions := metav1.ListOptions{}
+	_, err = config.Watch(listOptions, name, namespace)
 	assert.Equal(t, nil, err)
 
 }

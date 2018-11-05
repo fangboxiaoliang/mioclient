@@ -72,7 +72,7 @@ required = [
   version = "kubernetes-1.10.4"
 
 [[constraint]]
-  version = "v0.9.4"
+  version = "v0.9.9"
   name = "github.com/hidevopsio/hiboot"
 
 [[constraint]]

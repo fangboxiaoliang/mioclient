@@ -29,8 +29,12 @@ type MioV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	BuildsGetter
 	BuildConfigsGetter
+	DeploymentsGetter
+	DeploymentConfigsGetter
+	GatewayConfigsGetter
 	PipelinesGetter
 	PipelineConfigsGetter
+	ServiceConfigsGetter
 	SourceConfigsGetter
 }
 
@@ -47,12 +51,28 @@ func (c *MioV1alpha1Client) BuildConfigs(namespace string) BuildConfigInterface 
 	return newBuildConfigs(c, namespace)
 }
 
+func (c *MioV1alpha1Client) Deployments(namespace string) DeploymentInterface {
+	return newDeployments(c, namespace)
+}
+
+func (c *MioV1alpha1Client) DeploymentConfigs(namespace string) DeploymentConfigInterface {
+	return newDeploymentConfigs(c, namespace)
+}
+
+func (c *MioV1alpha1Client) GatewayConfigs(namespace string) GatewayConfigInterface {
+	return newGatewayConfigs(c, namespace)
+}
+
 func (c *MioV1alpha1Client) Pipelines(namespace string) PipelineInterface {
 	return newPipelines(c, namespace)
 }
 
 func (c *MioV1alpha1Client) PipelineConfigs(namespace string) PipelineConfigInterface {
 	return newPipelineConfigs(c, namespace)
+}
+
+func (c *MioV1alpha1Client) ServiceConfigs(namespace string) ServiceConfigInterface {
+	return newServiceConfigs(c, namespace)
 }
 
 func (c *MioV1alpha1Client) SourceConfigs(namespace string) SourceConfigInterface {

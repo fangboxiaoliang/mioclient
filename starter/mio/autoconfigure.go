@@ -2,14 +2,13 @@ package mio
 
 import (
 	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hioak/starter/kube"
 	"github.com/hidevopsio/hiboot/pkg/log"
+	"github.com/hidevopsio/hioak/starter/kube"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
-	)
+)
 
 type configuration struct {
 	app.Configuration `depends:"kube"`
-
 }
 
 func init() {
@@ -17,8 +16,7 @@ func init() {
 }
 
 func newConfiguration() *configuration {
-	return &configuration{
-	}
+	return &configuration{}
 }
 
 func (c *configuration) BuildConfig(restConfig *kube.RestConfig) *BuildConfig {
@@ -64,4 +62,40 @@ func (c *configuration) SourceConfig(restConfig *kube.RestConfig) *SourceConfig 
 		return nil
 	}
 	return newSourceConfig(clientSet)
+}
+
+func (c *configuration) DeploymentConfig(restConfig *kube.RestConfig) *DeploymentConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newDeploymentConfig(clientSet)
+}
+
+func (c *configuration) GatewayConfig(restConfig *kube.RestConfig) *GatewayConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newGatewayConfig(clientSet)
+}
+
+func (c *configuration) ServiceConfig(restConfig *kube.RestConfig) *ServiceConfig {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newServiceConfig(clientSet)
+}
+
+func (c *configuration) Deployment(restConfig *kube.RestConfig) *Deployment {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newDeployment(clientSet)
 }

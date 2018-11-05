@@ -34,6 +34,30 @@ type BuildConfigListerExpansion interface{}
 // BuildConfigNamespaceLister.
 type BuildConfigNamespaceListerExpansion interface{}
 
+// DeploymentListerExpansion allows custom methods to be added to
+// DeploymentLister.
+type DeploymentListerExpansion interface{}
+
+// DeploymentNamespaceListerExpansion allows custom methods to be added to
+// DeploymentNamespaceLister.
+type DeploymentNamespaceListerExpansion interface{}
+
+// DeploymentConfigListerExpansion allows custom methods to be added to
+// DeploymentConfigLister.
+type DeploymentConfigListerExpansion interface{}
+
+// DeploymentConfigNamespaceListerExpansion allows custom methods to be added to
+// DeploymentConfigNamespaceLister.
+type DeploymentConfigNamespaceListerExpansion interface{}
+
+// GatewayConfigListerExpansion allows custom methods to be added to
+// GatewayConfigLister.
+type GatewayConfigListerExpansion interface{}
+
+// GatewayConfigNamespaceListerExpansion allows custom methods to be added to
+// GatewayConfigNamespaceLister.
+type GatewayConfigNamespaceListerExpansion interface{}
+
 // PipelineListerExpansion allows custom methods to be added to
 // PipelineLister.
 type PipelineListerExpansion interface{}
@@ -49,6 +73,14 @@ type PipelineConfigListerExpansion interface{}
 // PipelineConfigNamespaceListerExpansion allows custom methods to be added to
 // PipelineConfigNamespaceLister.
 type PipelineConfigNamespaceListerExpansion interface{}
+
+// ServiceConfigListerExpansion allows custom methods to be added to
+// ServiceConfigLister.
+type ServiceConfigListerExpansion interface{}
+
+// ServiceConfigNamespaceListerExpansion allows custom methods to be added to
+// ServiceConfigNamespaceLister.
+type ServiceConfigNamespaceListerExpansion interface{}
 
 // SourceConfigListerExpansion allows custom methods to be added to
 // SourceConfigLister.

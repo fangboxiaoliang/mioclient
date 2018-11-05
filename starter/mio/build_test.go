@@ -4,9 +4,9 @@ import (
 	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
 	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
-	"k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func TestBuildCurd(t *testing.T) {
@@ -16,10 +16,10 @@ func TestBuildCurd(t *testing.T) {
 	config := newBuild(clientSet)
 	config1 := &v1alpha1.Build{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
-			Namespace:namespace,
+			Name:      name,
+			Namespace: namespace,
 			Labels: map[string]string{
-				"app":name,
+				"app": name,
 			},
 		},
 	}
@@ -50,4 +50,7 @@ func TestBuildCurd(t *testing.T) {
 	err = config.Delete(name, namespace)
 	assert.Equal(t, nil, err)
 
+	listOptions := metav1.ListOptions{}
+	_, err = config.Watch(listOptions, name, namespace)
+	assert.Equal(t, nil, err)
 }

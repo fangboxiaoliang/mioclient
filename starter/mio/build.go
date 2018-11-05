@@ -29,7 +29,7 @@ func (b *Build) Create(build *v1alpha1.Build) (config *v1alpha1.Build, err error
 }
 
 func (b *Build) Get(name, namespace string) (config *v1alpha1.Build, err error) {
-	log.Info(fmt.Sprintf("build get app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("build get app %s in namespace %s:", name, namespace))
 	result, err := b.clientSet.Builds(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -38,13 +38,13 @@ func (b *Build) Get(name, namespace string) (config *v1alpha1.Build, err error) 
 }
 
 func (b *Build) Delete(name, namespace string) error {
-	log.Info(fmt.Sprintf("delete build app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("delete build app %s in namespace %s:", name, namespace))
 	err := b.clientSet.Builds(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (b *Build) Update(name, namespace string, config *v1alpha1.Build) (*v1alpha1.Build, error) {
-	log.Info(fmt.Sprintf("update build app %s in namespace %s:", name,namespace))
+	log.Info(fmt.Sprintf("update build app %s in namespace %s:", name, namespace))
 	result, err := b.clientSet.Builds(namespace).Update(config)
 	return result, err
 }
@@ -55,15 +55,15 @@ func (b *Build) List(namespace string, option v1.ListOptions) (*v1alpha1.BuildLi
 	return result, err
 }
 
-func (b *Build) Watch(listOptions v1.ListOptions,namespace,name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch build app %s in namespace %s:", name,namespace))
+func (b *Build) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch build app %s in namespace %s:", name, namespace))
 
-	listOptions.LabelSelector = fmt.Sprintf("app=%s",name)
+	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
 	listOptions.Watch = true
 
 	w, err := b.clientSet.Builds(namespace).Watch(listOptions)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return w,nil
+	return w, nil
 }
