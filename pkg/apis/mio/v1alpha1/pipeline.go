@@ -32,19 +32,18 @@ type Pipeline struct {
 }
 
 type PipelineSpec struct {
-	App               string            `json:"app"  protobuf:"bytes,1,opt,name=app"`
-	Profile           string            `json:"profile"  protobuf:"bytes,2,opt,name=profile"`
-	Project           string            `json:"project"  protobuf:"bytes,3,opt,name=project"`
-	Namespace         string            `json:"namespace"  protobuf:"bytes,5,opt,name=namespace"`
-	Version           string            `json:"version"  protobuf:"bytes,7,opt,name=version"`
-	Events            []Events          `json:"events" protobuf:"bytes,16,opt,name=events"`
+	App       string   `json:"app"  protobuf:"bytes,1,opt,name=app"`
+	Profile   string   `json:"profile"  protobuf:"bytes,2,opt,name=profile"`
+	Project   string   `json:"project"  protobuf:"bytes,3,opt,name=project"`
+	Namespace string   `json:"namespace"  protobuf:"bytes,5,opt,name=namespace"`
+	Version   string   `json:"version"  protobuf:"bytes,7,opt,name=version"`
+	Events    []Events `json:"events" protobuf:"bytes,16,opt,name=events"`
 }
 
 type Events struct {
-	Name       string   `json:"name" protobuf:"bytes,1,opt,name=name"`
-	EventTypes []string `json:"eventTypes" protobuf:"bytes,2,opt,name=eventTypes"`
+	Name       string `json:"name" protobuf:"bytes,1,opt,name=name"`
+	EventTypes string `json:"eventTypes" protobuf:"bytes,2,opt,name=eventTypes"`
 }
-
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
@@ -56,12 +55,12 @@ type PipelineList struct {
 }
 
 type PipelineStatus struct {
-	Kind           string           `json:"kind" protobuf:"bytes,1,opt,name=kind"`
-	Name           string           `json:"name" protobuf:"bytes,2,opt,name=name"`
-	Namespace      string           `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
-	Phase          string           `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
-	Stages         []Stages `json:"stages" protobuf:"bytes,5,opt,name=stages"`
-	StartTimestamp metav1.Time      `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
+	Kind           string      `json:"kind" protobuf:"bytes,1,opt,name=kind"`
+	Name           string      `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Namespace      string      `json:"namespace" protobuf:"bytes,3,opt,name=namespace"`
+	Phase          string      `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
+	Stages         []Stages    `json:"stages" protobuf:"bytes,5,opt,name=stages"`
+	StartTimestamp metav1.Time `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
 }
 
 type Stages struct {
