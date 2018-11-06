@@ -19,8 +19,8 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
-	scheme "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/scheme"
+	v1alpha1 "hidevops.io/mioclient/pkg/apis/mio/v1alpha1"
+	scheme "hidevops.io/mioclient/pkg/client/clientset/versioned/scheme"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"

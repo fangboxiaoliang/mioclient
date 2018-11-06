@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned"
-	miov1alpha1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
-	fakemiov1alpha1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1/fake"
+	clientset "hidevops.io/mioclient/pkg/client/clientset/versioned"
+	miov1alpha1 "hidevops.io/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
+	fakemiov1alpha1 "hidevops.io/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

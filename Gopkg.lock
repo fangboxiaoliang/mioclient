@@ -82,41 +82,6 @@
   version = "v1.7.1"
 
 [[projects]]
-  digest = "1:740dc3cccfcdb302c323d17da5f4f2dfa65f7b8c666e0a9ac8bc64f560fb2974"
-  name = "github.com/docker/docker"
-  packages = [
-    "api/types",
-    "api/types/blkiodev",
-    "api/types/container",
-    "api/types/filters",
-    "api/types/mount",
-    "api/types/network",
-    "api/types/registry",
-    "api/types/strslice",
-    "api/types/swarm",
-    "api/types/versions",
-  ]
-  pruneopts = "NUT"
-  revision = "092cba3727bb9b4a2f0e922cd6c0f93ea270e363"
-  version = "v1.13.1"
-
-[[projects]]
-  digest = "1:ade935c55cd6d0367c843b109b09c9d748b1982952031414740750fdf94747eb"
-  name = "github.com/docker/go-connections"
-  packages = ["nat"]
-  pruneopts = "NUT"
-  revision = "7395e3f8aa162843a74ed6d48e79627d9792ac55"
-  version = "v0.4.0"
-
-[[projects]]
-  digest = "1:4340101f42556a9cb2f7a360a0e95a019bfef6247d92e6c4c46f2433cf86a482"
-  name = "github.com/docker/go-units"
-  packages = ["."]
-  pruneopts = "NUT"
-  revision = "47565b4f722fb6ceae66b95f853feed578a4a51c"
-  version = "v0.3.3"
-
-[[projects]]
   branch = "master"
   digest = "1:cd9a379ee8a6ab8cda0c3a0be46d073119f919e0d3384eb7604677b9a6ba1983"
   name = "github.com/eknkc/amber"
@@ -273,44 +238,6 @@
   pruneopts = "NUT"
   revision = "8cb6e5b959231cc1119e43259c4a608f9c51a241"
   version = "v1.0.0"
-
-[[projects]]
-  digest = "1:c242b58aa9ade2ae2e2aa79c4ab291e47afc9c005c13ddd80f54b82b157ae29b"
-  name = "github.com/hidevopsio/hiboot"
-  packages = [
-    "pkg/app",
-    "pkg/app/web",
-    "pkg/at",
-    "pkg/factory",
-    "pkg/factory/autoconfigure",
-    "pkg/factory/depends",
-    "pkg/factory/instantiate",
-    "pkg/inject",
-    "pkg/log",
-    "pkg/model",
-    "pkg/system",
-    "pkg/system/types",
-    "pkg/utils/cmap",
-    "pkg/utils/copier",
-    "pkg/utils/gotest",
-    "pkg/utils/io",
-    "pkg/utils/mapstruct",
-    "pkg/utils/reflector",
-    "pkg/utils/replacer",
-    "pkg/utils/str",
-    "pkg/utils/validator",
-  ]
-  pruneopts = "NUT"
-  revision = "67bc16b5a12d5d1db1503461c1c3512394714bc7"
-  version = "v0.9.9"
-
-[[projects]]
-  branch = "master"
-  digest = "1:a0ec512a7b5857631e75c9b65f908352a10daa9aa5aedb1b017cc0884999d0eb"
-  name = "github.com/hidevopsio/hioak"
-  packages = ["starter/kube"]
-  pruneopts = "NUT"
-  revision = "b59cdda069caa04c6f8dcf6d3230c8b0a0af3664"
 
 [[projects]]
   branch = "master"
@@ -608,12 +535,12 @@
   revision = "86672fcb3f950f35f2e675df2240550f2a50762f"
 
 [[projects]]
-  digest = "1:ecf78eacf406c42f07f66d6b79fda24d2b92dc711bfd0760d0c931678f9621fe"
+  digest = "1:d848e2bdc690ea54c4b49894b67a05db318a97ee6561879b814c2c1f82f61406"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
   pruneopts = "NUT"
-  revision = "ad15b42461921f1fb3529b058c6786c6a45d5162"
-  version = "v1.1.1"
+  revision = "bcd833dfe83d3cebad139e4a29ed79cb2318bf95"
+  version = "v1.2.0"
 
 [[projects]]
   digest = "1:330e9062b308ac597e28485699c02223bd052437a6eed32a173c9227dcb9d95a"
@@ -734,7 +661,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f5e9d323bec4b768ebcec0bd0077c8d34ef1efe0e186f6a74cd212db34f8c3f9"
+  digest = "1:6e6f956f445770c3a4c8ebf26e565c4373a138c4093b8388c8e5bdfe3e9d422b"
   name = "golang.org/x/net"
   packages = [
     "context",
@@ -747,11 +674,11 @@
     "publicsuffix",
   ]
   pruneopts = "NUT"
-  revision = "c44066c5c816ec500d459a2a324a753f78531ae0"
+  revision = "c10e9556a7bc0e7c942242b606f0acf024ad5d6a"
 
 [[projects]]
   branch = "master"
-  digest = "1:15959f4c96b5248be1f8a191e7206528b512e3dfbe17c3741a252c7fd09d77b9"
+  digest = "1:c1a5dd6a21c6d65eca195a88fadbe7fec908ca5507422a9c08559f887fa69bb7"
   name = "golang.org/x/sys"
   packages = [
     "unix",
@@ -760,7 +687,7 @@
     "windows/svc/eventlog",
   ]
   pruneopts = "NUT"
-  revision = "7e31e0c00fa05cb5fbf4347b585621d6709e19a4"
+  revision = "9b800f95dbbc54abff0acf7ee32d88ba4e328c89"
 
 [[projects]]
   digest = "1:e7071ed636b5422cc51c0e3a6cebc229d6c9fffc528814b519a980641422d619"
@@ -804,7 +731,7 @@
     "internal/gopathwalk",
   ]
   pruneopts = "NUT"
-  revision = "6c7e314b6563ee0a4dc169c7ee9960e0b709c035"
+  revision = "78dc5bac0cacea7969e98b79c3b86597e0aa4e25"
 
 [[projects]]
   digest = "1:22b2dee6f30bc8601f087449a2a819df8388e54e9547349c658f14d8f8c590f2"
@@ -853,6 +780,44 @@
   packages = ["."]
   pruneopts = "NUT"
   revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
+
+[[projects]]
+  digest = "1:9bb38e93b2373733c0391d92046e521aa11080932bb400e10d3cb6d2266939b4"
+  name = "hidevops.io/hiboot"
+  packages = [
+    "pkg/app",
+    "pkg/app/web",
+    "pkg/at",
+    "pkg/factory",
+    "pkg/factory/autoconfigure",
+    "pkg/factory/depends",
+    "pkg/factory/instantiate",
+    "pkg/inject",
+    "pkg/log",
+    "pkg/model",
+    "pkg/system",
+    "pkg/system/types",
+    "pkg/utils/cmap",
+    "pkg/utils/copier",
+    "pkg/utils/gotest",
+    "pkg/utils/io",
+    "pkg/utils/mapstruct",
+    "pkg/utils/reflector",
+    "pkg/utils/replacer",
+    "pkg/utils/str",
+    "pkg/utils/validator",
+  ]
+  pruneopts = "NUT"
+  revision = "e4b6cdd5b00394e4d583cc81bc4eb8289b5a947a"
+  version = "v0.10.2"
+
+[[projects]]
+  branch = "master"
+  digest = "1:a10f5168af589aa76d8ea170e3787657a80e9a0157a55fc8902b1998fe3ac0f3"
+  name = "hidevops.io/hioak"
+  packages = ["starter/kube"]
+  pruneopts = "NUT"
+  revision = "019d7ec0e620af1dd3cbf86564e938700d41bc01"
 
 [[projects]]
   digest = "1:41ef5a61ad194cdfb47dbdac3697743ca11b1d99360e8b12b1a7a44751717588"
@@ -1052,13 +1017,12 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/docker/docker/api/types",
     "github.com/golang/glog",
-    "github.com/hidevopsio/hiboot/pkg/app",
-    "github.com/hidevopsio/hiboot/pkg/app/web",
-    "github.com/hidevopsio/hiboot/pkg/log",
-    "github.com/hidevopsio/hioak/starter/kube",
     "github.com/stretchr/testify/assert",
+    "hidevops.io/hiboot/pkg/app",
+    "hidevops.io/hiboot/pkg/app/web",
+    "hidevops.io/hiboot/pkg/log",
+    "hidevops.io/hioak/starter/kube",
     "k8s.io/api/core/v1",
     "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1",
     "k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset",

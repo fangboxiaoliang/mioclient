@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	samplecontrollerv1alpha1 "github.com/hidevopsio/mioclient/examples/samplecontroller/pkg/apis/samplecontroller/v1alpha1"
-	versioned "github.com/hidevopsio/mioclient/examples/samplecontroller/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/hidevopsio/mioclient/examples/samplecontroller/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/hidevopsio/mioclient/examples/samplecontroller/pkg/client/listers/samplecontroller/v1alpha1"
+	samplecontrollerv1alpha1 "hidevops.io/mioclient/examples/samplecontroller/pkg/apis/samplecontroller/v1alpha1"
+	versioned "hidevops.io/mioclient/examples/samplecontroller/pkg/client/clientset/versioned"
+	internalinterfaces "hidevops.io/mioclient/examples/samplecontroller/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "hidevops.io/mioclient/examples/samplecontroller/pkg/client/listers/samplecontroller/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

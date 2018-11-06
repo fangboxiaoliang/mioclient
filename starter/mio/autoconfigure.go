@@ -1,10 +1,10 @@
 package mio
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hioak/starter/kube"
-	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/log"
+	"hidevops.io/hioak/starter/kube"
+	"hidevops.io/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 )
 
 type configuration struct {

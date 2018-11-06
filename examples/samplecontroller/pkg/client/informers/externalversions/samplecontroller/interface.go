@@ -19,8 +19,8 @@ limitations under the License.
 package samplecontroller
 
 import (
-	internalinterfaces "github.com/hidevopsio/mioclient/examples/samplecontroller/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/hidevopsio/mioclient/examples/samplecontroller/pkg/client/informers/externalversions/samplecontroller/v1alpha1"
+	internalinterfaces "hidevops.io/mioclient/examples/samplecontroller/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "hidevops.io/mioclient/examples/samplecontroller/pkg/client/informers/externalversions/samplecontroller/v1alpha1"
 )
 
 // Interface provides access to each of this group's versions.

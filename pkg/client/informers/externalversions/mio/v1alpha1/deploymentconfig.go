@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	miov1alpha1 "github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
-	versioned "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/hidevopsio/mioclient/pkg/client/listers/mio/v1alpha1"
+	miov1alpha1 "hidevops.io/mioclient/pkg/apis/mio/v1alpha1"
+	versioned "hidevops.io/mioclient/pkg/client/clientset/versioned"
+	internalinterfaces "hidevops.io/mioclient/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "hidevops.io/mioclient/pkg/client/listers/mio/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
