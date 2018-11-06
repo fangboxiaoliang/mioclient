@@ -36,6 +36,8 @@ type MioV1alpha1Interface interface {
 	PipelineConfigsGetter
 	ServiceConfigsGetter
 	SourceConfigsGetter
+	TestConfigsGetter
+	TestsesGetter
 }
 
 // MioV1alpha1Client is used to interact with features provided by the mio.io group.
@@ -77,6 +79,14 @@ func (c *MioV1alpha1Client) ServiceConfigs(namespace string) ServiceConfigInterf
 
 func (c *MioV1alpha1Client) SourceConfigs(namespace string) SourceConfigInterface {
 	return newSourceConfigs(c, namespace)
+}
+
+func (c *MioV1alpha1Client) TestConfigs(namespace string) TestConfigInterface {
+	return newTestConfigs(c, namespace)
+}
+
+func (c *MioV1alpha1Client) Testses(namespace string) TestsInterface {
+	return newTestses(c, namespace)
 }
 
 // NewForConfig creates a new MioV1alpha1Client for the given config.

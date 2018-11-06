@@ -64,6 +64,14 @@ func (c *FakeMioV1alpha1) SourceConfigs(namespace string) v1alpha1.SourceConfigI
 	return &FakeSourceConfigs{c, namespace}
 }
 
+func (c *FakeMioV1alpha1) TestConfigs(namespace string) v1alpha1.TestConfigInterface {
+	return &FakeTestConfigs{c, namespace}
+}
+
+func (c *FakeMioV1alpha1) Testses(namespace string) v1alpha1.TestsInterface {
+	return &FakeTestses{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeMioV1alpha1) RESTClient() rest.Interface {

@@ -35,3 +35,7 @@ type PipelineConfigExpansion interface{}
 type ServiceConfigExpansion interface{}
 
 type SourceConfigExpansion interface{}
+
+type TestConfigExpansion interface{}
+
+type TestsExpansion interface{}

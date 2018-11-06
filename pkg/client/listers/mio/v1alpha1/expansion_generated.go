@@ -89,3 +89,19 @@ type SourceConfigListerExpansion interface{}
 // SourceConfigNamespaceListerExpansion allows custom methods to be added to
 // SourceConfigNamespaceLister.
 type SourceConfigNamespaceListerExpansion interface{}
+
+// TestConfigListerExpansion allows custom methods to be added to
+// TestConfigLister.
+type TestConfigListerExpansion interface{}
+
+// TestConfigNamespaceListerExpansion allows custom methods to be added to
+// TestConfigNamespaceLister.
+type TestConfigNamespaceListerExpansion interface{}
+
+// TestsListerExpansion allows custom methods to be added to
+// TestsLister.
+type TestsListerExpansion interface{}
+
+// TestsNamespaceListerExpansion allows custom methods to be added to
+// TestsNamespaceLister.
+type TestsNamespaceListerExpansion interface{}

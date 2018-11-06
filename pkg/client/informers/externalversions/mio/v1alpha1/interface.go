@@ -42,6 +42,10 @@ type Interface interface {
 	ServiceConfigs() ServiceConfigInformer
 	// SourceConfigs returns a SourceConfigInformer.
 	SourceConfigs() SourceConfigInformer
+	// TestConfigs returns a TestConfigInformer.
+	TestConfigs() TestConfigInformer
+	// Testses returns a TestsInformer.
+	Testses() TestsInformer
 }
 
 type version struct {
@@ -98,4 +102,14 @@ func (v *version) ServiceConfigs() ServiceConfigInformer {
 // SourceConfigs returns a SourceConfigInformer.
 func (v *version) SourceConfigs() SourceConfigInformer {
 	return &sourceConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// TestConfigs returns a TestConfigInformer.
+func (v *version) TestConfigs() TestConfigInformer {
+	return &testConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Testses returns a TestsInformer.
+func (v *version) Testses() TestsInformer {
+	return &testsInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
