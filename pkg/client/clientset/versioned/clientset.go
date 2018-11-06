@@ -20,7 +20,7 @@ package versioned
 
 import (
 	glog "github.com/golang/glog"
-	miov1alpha1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
+	miov1alpha1 "hidevops.io/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

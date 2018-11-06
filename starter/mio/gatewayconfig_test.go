@@ -2,8 +2,8 @@ package mio
 
 
 import (
-	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
-	"github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/fake"
+	"hidevops.io/mioclient/pkg/apis/mio/v1alpha1"
+	"hidevops.io/mioclient/pkg/client/clientset/versioned/fake"
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

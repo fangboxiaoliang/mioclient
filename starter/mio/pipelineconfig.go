@@ -2,9 +2,9 @@ package mio
 
 import (
 	"fmt"
-	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/mioclient/pkg/apis/mio/v1alpha1"
-	miov1 "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
+	"hidevops.io/hiboot/pkg/log"
+	"hidevops.io/mioclient/pkg/apis/mio/v1alpha1"
+	miov1 "hidevops.io/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/watch"
 )

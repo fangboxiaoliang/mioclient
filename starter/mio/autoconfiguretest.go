@@ -3,8 +3,8 @@
 package mio
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app/web"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

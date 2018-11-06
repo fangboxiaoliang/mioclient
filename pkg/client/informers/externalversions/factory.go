@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/hidevopsio/mioclient/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/internalinterfaces"
-	mio "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/mio"
+	versioned "hidevops.io/mioclient/pkg/client/clientset/versioned"
+	internalinterfaces "hidevops.io/mioclient/pkg/client/informers/externalversions/internalinterfaces"
+	mio "hidevops.io/mioclient/pkg/client/informers/externalversions/mio"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

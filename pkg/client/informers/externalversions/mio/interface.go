@@ -19,8 +19,8 @@ limitations under the License.
 package mio
 
 import (
-	internalinterfaces "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/hidevopsio/mioclient/pkg/client/informers/externalversions/mio/v1alpha1"
+	internalinterfaces "hidevops.io/mioclient/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "hidevops.io/mioclient/pkg/client/informers/externalversions/mio/v1alpha1"
 )
 
 // Interface provides access to each of this group's versions.
