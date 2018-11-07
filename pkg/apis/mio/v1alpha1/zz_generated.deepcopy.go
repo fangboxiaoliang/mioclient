@@ -463,6 +463,7 @@ func (in *DeploymentConfigSpec) DeepCopyInto(out *DeploymentConfigSpec) {
 		*out = new(int32)
 		**out = **in
 	}
+	out.DockerAuthConfig = in.DockerAuthConfig
 	return
 }
 
@@ -534,7 +535,6 @@ func (in *DeploymentStatus) DeepCopyInto(out *DeploymentStatus) {
 		copy(*out, *in)
 	}
 	in.StartTimestamp.DeepCopyInto(&out.StartTimestamp)
-	out.DockerAuthConfig = in.DockerAuthConfig
 	return
 }
 

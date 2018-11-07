@@ -30,7 +30,6 @@ type DeploymentStatus struct {
 	Phase            string      `json:"phase"  protobuf:"bytes,4,opt,name=phase"`
 	Stages           []Stages    `json:"stages" protobuf:"bytes,5,opt,name=stages"`
 	StartTimestamp   metav1.Time `json:"startTimestamp" protobuf:"bytes,6,opt,name=startTimestamp"`
-	DockerAuthConfig AuthConfig  `json:"dockerAuthConfig" protobuf:"bytes,7,opt,name=dockerAuthConfig"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
