@@ -104,7 +104,7 @@ const (
 
 type CompileCmd struct {
 	ExecType      string   `protobuf:"bytes,1,opt,name=execType,proto3" json:"execType,omitempty"`
-	Script        string   `protobuf:"bytes,2,opt,name=Script,proto3" json:"Script,omitempty"`
+	Script        string   `protobuf:"bytes,2,opt,name=script,proto3" json:"script,omitempty"`
 	CommandName   string   `protobuf:"bytes,3,opt,name=commandName,proto3" json:"commandName,omitempty"`
 	CommandParams []string `protobuf:"bytes,4,rep,name=commandParams,proto3" json:"commandParams,omitempty"`
 }
