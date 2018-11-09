@@ -43,14 +43,14 @@ type AuthConfig struct {
 	// version of docker.
 	Email string `json:"email,omitempty"`
 
-	ServerAddress string `json:"serveraddress,omitempty"`
+	ServerAddress string `json:"serverAddress,omitempty"`
 
 	// IdentityToken is used to authenticate the user and get
 	// an access token for the registry.
-	IdentityToken string `json:"identitytoken,omitempty"`
+	IdentityToken string `json:"identityToken,omitempty"`
 
 	// RegistryToken is a bearer token to be sent to a registry
-	RegistryToken string `json:"registrytoken,omitempty"`
+	RegistryToken string `json:"registryToken,omitempty"`
 }
 
 type BuildSpec struct {
@@ -70,11 +70,11 @@ type BuildSpec struct {
 }
 
 type DeployData struct {
-	Replicas       int32
-	Labels         map[string]string
-	Ports          []int
-	Envs           map[string]string
-	HostPathVolume map[string]string
+	Replicas       int32             `json:"replicas"  protobuf:"bytes,1,opt,name=replicas"`
+	Labels         map[string]string `json:"labels"  protobuf:"bytes,1,opt,name=labels"`
+	Ports          []int             `json:"ports"  protobuf:"bytes,1,opt,name=ports"`
+	Envs           map[string]string `json:"envs"  protobuf:"bytes,1,opt,name=envs"`
+	HostPathVolume map[string]string `json:"hostPathVolume"  protobuf:"bytes,1,opt,name=hostPathVolume"`
 }
 
 type BuildCloneConfig struct {
@@ -107,6 +107,5 @@ type CompileCmd struct {
 type BuildList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
-
-	Items []Build `json:"items"`
+	Items           []Build `json:"items"`
 }
