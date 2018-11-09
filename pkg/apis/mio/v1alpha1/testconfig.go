@@ -24,17 +24,9 @@ type TestConfig struct {
 }
 
 
-type TestCmd struct {
-	ExecType      string   `protobuf:"bytes,1,opt,name=execType,proto3" json:"execType,omitempty"`
-	Script        string   `protobuf:"bytes,2,opt,name=Script,proto3" json:"Script,omitempty"`
-	CommandName   string   `protobuf:"bytes,3,opt,name=commandName,proto3" json:"commandName,omitempty"`
-	CommandParams []string `protobuf:"bytes,4,rep,name=commandParams,proto3" json:"commandParams,omitempty"`
-}
-
-
 type TestConfigSpec struct {
 	CodeType string		  `json:"codeType" protobuf:"bytes,1,opt,name=codeType"`
-	TestCmd  TestCmd      `json:"testCmd" protobuf:"bytes,2,opt,name=testCmd"`
+	TestCmd  ExecCommand      `json:"testCmd" protobuf:"bytes,2,opt,name=testCmd"`
 }
 
 type TestConfigStatus struct {
