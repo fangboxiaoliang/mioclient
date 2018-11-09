@@ -71,7 +71,10 @@ type BuildSpec struct {
 	NodeService      string                   `json:"nodeService" protobuf:"bytes,13,opt,name=nodeService"`
 	DeployData       DeployData               `json:"deployData" protobuf:"bytes,14,opt,name=deployData"`
 	DockerAuthConfig AuthConfig               `json:"dockerAuthConfig" protobuf:"bytes,15,opt,name=dockerAuthConfig"`
-	CommandGroup     map[string][]ExecCommand `json:"commandGroup" protobuf:"bytes,15,opt,name=commandGroup"`
+	CommandGroup     map[string]CmdList		  `json:"commandGroup" protobuf:"bytes,15,opt,name=commandGroup"`
+}
+type CmdList struct {
+	CmdList []ExecCommand `json:"cmdList" protobuf:"bytes,15,opt,name=cmdList"`
 }
 
 type DeployData struct {
