@@ -50,6 +50,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&TestsList{},
 		&TestConfig{},
 		&TestConfigList{},
+		&Notify{},
+		&NotifyList{},
 	)
 
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)

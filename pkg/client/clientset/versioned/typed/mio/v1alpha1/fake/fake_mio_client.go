@@ -48,6 +48,10 @@ func (c *FakeMioV1alpha1) GatewayConfigs(namespace string) v1alpha1.GatewayConfi
 	return &FakeGatewayConfigs{c, namespace}
 }
 
+func (c *FakeMioV1alpha1) Notifies(namespace string) v1alpha1.NotifyInterface {
+	return &FakeNotifies{c, namespace}
+}
+
 func (c *FakeMioV1alpha1) Pipelines(namespace string) v1alpha1.PipelineInterface {
 	return &FakePipelines{c, namespace}
 }
