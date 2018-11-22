@@ -782,11 +782,12 @@
   revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
 
 [[projects]]
-  digest = "1:9bb38e93b2373733c0391d92046e521aa11080932bb400e10d3cb6d2266939b4"
+  digest = "1:014f6baefd84c9f5bd13e713a06e01034495761d33b3acc7ed7c69312e33c957"
   name = "hidevops.io/hiboot"
   packages = [
     "pkg/app",
     "pkg/app/web",
+    "pkg/app/web/context",
     "pkg/at",
     "pkg/factory",
     "pkg/factory/autoconfigure",
@@ -799,7 +800,6 @@
     "pkg/system/types",
     "pkg/utils/cmap",
     "pkg/utils/copier",
-    "pkg/utils/gotest",
     "pkg/utils/io",
     "pkg/utils/mapstruct",
     "pkg/utils/reflector",
@@ -808,16 +808,16 @@
     "pkg/utils/validator",
   ]
   pruneopts = "NUT"
-  revision = "e4b6cdd5b00394e4d583cc81bc4eb8289b5a947a"
-  version = "v0.10.2"
+  revision = "a615cd2622f01d861cbaa0ba7bed7f15073ea771"
+  version = "v0.11.0"
 
 [[projects]]
-  branch = "master"
-  digest = "1:a10f5168af589aa76d8ea170e3787657a80e9a0157a55fc8902b1998fe3ac0f3"
+  digest = "1:90ef56dbb006625795ea53bb6a3628d81328f7acdfa53e1c694df9ddcb1443f5"
   name = "hidevops.io/hioak"
   packages = ["starter/kube"]
   pruneopts = "NUT"
-  revision = "019d7ec0e620af1dd3cbf86564e938700d41bc01"
+  revision = "b43d512c839122ed4a892a26aab233cacaa5d3d5"
+  version = "v0.4.0"
 
 [[projects]]
   digest = "1:41ef5a61ad194cdfb47dbdac3697743ca11b1d99360e8b12b1a7a44751717588"
@@ -1021,6 +1021,7 @@
     "github.com/stretchr/testify/assert",
     "hidevops.io/hiboot/pkg/app",
     "hidevops.io/hiboot/pkg/app/web",
+    "hidevops.io/hiboot/pkg/at",
     "hidevops.io/hiboot/pkg/log",
     "hidevops.io/hioak/starter/kube",
     "k8s.io/api/core/v1",
