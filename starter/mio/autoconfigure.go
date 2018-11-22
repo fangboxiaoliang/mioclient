@@ -2,17 +2,18 @@ package mio
 
 import (
 	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/at"
 	"hidevops.io/hiboot/pkg/log"
 	"hidevops.io/hioak/starter/kube"
 	"hidevops.io/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 )
 
 type configuration struct {
-	app.Configuration `depends:"kube"`
+	at.AutoConfiguration
 }
 
 func init() {
-	app.AutoConfiguration(newConfiguration)
+	app.Register(newConfiguration)
 }
 
 func newConfiguration() *configuration {
