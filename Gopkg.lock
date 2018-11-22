@@ -812,12 +812,12 @@
   version = "v0.11.0"
 
 [[projects]]
+  branch = "master"
   digest = "1:90ef56dbb006625795ea53bb6a3628d81328f7acdfa53e1c694df9ddcb1443f5"
   name = "hidevops.io/hioak"
   packages = ["starter/kube"]
   pruneopts = "NUT"
   revision = "b43d512c839122ed4a892a26aab233cacaa5d3d5"
-  version = "v0.4.0"
 
 [[projects]]
   digest = "1:41ef5a61ad194cdfb47dbdac3697743ca11b1d99360e8b12b1a7a44751717588"
@@ -1021,7 +1021,6 @@
     "github.com/stretchr/testify/assert",
     "hidevops.io/hiboot/pkg/app",
     "hidevops.io/hiboot/pkg/app/web",
-    "hidevops.io/hiboot/pkg/at",
     "hidevops.io/hiboot/pkg/log",
     "hidevops.io/hioak/starter/kube",
     "k8s.io/api/core/v1",

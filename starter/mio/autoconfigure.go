@@ -2,18 +2,17 @@ package mio
 
 import (
 	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/at"
 	"hidevops.io/hiboot/pkg/log"
 	"hidevops.io/hioak/starter/kube"
 	"hidevops.io/mioclient/pkg/client/clientset/versioned/typed/mio/v1alpha1"
 )
 
 type configuration struct {
-	at.AutoConfiguration
+	app.Configuration `depends:"kube"`
 }
 
 func init() {
-	app.Register(newConfiguration)
+	app.AutoConfiguration(newConfiguration)
 }
 
 func newConfiguration() *configuration {
@@ -118,4 +117,13 @@ func (c *configuration) TestConfig(restConfig *kube.RestConfig) *testConfig {
 		return nil
 	}
 	return newTestConfig(clientSet)
+}
+
+func (c *configuration) Notify(restConfig *kube.RestConfig) *Notify {
+	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
+	if err != nil {
+		log.Errorf("v1alpha1.NewForConfig %v", err)
+		return nil
+	}
+	return newNotify(clientSet)
 }

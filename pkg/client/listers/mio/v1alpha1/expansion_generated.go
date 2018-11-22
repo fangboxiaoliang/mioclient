@@ -58,6 +58,14 @@ type GatewayConfigListerExpansion interface{}
 // GatewayConfigNamespaceLister.
 type GatewayConfigNamespaceListerExpansion interface{}
 
+// NotifyListerExpansion allows custom methods to be added to
+// NotifyLister.
+type NotifyListerExpansion interface{}
+
+// NotifyNamespaceListerExpansion allows custom methods to be added to
+// NotifyNamespaceLister.
+type NotifyNamespaceListerExpansion interface{}
+
 // PipelineListerExpansion allows custom methods to be added to
 // PipelineLister.
 type PipelineListerExpansion interface{}

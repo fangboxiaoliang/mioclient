@@ -32,6 +32,7 @@ type MioV1alpha1Interface interface {
 	DeploymentsGetter
 	DeploymentConfigsGetter
 	GatewayConfigsGetter
+	NotifiesGetter
 	PipelinesGetter
 	PipelineConfigsGetter
 	ServiceConfigsGetter
@@ -63,6 +64,10 @@ func (c *MioV1alpha1Client) DeploymentConfigs(namespace string) DeploymentConfig
 
 func (c *MioV1alpha1Client) GatewayConfigs(namespace string) GatewayConfigInterface {
 	return newGatewayConfigs(c, namespace)
+}
+
+func (c *MioV1alpha1Client) Notifies(namespace string) NotifyInterface {
+	return newNotifies(c, namespace)
 }
 
 func (c *MioV1alpha1Client) Pipelines(namespace string) PipelineInterface {
