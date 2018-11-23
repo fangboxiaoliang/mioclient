@@ -109,7 +109,6 @@ func (c *configuration) Tests(restConfig *kube.RestConfig) *Tests {
 	return newTestses(clientSet)
 }
 
-
 func (c *configuration) TestConfig(restConfig *kube.RestConfig) *testConfig {
 	clientSet, err := v1alpha1.NewForConfig(restConfig.Config)
 	if err != nil {

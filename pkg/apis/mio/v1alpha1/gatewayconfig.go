@@ -39,6 +39,7 @@ type GatewaySpec struct {
 	KongAdminUrl           string   `json:"kongAdminUrl" protobuf:"bytes,13,opt,name=kongAdminUrl"`
 	EventType              []string `json:"eventType"  protobuf:"bytes,14,opt,name=eventType"`
 }
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // SourceConfigList is a list of SourceConfig resources

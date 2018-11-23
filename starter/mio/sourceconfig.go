@@ -29,7 +29,7 @@ func (b *SourceConfig) Create(build *v1alpha1.SourceConfig) (config *v1alpha1.So
 }
 
 func (b *SourceConfig) Get(name, namespace string) (config *v1alpha1.SourceConfig, err error) {
-	log.Info(fmt.Sprintf("get source config app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("get source config app %s in namespace %s", name, namespace))
 	result, err := b.clientSet.SourceConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -38,26 +38,25 @@ func (b *SourceConfig) Get(name, namespace string) (config *v1alpha1.SourceConfi
 }
 
 func (b *SourceConfig) Delete(name, namespace string) error {
-	log.Info(fmt.Sprintf("delete source config app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("delete source config app %s in namespace %s", name, namespace))
 	err := b.clientSet.SourceConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (b *SourceConfig) Update(name, namespace string, config *v1alpha1.SourceConfig) (*v1alpha1.SourceConfig, error) {
-	log.Info(fmt.Sprintf("update source config app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("update source config app %s in namespace %s", name, namespace))
 	result, err := b.clientSet.SourceConfigs(namespace).Update(config)
 	return result, err
 }
 
 func (b *SourceConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.SourceConfigList, error) {
-	log.Info(fmt.Sprintf("list source config in namespace %s:", namespace))
+	log.Info(fmt.Sprintf("list source config in namespace %s", namespace))
 	result, err := b.clientSet.SourceConfigs(namespace).List(option)
 	return result, err
 }
 
-func (b *SourceConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch source config app %s in namespace %s:", name, namespace))
-	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
+func (b *SourceConfig) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s SourceConfig，in the namespace %s", listOptions.LabelSelector, namespace))
 	listOptions.Watch = true
 
 	w, err := b.clientSet.SourceConfigs(namespace).Watch(listOptions)

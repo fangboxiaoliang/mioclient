@@ -29,7 +29,7 @@ func (b *PipelineConfig) Create(pipeline *v1alpha1.PipelineConfig) (config *v1al
 }
 
 func (b *PipelineConfig) Get(name, namespace string) (config *v1alpha1.PipelineConfig, err error) {
-	log.Info("get pipelineConfig :", name)
+	log.Info("get pipelineConfig ", name)
 	result, err := b.clientSet.PipelineConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -38,27 +38,26 @@ func (b *PipelineConfig) Get(name, namespace string) (config *v1alpha1.PipelineC
 }
 
 func (b *PipelineConfig) Delete(name, namespace string) error {
-	log.Info("delete pipelineConfig :", name)
+	log.Info("delete pipelineConfig ", name)
 	err := b.clientSet.PipelineConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (b *PipelineConfig) Update(name, namespace string, config *v1alpha1.PipelineConfig) (*v1alpha1.PipelineConfig, error) {
-	log.Info("update pipelineConfig :", name)
+	log.Info("update pipelineConfig ", name)
 	result, err := b.clientSet.PipelineConfigs(namespace).Update(config)
 	return result, err
 }
 
 func (b *PipelineConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.PipelineConfigList, error) {
-	log.Info(fmt.Sprintf("list pipelineConfig in namespace %s:", namespace))
+	log.Info(fmt.Sprintf("list pipelineConfig in namespace %s", namespace))
 	result, err := b.clientSet.PipelineConfigs(namespace).List(option)
 	return result, err
 }
 
-func (b *PipelineConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch pipelineConfig app %s in namespace %s:", name, namespace))
+func (b *PipelineConfig) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s PipelineConfig，in the namespace %s", listOptions.LabelSelector, namespace))
 
-	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
 	listOptions.Watch = true
 
 	w, err := b.clientSet.PipelineConfigs(namespace).Watch(listOptions)

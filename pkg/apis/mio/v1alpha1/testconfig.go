@@ -23,10 +23,9 @@ type TestConfig struct {
 	Status TestConfigStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
 }
 
-
 type TestConfigSpec struct {
-	CodeType string		  `json:"codeType" protobuf:"bytes,1,opt,name=codeType"`
-	TestCmd  ExecCommand      `json:"testCmd" protobuf:"bytes,2,opt,name=testCmd"`
+	CodeType string      `json:"codeType" protobuf:"bytes,1,opt,name=codeType"`
+	TestCmd  ExecCommand `json:"testCmd" protobuf:"bytes,2,opt,name=testCmd"`
 }
 
 type TestConfigStatus struct {

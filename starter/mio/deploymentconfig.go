@@ -29,7 +29,7 @@ func (d *DeploymentConfig) Create(deploymentConfig *v1alpha1.DeploymentConfig) (
 }
 
 func (d *DeploymentConfig) Get(name, namespace string) (config *v1alpha1.DeploymentConfig, err error) {
-	log.Info(fmt.Sprintf("get deployConfig app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("get deployConfig app %s in namespace %s", name, namespace))
 	result, err := d.clientSet.DeploymentConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -38,27 +38,26 @@ func (d *DeploymentConfig) Get(name, namespace string) (config *v1alpha1.Deploym
 }
 
 func (d *DeploymentConfig) Delete(name, namespace string) error {
-	log.Info(fmt.Sprintf("delete deployConfig app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("delete deployConfig app %s in namespace %s", name, namespace))
 	err := d.clientSet.DeploymentConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (d *DeploymentConfig) Update(name, namespace string, deploymentConfig *v1alpha1.DeploymentConfig) (*v1alpha1.DeploymentConfig, error) {
-	log.Info(fmt.Sprintf("update deployConfig app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("update deployConfig app %s in namespace %s", name, namespace))
 	result, err := d.clientSet.DeploymentConfigs(namespace).Update(deploymentConfig)
 	return result, err
 }
 
 func (d *DeploymentConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.DeploymentConfigList, error) {
-	log.Info(fmt.Sprintf("list deployConfig in namespace %s:", namespace))
+	log.Info(fmt.Sprintf("list deployConfig in namespace %s", namespace))
 	result, err := d.clientSet.DeploymentConfigs(namespace).List(option)
 	return result, err
 }
 
-func (d *DeploymentConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch deployConfig app %s in namespace %s:", name, namespace))
+func (d *DeploymentConfig) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s DeploymentConfig，in the namespace %s", listOptions.LabelSelector, namespace))
 
-	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
 	listOptions.Watch = true
 
 	w, err := d.clientSet.DeploymentConfigs(namespace).Watch(listOptions)

@@ -55,8 +55,8 @@ func (d *testConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.Te
 	return result, err
 }
 
-func (d *testConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch testConfig %s in namespace %s", name, namespace))
+func (d *testConfig) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s testconfig，in the namespace %s", listOptions.LabelSelector, namespace))
 	w, err := d.clientSet.TestConfigs(namespace).Watch(listOptions)
 	if err != nil {
 		return nil, err

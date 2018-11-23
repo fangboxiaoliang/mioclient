@@ -1,9 +1,9 @@
 package mio
 
 import (
+	"github.com/stretchr/testify/assert"
 	"hidevops.io/mioclient/pkg/apis/mio/v1alpha1"
 	"hidevops.io/mioclient/pkg/client/clientset/versioned/fake"
-	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
@@ -51,7 +51,7 @@ func TestBuildConfigCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 
 	listOptions := metav1.ListOptions{}
-	_, err = config.Watch(listOptions, name, namespace)
+	_, err = config.Watch(listOptions, namespace)
 	assert.Equal(t, nil, err)
 
 }

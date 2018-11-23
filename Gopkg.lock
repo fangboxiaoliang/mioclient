@@ -817,7 +817,7 @@
   name = "hidevops.io/hioak"
   packages = ["starter/kube"]
   pruneopts = "NUT"
-  revision = "b43d512c839122ed4a892a26aab233cacaa5d3d5"
+  revision = "ee22e8a648cf90650ccbb5e5f9af043454f86be2"
 
 [[projects]]
   digest = "1:41ef5a61ad194cdfb47dbdac3697743ca11b1d99360e8b12b1a7a44751717588"
