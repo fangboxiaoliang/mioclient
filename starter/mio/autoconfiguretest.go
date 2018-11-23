@@ -3,9 +3,9 @@
 package mio
 
 import (
+	"github.com/stretchr/testify/assert"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/app/web"
-	"github.com/stretchr/testify/assert"
 	"testing"
 )
 

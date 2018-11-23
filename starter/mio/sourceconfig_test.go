@@ -1,10 +1,10 @@
 package mio
 
 import (
+	"github.com/stretchr/testify/assert"
 	"hidevops.io/hiboot/pkg/log"
 	"hidevops.io/mioclient/pkg/apis/mio/v1alpha1"
 	"hidevops.io/mioclient/pkg/client/clientset/versioned/fake"
-	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"testing"
@@ -71,7 +71,7 @@ func TestSourceConfigCurd(t *testing.T) {
 	assert.Equal(t, nil, err)
 
 	listOptions := metav1.ListOptions{}
-	i, err := config.Watch(listOptions, name, namespace)
+	i, err := config.Watch(listOptions, namespace)
 	log.Infof("i: %v", i)
 	assert.Equal(t, nil, err)
 }

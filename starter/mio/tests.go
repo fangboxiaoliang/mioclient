@@ -1,6 +1,5 @@
 package mio
 
-
 import (
 	"fmt"
 	"hidevops.io/hiboot/pkg/log"
@@ -53,16 +52,15 @@ func (d *Tests) Update(name, namespace string, tests *v1alpha1.Tests) (*v1alpha1
 func (d *Tests) List(namespace string, option v1.ListOptions) (*v1alpha1.TestsList, error) {
 	log.Info(fmt.Sprintf("list tests in namespace %s", namespace))
 	result, err := d.clientSet.Testses(namespace).List(option)
-	fmt.Println("Error",err)
+	fmt.Println("Error", err)
 	return result, err
 }
 
-func (d *Tests) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch tests %s in namespace %s", name, namespace))
+func (d *Tests) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s Tests，in the namespace %s", listOptions.LabelSelector, namespace))
 	w, err := d.clientSet.Testses(namespace).Watch(listOptions)
 	if err != nil {
 		return nil, err
 	}
 	return w, nil
 }
-

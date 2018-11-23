@@ -1,6 +1,5 @@
 package mio
 
-
 import (
 	"fmt"
 	"hidevops.io/hiboot/pkg/log"
@@ -30,7 +29,7 @@ func (s *GatewayConfig) Create(gatewayConfigs *v1alpha1.GatewayConfig) (config *
 }
 
 func (s *GatewayConfig) Get(name, namespace string) (config *v1alpha1.GatewayConfig, err error) {
-	log.Info("get GatewayConfigs :", name)
+	log.Info("get GatewayConfigs ", name)
 	result, err := s.clientSet.GatewayConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -39,27 +38,26 @@ func (s *GatewayConfig) Get(name, namespace string) (config *v1alpha1.GatewayCon
 }
 
 func (s *GatewayConfig) Delete(name, namespace string) error {
-	log.Info("delete GatewayConfig :", name)
+	log.Info("delete GatewayConfig ", name)
 	err := s.clientSet.GatewayConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (s *GatewayConfig) Update(name, namespace string, config *v1alpha1.GatewayConfig) (*v1alpha1.GatewayConfig, error) {
-	log.Info("update GatewayConfig :", name)
+	log.Info("update GatewayConfig ", name)
 	result, err := s.clientSet.GatewayConfigs(namespace).Update(config)
 	return result, err
 }
 
 func (s *GatewayConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.GatewayConfigList, error) {
-	log.Info(fmt.Sprintf("list GatewayConfig in namespace %s:", namespace))
+	log.Info(fmt.Sprintf("list GatewayConfig in namespace %s", namespace))
 	result, err := s.clientSet.GatewayConfigs(namespace).List(option)
 	return result, err
 }
 
-func (s *GatewayConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch GatewayConfig app %s in namespace %s:", name, namespace))
+func (s *GatewayConfig) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s GatewayConfig，in the namespace %s", listOptions.LabelSelector, namespace))
 
-	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
 	listOptions.Watch = true
 
 	w, err := s.clientSet.GatewayConfigs(namespace).Watch(listOptions)
@@ -68,4 +66,3 @@ func (s *GatewayConfig) Watch(listOptions v1.ListOptions, namespace, name string
 	}
 	return w, nil
 }
-

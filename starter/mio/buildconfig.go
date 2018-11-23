@@ -29,7 +29,7 @@ func (b *BuildConfig) Create(build *v1alpha1.BuildConfig) (config *v1alpha1.Buil
 }
 
 func (b *BuildConfig) Get(name, namespace string) (config *v1alpha1.BuildConfig, err error) {
-	log.Info(fmt.Sprintf("get buildConfig app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("get buildConfig app %s in namespace %s", name, namespace))
 	result, err := b.clientSet.BuildConfigs(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -38,27 +38,25 @@ func (b *BuildConfig) Get(name, namespace string) (config *v1alpha1.BuildConfig,
 }
 
 func (b *BuildConfig) Delete(name, namespace string) error {
-	log.Info(fmt.Sprintf("delete buildConfig app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("delete buildConfig app %s in namespace %s", name, namespace))
 	err := b.clientSet.BuildConfigs(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (b *BuildConfig) Update(name, namespace string, config *v1alpha1.BuildConfig) (*v1alpha1.BuildConfig, error) {
-	log.Info(fmt.Sprintf("update buildConfig app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("update buildConfig app %s in namespace %s", name, namespace))
 	result, err := b.clientSet.BuildConfigs(namespace).Update(config)
 	return result, err
 }
 
 func (b *BuildConfig) List(namespace string, option v1.ListOptions) (*v1alpha1.BuildConfigList, error) {
-	log.Info(fmt.Sprintf("list buildConfig in namespace %s:", namespace))
+	log.Info(fmt.Sprintf("list buildConfig in namespace %s", namespace))
 	result, err := b.clientSet.BuildConfigs(namespace).List(option)
 	return result, err
 }
 
-func (b *BuildConfig) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch buildConfig app %s in namespace %s:", name, namespace))
-
-	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
+func (b *BuildConfig) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s BuildConfig，in the namespace %s", listOptions.LabelSelector, namespace))
 	listOptions.Watch = true
 
 	w, err := b.clientSet.BuildConfigs(namespace).Watch(listOptions)

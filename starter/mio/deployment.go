@@ -1,6 +1,5 @@
 package mio
 
-
 import (
 	"fmt"
 	"hidevops.io/hiboot/pkg/log"
@@ -30,7 +29,7 @@ func (d *Deployment) Create(deployment *v1alpha1.Deployment) (result *v1alpha1.D
 }
 
 func (d *Deployment) Get(name, namespace string) (result *v1alpha1.Deployment, err error) {
-	log.Info(fmt.Sprintf("get deploy app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("get deploy app %s in namespace %s", name, namespace))
 	result, err = d.clientSet.Deployments(namespace).Get(name, v1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -39,27 +38,25 @@ func (d *Deployment) Get(name, namespace string) (result *v1alpha1.Deployment, e
 }
 
 func (d *Deployment) Delete(name, namespace string) error {
-	log.Info(fmt.Sprintf("delete deploy app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("delete deploy app %s in namespace %s", name, namespace))
 	err := d.clientSet.Deployments(namespace).Delete(name, &v1.DeleteOptions{})
 	return err
 }
 
 func (d *Deployment) Update(name, namespace string, deployment *v1alpha1.Deployment) (*v1alpha1.Deployment, error) {
-	log.Info(fmt.Sprintf("update deploy app %s in namespace %s:", name, namespace))
+	log.Info(fmt.Sprintf("update deploy app %s in namespace %s", name, namespace))
 	result, err := d.clientSet.Deployments(namespace).Update(deployment)
 	return result, err
 }
 
 func (d *Deployment) List(namespace string, option v1.ListOptions) (*v1alpha1.DeploymentList, error) {
-	log.Info(fmt.Sprintf("list deploy in namespace %s:", namespace))
+	log.Info(fmt.Sprintf("list deploy in namespace %s", namespace))
 	result, err := d.clientSet.Deployments(namespace).List(option)
 	return result, err
 }
 
-func (d *Deployment) Watch(listOptions v1.ListOptions, namespace, name string) (watch.Interface, error) {
-	log.Info(fmt.Sprintf("watch deploy app %s in namespace %s:", name, namespace))
-
-	listOptions.LabelSelector = fmt.Sprintf("app=%s", name)
+func (d *Deployment) Watch(listOptions v1.ListOptions, namespace string) (watch.Interface, error) {
+	log.Info(fmt.Sprintf("watch label for %s Deployment，in the namespace %s", listOptions.LabelSelector, namespace))
 	listOptions.Watch = true
 
 	w, err := d.clientSet.Deployments(namespace).Watch(listOptions)
@@ -68,4 +65,3 @@ func (d *Deployment) Watch(listOptions v1.ListOptions, namespace, name string) (
 	}
 	return w, nil
 }
-
