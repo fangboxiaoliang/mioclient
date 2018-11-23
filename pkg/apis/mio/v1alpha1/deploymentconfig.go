@@ -40,6 +40,8 @@ type DeploymentConfigSpec struct {
 	Tag              string                 `json:"tag" protobuf:"bytes,13,opt,name=tag"`
 	Version          string                 `json:"version" protobuf:"bytes,14,opt,name=version"`
 	DockerAuthConfig AuthConfig             `json:"dockerAuthConfig" protobuf:"bytes,15,opt,name=dockerAuthConfig"`
+	Volumes          []corev1.Volume        `json:"volume" protobuf:"bytes,16,opt,name=volume"`
+	VolumeMounts     []corev1.VolumeMount   `json:"volumeMounts" protobuf:"bytes,17,opt,name=volumeMounts"`
 }
 
 type DeploymentConfigStatus struct {
