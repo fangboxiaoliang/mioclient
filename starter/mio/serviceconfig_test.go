@@ -14,7 +14,7 @@ func TestServiceCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newServiceConfig(clientSet)
+	config := NewServiceConfig(clientSet)
 	config1 := &v1alpha1.ServiceConfig{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,

@@ -13,7 +13,7 @@ type SourceConfig struct {
 	clientSet miov1alpha1.MioV1alpha1Interface
 }
 
-func newSourceConfig(clientSet miov1alpha1.MioV1alpha1Interface) *SourceConfig {
+func NewSourceConfig(clientSet miov1alpha1.MioV1alpha1Interface) *SourceConfig {
 	return &SourceConfig{
 		clientSet: clientSet,
 	}

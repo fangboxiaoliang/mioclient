@@ -13,7 +13,7 @@ func TestConfigCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newTestConfig(clientSet)
+	config := NewTestConfig(clientSet)
 	config1 := &v1alpha1.TestConfig{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,

@@ -13,7 +13,7 @@ func TestDeploymentCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newDeployment(clientSet)
+	config := NewDeployment(clientSet)
 	config1 := &v1alpha1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,

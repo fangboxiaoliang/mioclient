@@ -13,7 +13,7 @@ type PipelineConfig struct {
 	clientSet miov1.MioV1alpha1Interface
 }
 
-func newPipelineConfig(clientSet miov1.MioV1alpha1Interface) *PipelineConfig {
+func NewPipelineConfig(clientSet miov1.MioV1alpha1Interface) *PipelineConfig {
 	return &PipelineConfig{
 		clientSet: clientSet,
 	}

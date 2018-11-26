@@ -13,7 +13,7 @@ type testConfig struct {
 	clientSet miov1alpha1.MioV1alpha1Interface
 }
 
-func newTestConfig(clientSet miov1alpha1.MioV1alpha1Interface) *testConfig {
+func NewTestConfig(clientSet miov1alpha1.MioV1alpha1Interface) *testConfig {
 	return &testConfig{
 		clientSet: clientSet,
 	}
