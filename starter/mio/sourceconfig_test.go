@@ -16,7 +16,7 @@ func TestSourceConfigCurd(t *testing.T) {
 	namespace := "demo-dev"
 	version := "v1"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newSourceConfig(clientSet)
+	config := NewSourceConfig(clientSet)
 	config1 := &v1alpha1.SourceConfig{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,

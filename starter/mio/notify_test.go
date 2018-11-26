@@ -13,7 +13,7 @@ func TestNotifyCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newNotify(clientSet)
+	config := NewNotify(clientSet)
 	config1 := &v1alpha1.Notify{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,

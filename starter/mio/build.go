@@ -13,7 +13,7 @@ type Build struct {
 	clientSet miov1alpha1.MioV1alpha1Interface
 }
 
-func newBuild(clientSet miov1alpha1.MioV1alpha1Interface) *Build {
+func NewBuild(clientSet miov1alpha1.MioV1alpha1Interface) *Build {
 	return &Build{
 		clientSet: clientSet,
 	}

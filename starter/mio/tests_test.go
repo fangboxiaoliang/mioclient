@@ -13,7 +13,7 @@ func TestCURD(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newTestses(clientSet)
+	config := NewTestses(clientSet)
 	config1 := &v1alpha1.Tests{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,

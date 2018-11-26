@@ -13,7 +13,7 @@ func TestGatewayConfigCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newGatewayConfig(clientSet)
+	config := NewGatewayConfig(clientSet)
 	config1 := &v1alpha1.GatewayConfig{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,

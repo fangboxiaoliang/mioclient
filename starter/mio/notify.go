@@ -13,7 +13,7 @@ type Notify struct {
 	clientSet miov1alpha1.MioV1alpha1Interface
 }
 
-func newNotify(clientSet miov1alpha1.MioV1alpha1Interface) *Notify {
+func NewNotify(clientSet miov1alpha1.MioV1alpha1Interface) *Notify {
 	return &Notify{
 		clientSet: clientSet,
 	}

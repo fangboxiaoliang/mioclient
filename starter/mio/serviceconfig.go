@@ -13,7 +13,7 @@ type ServiceConfig struct {
 	clientSet miov1.MioV1alpha1Interface
 }
 
-func newServiceConfig(clientSet miov1.MioV1alpha1Interface) *ServiceConfig {
+func NewServiceConfig(clientSet miov1.MioV1alpha1Interface) *ServiceConfig {
 	return &ServiceConfig{
 		clientSet: clientSet,
 	}

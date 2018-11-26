@@ -13,7 +13,7 @@ type DeploymentConfig struct {
 	clientSet miov1alpha1.MioV1alpha1Interface
 }
 
-func newDeploymentConfig(clientSet miov1alpha1.MioV1alpha1Interface) *DeploymentConfig {
+func NewDeploymentConfig(clientSet miov1alpha1.MioV1alpha1Interface) *DeploymentConfig {
 	return &DeploymentConfig{
 		clientSet: clientSet,
 	}

@@ -25,7 +25,7 @@ func (c *configuration) BuildConfig(restConfig *kube.RestConfig) *BuildConfig {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newBuildConfig(clientSet)
+	return NewBuildConfig(clientSet)
 }
 
 func (c *configuration) Build(restConfig *kube.RestConfig) *Build {
@@ -34,7 +34,7 @@ func (c *configuration) Build(restConfig *kube.RestConfig) *Build {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newBuild(clientSet)
+	return NewBuild(clientSet)
 }
 
 func (c *configuration) Pipeline(restConfig *kube.RestConfig) *Pipeline {
@@ -43,7 +43,7 @@ func (c *configuration) Pipeline(restConfig *kube.RestConfig) *Pipeline {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newPipeline(clientSet)
+	return NewPipeline(clientSet)
 }
 
 func (c *configuration) PipelineConfig(restConfig *kube.RestConfig) *PipelineConfig {
@@ -52,7 +52,7 @@ func (c *configuration) PipelineConfig(restConfig *kube.RestConfig) *PipelineCon
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newPipelineConfig(clientSet)
+	return NewPipelineConfig(clientSet)
 }
 
 func (c *configuration) SourceConfig(restConfig *kube.RestConfig) *SourceConfig {
@@ -61,7 +61,7 @@ func (c *configuration) SourceConfig(restConfig *kube.RestConfig) *SourceConfig 
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newSourceConfig(clientSet)
+	return NewSourceConfig(clientSet)
 }
 
 func (c *configuration) DeploymentConfig(restConfig *kube.RestConfig) *DeploymentConfig {
@@ -70,7 +70,7 @@ func (c *configuration) DeploymentConfig(restConfig *kube.RestConfig) *Deploymen
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newDeploymentConfig(clientSet)
+	return NewDeploymentConfig(clientSet)
 }
 
 func (c *configuration) GatewayConfig(restConfig *kube.RestConfig) *GatewayConfig {
@@ -79,7 +79,7 @@ func (c *configuration) GatewayConfig(restConfig *kube.RestConfig) *GatewayConfi
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newGatewayConfig(clientSet)
+	return NewGatewayConfig(clientSet)
 }
 
 func (c *configuration) ServiceConfig(restConfig *kube.RestConfig) *ServiceConfig {
@@ -88,7 +88,7 @@ func (c *configuration) ServiceConfig(restConfig *kube.RestConfig) *ServiceConfi
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newServiceConfig(clientSet)
+	return NewServiceConfig(clientSet)
 }
 
 func (c *configuration) Deployment(restConfig *kube.RestConfig) *Deployment {
@@ -97,7 +97,7 @@ func (c *configuration) Deployment(restConfig *kube.RestConfig) *Deployment {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newDeployment(clientSet)
+	return NewDeployment(clientSet)
 }
 
 func (c *configuration) Tests(restConfig *kube.RestConfig) *Tests {
@@ -106,7 +106,7 @@ func (c *configuration) Tests(restConfig *kube.RestConfig) *Tests {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newTestses(clientSet)
+	return NewTestses(clientSet)
 }
 
 func (c *configuration) TestConfig(restConfig *kube.RestConfig) *testConfig {
@@ -115,7 +115,7 @@ func (c *configuration) TestConfig(restConfig *kube.RestConfig) *testConfig {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newTestConfig(clientSet)
+	return NewTestConfig(clientSet)
 }
 
 func (c *configuration) Notify(restConfig *kube.RestConfig) *Notify {
@@ -124,5 +124,5 @@ func (c *configuration) Notify(restConfig *kube.RestConfig) *Notify {
 		log.Errorf("v1alpha1.NewForConfig %v", err)
 		return nil
 	}
-	return newNotify(clientSet)
+	return NewNotify(clientSet)
 }

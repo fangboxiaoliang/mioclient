@@ -13,7 +13,7 @@ type GatewayConfig struct {
 	clientSet miov1.MioV1alpha1Interface
 }
 
-func newGatewayConfig(clientSet miov1.MioV1alpha1Interface) *GatewayConfig {
+func NewGatewayConfig(clientSet miov1.MioV1alpha1Interface) *GatewayConfig {
 	return &GatewayConfig{
 		clientSet: clientSet,
 	}

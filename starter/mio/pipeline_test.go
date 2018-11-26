@@ -14,7 +14,7 @@ func TestPipelineCurd(t *testing.T) {
 	name := "test"
 	namespace := "demo-dev"
 	clientSet := fake.NewSimpleClientset().MioV1alpha1()
-	config := newPipeline(clientSet)
+	config := NewPipeline(clientSet)
 	config1 := &v1alpha1.Pipeline{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,
