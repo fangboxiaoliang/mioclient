@@ -12,7 +12,7 @@ type configuration struct {
 }
 
 func init() {
-	app.AutoConfiguration(newConfiguration)
+	app.Register(newConfiguration)
 }
 
 func newConfiguration() *configuration {
